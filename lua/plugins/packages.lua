@@ -21,6 +21,7 @@ require('packer').startup(function(use)
 	  'nvim-telescope/telescope.nvim',
 	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
 	}
+	use 'nvim-telescope/telescope-project.nvim'
 	use 'tpope/vim-surround'
 	use 'romgrk/barbar.nvim'
 	use 'TimUntersberger/neogit'
