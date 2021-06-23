@@ -24,7 +24,7 @@ require('packer').startup(function(use)
 	use 'nvim-treesitter/nvim-treesitter'
 	use 'tpope/vim-surround'
 	use 'romgrk/barbar.nvim'
-	use 'jreybert/vimagit'
+	use 'TimUntersberger/neogit'
 	-- LSP & Completion
 	use 'hrsh7th/nvim-compe'
 	use 'hrsh7th/vim-vsnip'
