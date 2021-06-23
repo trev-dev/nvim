@@ -25,6 +25,7 @@ require('packer').startup(function(use)
 	use 'hrsh7th/vim-vsnip'
 	use 'hrsh7th/vim-vsnip-integ'
 	use 'neovim/nvim-lspconfig'
+  use 'ray-x/lsp_signature.nvim'
 	use 'rafamadriz/friendly-snippets'
 	-- Syntax
 	use 'tpope/vim-liquid'
