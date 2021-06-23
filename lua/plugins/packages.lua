@@ -2,7 +2,6 @@ require('packer').startup(function(use)
 	-- Packer to manage itself
 	use 'wbthomason/packer.nvim'
 	-- Tools
-	use 'airblade/vim-gitgutter'
 	use 'dhruvasagar/vim-dotoo'
 	use 'easymotion/vim-easymotion'
 	use 'godlygeek/tabular'
@@ -12,6 +11,12 @@ require('packer').startup(function(use)
 	use 'markonm/traces.vim'
 	use 'mattn/emmet-vim'
 	use 'norcalli/nvim-colorizer.lua'
+  use {
+    'lewis6991/gitsigns.nvim',
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
 	use {
 	  'nvim-telescope/telescope.nvim',
 	  requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}

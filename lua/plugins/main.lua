@@ -3,7 +3,7 @@ require('plugins.packages')
 
 -- Configs
 require('plugins.colorizer')
-require('plugins.gitgutter')
+require('plugins.gitsigns')
 require('plugins.lsp')
 require('plugins.magit')
 require('plugins.telescope')
