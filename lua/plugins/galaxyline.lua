@@ -167,8 +167,7 @@ gls.right[5] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
-    icon = '  ',
-    separator = ' ',
+    icon = '   ',
     highlight = {colors.green,colors.bg},
   }
 }
@@ -176,8 +175,7 @@ gls.right[6] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = checkwidth,
-    icon = ' 柳',
-    separator = ' ',
+    icon = '  柳',
     highlight = {colors.orange,colors.bg},
   }
 }
@@ -185,8 +183,7 @@ gls.right[7] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = checkwidth,
-    icon = '  ',
-    separator = ' ',
+    icon = '   ',
     highlight = {colors.red,colors.bg},
   }
 }
