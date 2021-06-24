@@ -28,7 +28,11 @@ require('packer').startup(function(use)
   use 'b3nj5m1n/kommentary'
   use {
     'glepnir/galaxyline.nvim',
-      branch = 'main'
+    branch = 'main'
+  }
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
   }
   -- LSP & Completion
   use 'hrsh7th/nvim-compe'
