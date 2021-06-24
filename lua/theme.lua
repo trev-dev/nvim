@@ -3,4 +3,5 @@ local cmd = vim.cmd
 
 g.material_theme_style = 'dark'
 g.material_terminal_italics = 1
-cmd('colorscheme material')
+cmd[[colorscheme material]]
+cmd[[au VimEnter * highlight ColorColumn guibg=#171717]]

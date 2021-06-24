@@ -8,6 +8,7 @@ o.termguicolors = true
 
 -- Window
 wo.breakindent = true
+wo.colorcolumn = '80'
 wo.linebreak = true
 wo.number = true
 wo.relativenumber = true
