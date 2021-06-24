@@ -24,7 +24,7 @@ require('packer').startup(function(use)
   use 'nvim-telescope/telescope-project.nvim'
   use 'tpope/vim-surround'
   use 'romgrk/barbar.nvim'
-  use 'TimUntersberger/neogit'
+  use 'tpope/vim-fugitive'
   use 'b3nj5m1n/kommentary'
   use {
     'glepnir/galaxyline.nvim',
