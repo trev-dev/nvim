@@ -26,6 +26,10 @@ require('packer').startup(function(use)
   use 'romgrk/barbar.nvim'
   use 'TimUntersberger/neogit'
   use 'b3nj5m1n/kommentary'
+  use {
+    'glepnir/galaxyline.nvim',
+      branch = 'main'
+  }
   -- LSP & Completion
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'

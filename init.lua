@@ -7,5 +7,4 @@ require('vim-bindings')
 require('plugins.main')
 
 -- Theme Settings
--- require('statusline')
 require('theme')
