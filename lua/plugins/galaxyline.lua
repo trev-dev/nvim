@@ -140,7 +140,7 @@ gls.right[2] = {
 gls.right[3] = {
   GitIcon = {
     provider = function() return '  ' end,
-    condition = require('galaxyline.provider_vcs').check_git_workspace,
+    condition = require('galaxyline.condition').check_git_workspace,
     separator = ' ',
     separator_highlight = {'NONE',colors.bg},
     highlight = {colors.violet,colors.bg,'bold'},
@@ -155,6 +155,14 @@ gls.right[4] = {
   }
 }
 
+gls.right[5] = {
+  GitSeparatorRight = {
+    provider = function() return '  | ' end,
+    condition = require('galaxyline.condition').check_git_workspace,
+    highlight = {colors.violet,colors.bg,'bold'},
+  }
+}
+
 local checkwidth = function()
   local squeeze_width  = vim.fn.winwidth(0) / 2
   if squeeze_width > 40 then
@@ -163,32 +171,32 @@ local checkwidth = function()
   return false
 end
 
-gls.right[5] = {
+gls.right[6] = {
   DiffAdd = {
     provider = 'DiffAdd',
     condition = checkwidth,
-    icon = '   ',
+    icon = ' ',
     highlight = {colors.green,colors.bg},
   }
 }
-gls.right[6] = {
+gls.right[7] = {
   DiffModified = {
     provider = 'DiffModified',
     condition = checkwidth,
-    icon = '  柳',
+    icon = ' ',
     highlight = {colors.orange,colors.bg},
   }
 }
-gls.right[7] = {
+gls.right[8] = {
   DiffRemove = {
     provider = 'DiffRemove',
     condition = checkwidth,
-    icon = '   ',
+    icon = ' ',
     highlight = {colors.red,colors.bg},
   }
 }
 
-gls.right[8] = {
+gls.right[9] = {
   RainbowBlue = {
     provider = function() return '  ▊' end,
     highlight = {colors.blue,colors.bg}
