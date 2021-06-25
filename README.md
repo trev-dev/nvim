@@ -18,15 +18,9 @@ Here lies my latest Neovim configuration with _native LSP support_ for Neovim 0.
 ├── lua
 │   ├── autocommands.lua
 │   ├── plugins # Where Package configuration lives. Uses Packer.
-│   │   ├── colorizer.lua
-│   │   ├── gitgutter.lua
-│   │   ├── gitsigns.lua
-│   │   ├── lsp.lua
 │   │   ├── main.lua # Packer entrypoint
-│   │   ├── neogit.lua
 │   │   ├── packages.lua # Package imports
-│   │   ├── telescope.lua
-│   │   └── vim-compe.lua
+│   │   └── # Multiple application specific configurations imported by main.lua
 │   ├── statusline.lua #WIP
 │   ├── theme.lua
 │   ├── vim-bindings.lua # General Bindings
