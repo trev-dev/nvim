@@ -1,4 +1,12 @@
-require('packer').startup(function(use)
+local packer = require'packer'
+
+packer.init{
+  git = {
+    clone_timeout = 120
+  }
+}
+
+packer.startup(function(use)
   -- Packer to manage itself
   use 'wbthomason/packer.nvim'
   -- Tools
