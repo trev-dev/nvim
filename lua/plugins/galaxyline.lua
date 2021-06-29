@@ -157,7 +157,7 @@ gls.right[4] = {
 
 gls.right[5] = {
   GitSeparatorRight = {
-    provider = function() return '  | ' end,
+    provider = function() return '  ' end,
     condition = require('galaxyline.condition').check_git_workspace,
     highlight = {colors.violet,colors.bg,'bold'},
   }
@@ -198,7 +198,7 @@ gls.right[8] = {
 
 gls.right[9] = {
   RainbowBlue = {
-    provider = function() return '  ▊' end,
+    provider = function() return ' ▊' end,
     highlight = {colors.blue,colors.bg}
   },
 }
