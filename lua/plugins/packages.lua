@@ -60,8 +60,12 @@ packer.startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'ray-x/lsp_signature.nvim'
   use 'rafamadriz/friendly-snippets'
+  use {
+    'prettier/vim-prettier',
+    run = "yarn install"
+  }
   -- Syntax
-  use 'tpope/vim-liquid'
+  -- use 'tpope/vim-liquid'
   use 'ledger/vim-ledger'
   -- Themes
   use 'kyazdani42/nvim-web-devicons'
