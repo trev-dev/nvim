@@ -13,3 +13,6 @@ map('n', '<leader>bd', ':bd<CR>', defaults)
 
 -- Toggle Whitespace Chars
 map('n', '<leader>s', ':set list!<CR>', defaults)
+
+-- Toggle Word Wrap
+map('n', '<leader>w', '<cmd>set wrap!<CR>', defaults)
