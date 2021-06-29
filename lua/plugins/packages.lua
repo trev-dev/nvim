@@ -33,6 +33,13 @@ packer.startup(function(use)
   use 'tpope/vim-surround'
   use 'romgrk/barbar.nvim'
   use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+  use {
+    'junegunn/gv.vim',
+    requires = {
+      'tpope/vim-fugitive'
+    }
+  }
   use 'b3nj5m1n/kommentary'
   use {
     'glepnir/galaxyline.nvim',
