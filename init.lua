@@ -1,11 +1,9 @@
--- Settings
 require('vim-settings')
 require('autocommands')
 require('vim-bindings')
 require('gvim')
 
--- Theme Settings
-require('theme')
+-- Packer init & package configurations.
+require('packages')
 
--- Plugins, Plugin Configs, Plugin Specific Bindings
-require('plugins.main') -- Plugins commented out and cleaned
+require('theme')

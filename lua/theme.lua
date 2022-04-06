@@ -1,7 +1,9 @@
+local material = require'material'
 local g = vim.g
 local cmd = vim.cmd
 
-g.material_theme_style = 'dark'
-g.material_terminal_italics = 1
+material.setup{}
+
+g.material_style = 'darker'
 cmd[[colorscheme material]]
-cmd[[au VimEnter * highlight ColorColumn guibg=#171717]]
+-- cmd[[au VimEnter * highlight ColorColumn guibg=#171717]]
