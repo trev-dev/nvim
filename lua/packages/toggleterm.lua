@@ -12,8 +12,8 @@ map('n', 'gs', ':lua _LAZYGIT_TOGGLE()<CR>', {
   silent = true
 })
 
-local M = {
-  setup = function()
+return {
+  setup = function() 
     toggleterm.setup({
       size = 20,
       open_mapping = [[<c-\>]],
@@ -38,5 +38,3 @@ local M = {
     })
   end
 }
-
-return M
