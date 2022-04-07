@@ -4,7 +4,8 @@ local bo = vim.bo
 
 -- Global
 o.termguicolors = true
-o.listchars='eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
+o.listchars = 'trail:~'
+o.list = true
 o.expandtab = true
 o.shiftwidth = 2
 o.softtabstop = 2
