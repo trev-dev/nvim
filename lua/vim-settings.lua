@@ -12,6 +12,7 @@ o.tabstop = 2
 o.lbr = true
 o.redrawtime = 10000
 o.clipboard = 'unnamedplus'
+o.mouse = 'a'
 
 -- Window
 wo.breakindent = true
