@@ -18,7 +18,6 @@ local config = {
   update_in_insert = true,
   underline = true,
   severity_sort = true,
-  debounce_text_changes = 200,
   float = {
     focusable = false,
     style = "minimal",
@@ -31,7 +30,7 @@ local config = {
 
 
 -- Bindings on Attach
-config.on_attach = function(client, bufnr)
+on_attach = function(client, bufnr)
   map(bufnr, 'n', '<leader>e', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
   map(bufnr, 'n', '<leader>c', '<cmd>lua vim.lsp.buf.declaration()<CR>', options)
   map(bufnr, 'n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', options)

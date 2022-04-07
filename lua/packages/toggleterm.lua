@@ -1,16 +1,5 @@
 local toggleterm = require'toggleterm'
 local map = vim.api.nvim_set_keymap
-local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
-
-function _LAZYGIT_TOGGLE()
-  lazygit:toggle()
-end
-
-map('n', 'gs', ':lua _LAZYGIT_TOGGLE()<CR>', {
-  noremap = true,
-  silent = true
-})
 
 return {
   setup = function() 
@@ -35,6 +24,15 @@ return {
           background = "Normal",
         },
       },
+    })
+    local Terminal = require("toggleterm.terminal").Terminal
+    local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+    function _LAZYGIT_TOGGLE()
+      lazygit:toggle()
+    end
+    map('n', 'gs', ':lua _LAZYGIT_TOGGLE()<CR>', {
+      noremap = true,
+      silent = true
     })
   end
 }

@@ -11,54 +11,75 @@ packer.startup(function(use)
   -- Packer to manage itself
   use 'wbthomason/packer.nvim'
   -- Tools
-  use 'easymotion/vim-easymotion'
+  -- use 'easymotion/vim-easymotion'
   use 'godlygeek/tabular'
   use 'jamessan/vim-gnupg'
   use 'jceb/vim-orgmode'
   use 'jiangmiao/auto-pairs'
   use 'markonm/traces.vim' -- Shows substitutions in real-time
   use {
-    'akinsho/toggleterm.nvim',
-    config = require'packages.toggleterm'.setup()
+     'phaazon/hop.nvim',
+     branch = 'v1',
+     config = function()
+        require'packages.hop'.setup()
+     end
+  }
+  use {
+     'akinsho/toggleterm.nvim',
+     config = function()
+        require'packages.toggleterm'.setup()
+     end
   }
   use {
     'mattn/emmet-vim',
     config = function()
-      vim.g.user_emmet_leader_key = '<C-k>'
+       vim.g.user_emmet_leader_key = '<C-k>'
     end
   }
   use {
-   'norcalli/nvim-colorizer.lua',
-   config = require'colorizer'.setup()
+     'norcalli/nvim-colorizer.lua',
+     config = function()
+        require'colorizer'.setup()
+     end
   }
   use {
     'lewis6991/gitsigns.nvim',
     requires = {
       'nvim-lua/plenary.nvim'
     },
-    config = require'gitsigns'.setup()
+    config = function()
+      require'gitsigns'.setup()
+    end
   }
   use {
     'nvim-telescope/telescope.nvim',
     requires = {{'nvim-lua/popup.nvim'}, {'nvim-lua/plenary.nvim'}}
   }
-  use { 
+  use {
     'nvim-telescope/telescope-project.nvim',
-    config = require'packages.telescope'.setup()
+    config = function()
+      require'packages.telescope'.setup()
+    end
   }
   use 'tpope/vim-surround'
   use {
     'akinsho/bufferline.nvim',
-    config = require 'packages.bufferline'.setup()
+    config = function()
+      require'packages.bufferline'.setup()
+    end
   }
   use {
     'b3nj5m1n/kommentary',
-    config = require'kommentary.config'.use_extended_mappings()
+    config = function()
+       require'kommentary.config'.use_extended_mappings()
+    end
   }
   use {
     'NTBBloodbath/galaxyline.nvim',
     branch = 'main',
-    config = require'packages.galaxyline'.setup()
+    config = function()
+      require'packages.galaxyline'.setup()
+    end
   }
   use {
     'folke/todo-comments.nvim',
@@ -67,22 +88,30 @@ packer.startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    config = require'packages.treesitter'.setup()
+    config = function()
+      require'packages.treesitter'.setup()
+    end
   }
   use {
     'nvim-neorg/neorg',
     requires = 'nvim-lua/plenary.nvim',
-    config = require'packages.neorg'.setup()
+    config = function()
+      require'packages.neorg'.setup()
+    end
   }
   use {
     'lukas-reineke/indent-blankline.nvim',
-    config = require'packages.indent-blankline'.setup()
+    config = function()
+       require'packages.indent-blankline'.setup()
+    end
   }
 
   -- LSP & Completion
   use {
     'neovim/nvim-lspconfig',
-    config = require'packages.lsp'.setup()
+    config = function()
+      require'packages.lsp'.setup()
+    end
   }
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-buffer'
@@ -90,7 +119,9 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-cmdline'
   use {
     'hrsh7th/nvim-cmp',
-    config = require'packages.nvim-cmp'.setup()
+    config = function()
+       require'packages.nvim-cmp'.setup()
+    end
   }
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
@@ -103,7 +134,9 @@ packer.startup(function(use)
   }
   use {
     'folke/which-key.nvim',
-    config = require'which-key'.setup()
+    config = function()
+      require'which-key'.setup()
+    end
   }
   use 'romainl/vim-cool' -- Remove highlight after searching
 
@@ -116,7 +149,9 @@ packer.startup(function(use)
   }
   use {
     'pangloss/vim-javascript',
-    config = require'packages.vim-javascript'.setup()
+    config = function()
+       require'packages.vim-javascript'.setup()
+    end
   }
 
   -- Themes
