@@ -23,29 +23,29 @@ packer.startup(function(use)
   use 'jiangmiao/auto-pairs'
   use 'markonm/traces.vim' -- Shows substitutions in real-time
   use {
-     'phaazon/hop.nvim',
-     branch = 'v1',
-     config = function()
-        require'packages.hop'.setup()
-     end
+    'phaazon/hop.nvim',
+    branch = 'v1',
+    config = function()
+      require'packages.hop'.setup()
+    end
   }
   use {
-     'akinsho/toggleterm.nvim',
-     config = function()
-        require'packages.toggleterm'.setup()
-     end
+    'akinsho/toggleterm.nvim',
+    config = function()
+      require'packages.toggleterm'.setup()
+    end
   }
   use {
     'mattn/emmet-vim',
     config = function()
-       vim.g.user_emmet_leader_key = '<C-k>'
+      vim.g.user_emmet_leader_key = '<C-k>'
     end
   }
   use {
-     'norcalli/nvim-colorizer.lua',
-     config = function()
-        require'colorizer'.setup()
-     end
+    'norcalli/nvim-colorizer.lua',
+    config = function()
+      require'colorizer'.setup()
+    end
   }
   use {
     'lewis6991/gitsigns.nvim',
@@ -76,7 +76,7 @@ packer.startup(function(use)
   use {
     'b3nj5m1n/kommentary',
     config = function()
-       require'kommentary.config'.use_extended_mappings()
+      require'kommentary.config'.use_extended_mappings()
     end
   }
   use {
@@ -107,7 +107,7 @@ packer.startup(function(use)
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
-       require'packages.indent-blankline'.setup()
+      require'packages.indent-blankline'.setup()
     end
   }
 
@@ -125,7 +125,7 @@ packer.startup(function(use)
   use {
     'hrsh7th/nvim-cmp',
     config = function()
-       require'packages.nvim-cmp'.setup()
+      require'packages.nvim-cmp'.setup()
     end
   }
   use 'hrsh7th/cmp-vsnip'
@@ -155,7 +155,7 @@ packer.startup(function(use)
   use {
     'pangloss/vim-javascript',
     config = function()
-       require'packages.vim-javascript'.setup()
+      require'packages.vim-javascript'.setup()
     end
   }
 
