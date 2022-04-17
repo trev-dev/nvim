@@ -4,7 +4,12 @@ packer.init{
   git = {
     clone_timeout = false,
   },
-  max_jobs = 4
+  max_jobs = 4,
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+  },
 }
 
 packer.startup(function(use)
@@ -92,13 +97,13 @@ packer.startup(function(use)
       require'packages.treesitter'.setup()
     end
   }
-  use {
+  --[[ use {
     'nvim-neorg/neorg',
     requires = 'nvim-lua/plenary.nvim',
     config = function()
       require'packages.neorg'.setup()
     end
-  }
+  } ]]
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -135,7 +140,7 @@ packer.startup(function(use)
   use {
     'folke/which-key.nvim',
     config = function()
-      require'which-key'.setup()
+      require'packages.which-key'.setup()
     end
   }
   use 'romainl/vim-cool' -- Remove highlight after searching

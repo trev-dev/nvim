@@ -1,6 +1,7 @@
 local o = vim.o
 local wo = vim.wo
 local bo = vim.bo
+local g = vim.g
 
 -- Global
 o.termguicolors = true
@@ -22,6 +23,6 @@ wo.linebreak = true
 wo.number = true
 wo.relativenumber = true
 
--- Buffer
-bo.smartindent = true
-
+-- HTML
+g.html_indent_script1 = 'zero'
+g.html_indent_style1 = 'zero'

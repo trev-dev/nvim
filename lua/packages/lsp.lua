@@ -21,13 +21,12 @@ local config = {
   float = {
     focusable = false,
     style = "minimal",
-    border = false,
+    border = "rounded",
     source = "always",
     header = "",
     prefix = "",
   },
 }
-
 
 -- Bindings on Attach
 on_attach = function(client, bufnr)
@@ -63,12 +62,10 @@ if not configs.shopifyls then
 end
 
 -- Customizations
-
-
 M.setup = function()
   local servers = {
     "pyright", "bashls", "intelephense", "tsserver", "tailwindcss", "vuels",
-    "svelte", "html", "cssls", "shopifyls"
+    "svelte", "html", "cssls", "shopifyls", "solargraph"
   }
   for _, srv in pairs(servers) do
     lsp[srv].setup{
@@ -81,6 +78,14 @@ M.setup = function()
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
   vim.diagnostic.config(config)
+
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
+    border = "rounded",
+  })
+
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+    border = "rounded",
+  })
 end
 
 return M

@@ -1,18 +1,18 @@
 local cmd = vim.cmd
 
-function create_augroup(autocmds, name)
-	cmd('augroup '..name)
-	cmd('autocmd!')
-	for _, autocmd in ipairs(autocmds) do
-		cmd('autocmd '..table.concat(autocmd, ' '))
-	end
-	cmd('augroup END')
+local function create_augroup(autocmds, name)
+  cmd('augroup '..name)
+  cmd('autocmd!')
+  for _, autocmd in ipairs(autocmds) do
+    cmd('autocmd '..table.concat(autocmd, ' '))
+  end
+  cmd('augroup END')
 end
 
 -- Untoggle relative numbers on buffer switching
 create_augroup({
-	{'BufEnter,FocusGained,InsertLeave', '*', 'set', 'relativenumber'},
-	{'BufLeave,FocusLost,InsertEnter', '*', 'set', 'norelativenumber'}
+  {'BufEnter,FocusGained,InsertLeave', '*', 'set', 'relativenumber'},
+  {'BufLeave,FocusLost,InsertEnter', '*', 'set', 'norelativenumber'}
 }, 'numbertoggle')
 
 -- File specific indentation
