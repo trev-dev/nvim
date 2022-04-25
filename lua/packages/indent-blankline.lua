@@ -20,7 +20,6 @@ return {
       "md",
       "org",
       "norg",
-      ""
     }
   end
 }
