@@ -1,19 +1,42 @@
-local cmd = vim.cmd
-
-local function create_augroup(autocmds, name)
-  cmd('augroup '..name)
-  cmd('autocmd!')
-  for _, autocmd in ipairs(autocmds) do
-    cmd('autocmd '..table.concat(autocmd, ' '))
-  end
-  cmd('augroup END')
-end
+local create_augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local bo = vim.bo
 
 -- Untoggle relative numbers on buffer switching
-create_augroup({
-  {'BufEnter,FocusGained,InsertLeave', '*', 'set', 'relativenumber'},
-  {'BufLeave,FocusLost,InsertEnter', '*', 'set', 'norelativenumber'}
-}, 'numbertoggle')
+local relative_toggle = create_augroup("RelativeNumToggle", { clear = true })
+autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
+  group = relative_toggle,
+  pattern = "*",
+  command = "set relativenumber"
+})
+
+autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
+  group = relative_toggle,
+  pattern = "*",
+  command = "set norelativenumber"
+})
+
+-- Load/save views on enter/leave. Preserves folding.
+autocmd({"BufWinLeave"}, {
+  pattern = "*",
+  command = "silent! mkview"
+})
+
+autocmd({"BufWinEnter"}, {
+  pattern = "*",
+  command = "silent! loadview"
+})
 
 -- File specific indentation
-cmd('autocmd Filetype python setlocal ts=4 sw=4 sts=0 expandtab')
+local python_context = create_augroup("PythonIndentContext", { clear = true })
+local adjust_python_indent = function()
+  bo.tabstop = 4
+  bo.shiftwidth = 4
+  bo.softtabstop = 4
+  bo.expandtab = true
+end
+autocmd({"FileType"}, {
+  group = python_context,
+  callback = adjust_python_indent,
+  pattern = "python"
+})
