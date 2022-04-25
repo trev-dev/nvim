@@ -19,7 +19,6 @@ packer.startup(function(use)
   -- use 'easymotion/vim-easymotion'
   use 'godlygeek/tabular'
   use 'jamessan/vim-gnupg'
-  use 'jceb/vim-orgmode'
   use 'jiangmiao/auto-pairs'
   use 'markonm/traces.vim' -- Shows substitutions in real-time
   use {
@@ -97,13 +96,15 @@ packer.startup(function(use)
       require'packages.treesitter'.setup()
     end
   }
-  --[[ use {
-    'nvim-neorg/neorg',
-    requires = 'nvim-lua/plenary.nvim',
+  use {
+    'nvim-orgmode/orgmode',
     config = function()
-      require'packages.neorg'.setup()
+      require('orgmode').setup {
+        org_agenda_files = {"~/Org/*.org"},
+        org_default_notes_file = "~/Org/notes.org"
+      }
     end
-  } ]]
+  }
   use {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
