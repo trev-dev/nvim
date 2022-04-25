@@ -64,7 +64,7 @@ end
 -- Customizations
 M.setup = function()
   local servers = {
-    "pyright", "bashls", "intelephense", "tsserver", "tailwindcss", "vuels",
+    "pylsp", "bashls", "intelephense", "tsserver", "tailwindcss", "vuels",
     "svelte", "html", "cssls", "shopifyls", "solargraph"
   }
   for _, srv in pairs(servers) do
