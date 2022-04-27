@@ -1,4 +1,5 @@
 local lsp = require'lspconfig'
+local lspsig = require'lsp_signature'
 local configs = require'lspconfig.configs'
 local map = vim.api.nvim_buf_set_keymap
 local options = { noremap = true, silent = true }
@@ -28,6 +29,15 @@ local config = {
   },
 }
 
+local lsp_sig_config = {
+  bind = true,
+  handler_opts = {
+    border = "rounded"
+  },
+  doc_lines = 0,
+  hint_prefix = "⚙️ "
+}
+
 -- Bindings on Attach
 on_attach = function(client, bufnr)
   map(bufnr, 'n', '<leader>e', '<cmd>lua vim.lsp.buf.definition()<CR>', options)
@@ -47,6 +57,7 @@ on_attach = function(client, bufnr)
   map(bufnr, 'n', '<space>wr', '<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>', options)
   map(bufnr, 'n', '<space>wl', '<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>', options)
   map(bufnr, 'n', '<space>rn', '<cmd>lua vim.lsp.buf.rename()<CR>', options)
+  lspsig.on_attach(lsp_sig_config, bufnr)
 end
 
 -- Language Servers

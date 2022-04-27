@@ -113,6 +113,7 @@ packer.startup(function(use)
   }
 
   -- LSP & Completion
+  use 'ray-x/lsp_signature.nvim'
   use {
     'neovim/nvim-lspconfig',
     config = function()
@@ -132,7 +133,6 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
-  use 'ray-x/lsp_signature.nvim'
   use 'rafamadriz/friendly-snippets'
   use {
     'prettier/vim-prettier',
