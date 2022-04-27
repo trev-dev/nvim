@@ -145,6 +145,7 @@ packer.startup(function(use)
     end
   }
   use 'romainl/vim-cool' -- Remove highlight after searching
+  use 'dhruvasagar/vim-table-mode'
 
   -- Syntax
   use 'trev-dev/vim-shopify'
