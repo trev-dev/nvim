@@ -15,6 +15,7 @@ o.lbr = true
 o.redrawtime = 10000
 o.clipboard = 'unnamedplus'
 o.mouse = 'a'
+o.guifont = "Source Code Pro:h11"
 
 -- Window
 wo.breakindent = true
