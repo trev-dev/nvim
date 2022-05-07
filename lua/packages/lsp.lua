@@ -35,6 +35,7 @@ local lsp_sig_config = {
     border = "rounded"
   },
   doc_lines = 0,
+  hint_enable = false,
   hint_prefix = "⚙️ "
 }
 
@@ -47,7 +48,7 @@ on_attach = function(client, bufnr)
   map(bufnr, 'n', '<leader>i', '<cmd>lua vim.lsp.buf.implementation()<CR>', options)
   map(bufnr, 'n', '<leader>a', '<cmd>lua vim.lsp.buf.code_action()<CR>', options)
   map(bufnr, 'n', '<leader>r', '<cmd>lua vim.lsp.buf.references()<CR>', options)
-  map(bufnr, 'n', '<leader>F', '<cmd>lua vim.lsp.buf.formatting()<CR>', options)
+  map(bufnr, 'n', '<leader>F', '<cmd>lua vim.lsp.buf.format({async = true})<CR>', options)
   map(bufnr, 'n', 'K', '<cmd>lua vim.lsp.buf.hover()<CR>', options)
   map(bufnr, 'n', '<C-i>', '<cmd>lua vim.lsp.buf.signature_help()<CR>', options)
   map(bufnr, 'n', '<C-p>', '<cmd>lua vim.diagnostic.goto_prev()<CR>', options)
@@ -75,7 +76,7 @@ end
 -- Customizations
 M.setup = function()
   local servers = {
-    "pylsp", "bashls", "intelephense", "tsserver", "tailwindcss", "vuels",
+    "jedi_language_server", "bashls", "intelephense", "tsserver", "tailwindcss", "vuels",
     "svelte", "html", "cssls", "shopifyls", "solargraph"
   }
   for _, srv in pairs(servers) do
