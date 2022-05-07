@@ -1,19 +1,25 @@
 local create_augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local bo = vim.bo
+local wo = vim.wo
 
--- Untoggle relative numbers on buffer switching
 local relative_toggle = create_augroup("RelativeNumToggle", { clear = true })
 autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
   group = relative_toggle,
   pattern = "*",
-  command = "set relativenumber"
+  callback = function()
+    if (wo.number) then
+      wo.relativenumber = true
+    end
+  end
 })
 
 autocmd({"BufLeave", "FocusLost", "InsertEnter"}, {
   group = relative_toggle,
   pattern = "*",
-  command = "set norelativenumber"
+  callback = function()
+    wo.relativenumber = false
+  end
 })
 
 -- Load/save views on enter/leave. Preserves folding.
