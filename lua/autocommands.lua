@@ -46,3 +46,10 @@ autocmd({"FileType"}, {
   callback = adjust_python_indent,
   pattern = "python"
 })
+
+autocmd({"FileType"},{
+  pattern = { "*.md", "*.markdown", "*.org" },
+  callback = function()
+    vim.o.setwriteall = true
+  end
+})
