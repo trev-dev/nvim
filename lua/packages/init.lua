@@ -87,7 +87,6 @@ packer.startup(function(use)
       require"kommentary.config".use_extended_mappings()
     end
   }
-  } ]]
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
