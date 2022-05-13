@@ -21,15 +21,12 @@ M.setup = function()
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
     sources = cmp.config.sources({
-      {
-        { name = 'nvim_lsp', max_item_count = 5 },
-        { name = 'vsnip', max_item_count = 5 }, -- For vsnip users.
-        { name = 'path', max_item_count = 5 },
-      },
-      {
-        { name = 'orgmode' },
-        { name = 'buffer' },
-      },
+      { name = 'nvim_lsp', max_item_count = 5 },
+      { name = 'vsnip', max_item_count = 5 }, -- For vsnip users.
+      { name = 'path', max_item_count = 5 },
+      { name = 'orgmode' },
+    }, {
+      { name = 'buffer' },
     }),
     window = {
       completion = cmp.config.window.bordered(),
