@@ -18,6 +18,8 @@ function _TOGGLE_WHITESPACE()
   end
 end
 
+vim.g.mapleader = " "
+
 -- Buffers
 map('n', '<leader>l', ':ls<CR>', defaults)
 map('n', '<leader>a', ':blast<CR>', defaults)
