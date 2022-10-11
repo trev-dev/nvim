@@ -16,7 +16,7 @@
 (defn req [name]
   "A shortcut to building a require string for your plugin
   configuration. Intended for use with packer's config or setup
-  configuration options. Will prefix the name with `magic.plugin.`
+  configuration options. Will prefix the name with `tdev.package.`
   before requiring."
   (.. "require('tdev.package." name "')"))
 
