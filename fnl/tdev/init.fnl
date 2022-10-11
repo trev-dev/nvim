@@ -105,6 +105,9 @@
 
 (packages.use
   :wbthomason/packer.nvim {}
+  :Olical/aniseed {}
   :godlygeek/tabular {}
-  :jiangmiao/autopairs {}
+  :jiangmiao/auto-pairs {}
+  :markonm/traces.vim {}
+  :phaazon/hop.nvim {:mod :hop :branch "v1"}
   )
