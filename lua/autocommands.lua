@@ -2,6 +2,7 @@ local create_augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local bo = vim.bo
 local wo = vim.wo
+local setlocal = vim.opt_local
 
 local relative_toggle = create_augroup("RelativeNumToggle", { clear = true })
 autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
@@ -47,9 +48,18 @@ autocmd({"FileType"}, {
   pattern = "python"
 })
 
-autocmd({"FileType"},{
+autocmd({"BufEnter"}, {
   pattern = { "*.md", "*.markdown", "*.org" },
   callback = function()
-    vim.o.setwriteall = true
+    setlocal.conceallevel = 2
+    setlocal.concealcursor = 'nc'
+  end
+})
+
+autocmd("BufWrite", {
+  pattern = { "/home/trev/.config/nvim/*" },
+  callback = function ()
+    require("packer").compile()
+    print("Packer Compiled")
   end
 })
