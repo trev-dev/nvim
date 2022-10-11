@@ -28,24 +28,28 @@ packer.startup(function(use)
       require"packages.hop".setup()
     end
   }
+
   use {
     "akinsho/toggleterm.nvim",
     config = function()
       require"packages.toggleterm".setup()
     end
   }
+
   use {
     "mattn/emmet-vim",
     config = function()
       vim.g.user_emmet_leader_key = "<C-k>"
     end
   }
+
   use {
     "norcalli/nvim-colorizer.lua",
     config = function()
       require"colorizer".setup()
     end
   }
+
   use {
     "lewis6991/gitsigns.nvim",
     requires = {
@@ -74,6 +78,7 @@ packer.startup(function(use)
       require"packages.nvim-tree".setup()
     end
   }
+
   use "tpope/vim-surround"
   use {
     "akinsho/bufferline.nvim",
@@ -81,12 +86,14 @@ packer.startup(function(use)
       require"packages.bufferline".setup()
     end
   }
+
   use {
     "b3nj5m1n/kommentary",
     config = function()
       require"kommentary.config".use_extended_mappings()
     end
   }
+
   use {
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true },
@@ -94,10 +101,12 @@ packer.startup(function(use)
       require"packages.lualine".setup()
     end
   }
+
   use {
     "folke/todo-comments.nvim",
     requires = "nvim-lua/plenary.nvim",
   }
+
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate",
@@ -114,6 +123,7 @@ packer.startup(function(use)
       }
     end
   }
+
   use {
     "lukas-reineke/indent-blankline.nvim",
     config = function()
@@ -126,6 +136,7 @@ packer.startup(function(use)
       require"packages.zk".setup()
     end
   }
+
   use {
     "ellisonleao/glow.nvim",
     branch = "main",
@@ -133,6 +144,7 @@ packer.startup(function(use)
       vim.g.glow_border = "rounded"
     end
   }
+
   use {
     "jakewvincent/mkdnflow.nvim",
     config = function()
@@ -185,6 +197,7 @@ packer.startup(function(use)
       require"packages.nvim-cmp".setup()
     end
   }
+
   use "hrsh7th/cmp-vsnip"
   use "hrsh7th/vim-vsnip"
   use "hrsh7th/vim-vsnip-integ"
@@ -193,12 +206,14 @@ packer.startup(function(use)
     "prettier/vim-prettier",
     run = "yarn install"
   }
+
   use {
     "folke/which-key.nvim",
     config = function()
       require"packages.which-key".setup()
     end
   }
+
   use "romainl/vim-cool" -- Remove highlight after searching
   use "dhruvasagar/vim-table-mode"
 
@@ -209,12 +224,14 @@ packer.startup(function(use)
     "kkoomen/vim-doge",
     run = ":call doge#install()"
   }
+
   use {
     "pangloss/vim-javascript",
     config = function()
       require"packages.vim-javascript".setup()
     end
   }
+
   use 'alaviss/nim.nvim'
 
   -- Themes
