@@ -6,7 +6,8 @@ map('n', '<leader>s', ':HopChar1<CR>', { noremap = true, silent = true })
 return {
   setup = function()
     hop.setup{
-      keys = 'etovxqpdygfblzhckisuran'
+      keys = 'etovxqpdygfblzhckisuran',
+      case_insensitive = false
     }
   end
 }
