@@ -1,7 +1,7 @@
 ;; Borrowed from Olical/magic-kit
 ;; https://github.com/Olical/magic-kit/blob/main/fnl/magic/plugin.fnl
 
-(module packages
+(module tdev.packages
   {autoload {a aniseed.core
             packer packer}})
 
@@ -9,7 +9,7 @@
   "Safely require a module under the magic.plugin.* prefix. Will catch errors
   and print them while continuing execution, allowing other plugins to load
   even if one configuration module is broken."
-  (let [(ok? val-or-err) (pcall require (.. "package." name))]
+  (let [(ok? val-or-err) (pcall require (.. "tdev.package." name))]
     (when (not ok?)
       (print (.. "Plugin config error: " val-or-err)))))
 
@@ -18,7 +18,7 @@
   configuration. Intended for use with packer's config or setup
   configuration options. Will prefix the name with `magic.plugin.`
   before requiring."
-  (.. "require('package." name "')"))
+  (.. "require('tdev.package." name "')"))
 
 (defn use [...]
   "Iterates through the arguments as pairs and calls packer's use function for
@@ -27,6 +27,9 @@
   This is just a helper / syntax sugar function to make interacting with packer
   a little more concise."
   (let [pkgs [...]]
+    (packer.init
+      {:git {:clone_timeout false}
+       :max_jobs 4})
     (packer.startup
       (fn [use]
         (for [i 1 (a.count pkgs) 2]
