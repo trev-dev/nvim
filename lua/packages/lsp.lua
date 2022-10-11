@@ -73,22 +73,47 @@ if not configs.shopifyls then
   }
 end
 
+local lua_setup = {
+  Lua = {
+    runtime = {
+      version = "LuaJIT"
+    }
+  },
+  diagnostics = {
+    globals = {"vim"}
+  },
+  workspace = {
+    library = vim.api.nvim_get_runtime_file("", true)
+  },
+  telemetry = {
+    enable = false
+  },
+  capabilities = capabilities,
+  on_attach = on_attach
+}
+
 -- Customizations
 M.setup = function()
   local servers = {
-    "jedi_language_server", "bashls", "intelephense", "tsserver", "tailwindcss", "vuels",
-    "svelte", "html", "cssls", "shopifyls", "solargraph"
+    "jedi_language_server", "bashls", "intelephense", "tsserver", "vuels",
+    "svelte", "html", "cssls", "shopifyls", "solargraph", "rnix", "sumneko_lua",
+    "yamlls"
   }
+
   for _, srv in pairs(servers) do
     lsp[srv].setup{
-      on_attach = on_attach, 
+      on_attach = on_attach,
       capabilities = capabilities,
     }
   end
+
+  lsp["sumneko_lua"].setup(lua_setup)
+
   for type, icon in pairs(signs) do
     local hl = "DiagnosticSign" .. type
     vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
   end
+
   vim.diagnostic.config(config)
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
