@@ -1,7 +1,11 @@
 local cmp = require'cmp'
+local o = vim.o
 local M = {}
 
+
 M.setup = function()
+  o.completeopt = "menu,menuone,noselect"
+  o.wildmenu = false
   cmp.setup({
     snippet = {
       -- REQUIRED - you must specify a snippet engine
@@ -19,6 +23,20 @@ M.setup = function()
         c = cmp.mapping.close(),
       }),
       ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+      ['<C-n>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_next_item()
+        else
+          fallback()
+        end
+      end, { 'i', 's', 'c' }),
+      ['<C-p>'] = cmp.mapping(function(fallback)
+        if cmp.visible() then
+          cmp.select_prev_item()
+        else
+          fallback()
+        end
+      end, { "i", "s", "c" })
     },
     sources = cmp.config.sources({
       { name = 'nvim_lsp', max_item_count = 5 },
