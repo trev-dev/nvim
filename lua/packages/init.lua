@@ -145,6 +145,20 @@ packer.startup(function(use)
     end
   }
 
+  use {
+    "folke/zen-mode.nvim",
+    config = function()
+      require("zen-mode").setup()
+    end
+  }
+
+  use {
+    "petertriho/nvim-scrollbar",
+    requires = "kevinhwang91/nvim-hlslens",
+    config = function ()
+      require("packages.nvim-scrollbar").setup()
+    end
+  }
   -- LSP & Completion
   use "ray-x/lsp_signature.nvim"
   use {
@@ -153,6 +167,14 @@ packer.startup(function(use)
       require"packages.lsp".setup()
     end
   }
+
+  use {
+    "williamboman/mason.nvim",
+    config = function()
+      require"mason".setup()
+    end
+  }
+
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-buffer"
   use "hrsh7th/cmp-path"
