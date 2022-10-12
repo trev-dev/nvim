@@ -1,8 +1,9 @@
+;; vim: foldmethod=marker
 (module tdev.init
   {autoload {nvim aniseed.nvim
              packages tdev.packages}})
 
-;; General Neovim Settings
+;; {{{ General Neovim Settings
 
 (let [o nvim.o
       wo nvim.wo
@@ -32,10 +33,13 @@
 
   (set g.html_indent_script1 "zero")
   (set g.html_indent_style1 "zero"))
+;; }}}
 
-;; General Keybinds
+;; {{{ General Keybinds
 
 (set nvim.g.mapleader " ")
+(set nvim.g.maplocalleader ",")
+
 (var all-chars "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣")
 (var trailing-chars "trail:~")
 
@@ -55,8 +59,9 @@
   (map "n" "<leader>bd" ":bd<CR>" opts)
   (map "n" "<leader>w" ":lua _TOGGLE_WHITESPACE()<CR>" opts)
   (map "n" "<leader>r" "<cmd>set wrap!<CR>" opts))
+;; }}}
 
-;; Autocommands
+;; {{{ Autocommands
 
 (let [create_augroup vim.api.nvim_create_augroup
       autocmd vim.api.nvim_create_autocmd
@@ -100,14 +105,36 @@
                         (set lo.concealcursor "nc"))})
   ;; TODO Maybe add packer autocommand
   )
+;; }}}
 
-;; Package configurations
+;; {{{ Package configurations
 
 (packages.use
   :wbthomason/packer.nvim {}
   :Olical/aniseed {}
+  :Olical/conjure {}
+  :Olical/nvim-local-fennel {}
   :godlygeek/tabular {}
   :jiangmiao/auto-pairs {}
   :markonm/traces.vim {}
   :phaazon/hop.nvim {:mod :hop :branch "v1"}
+  :akinsho/toggleterm.nvim {:mod :toggleterm}
+  :mattn/emmet-vim {:config
+                    (lambda [] (set vim.g.user_emmet_leader_key "<C-k>"))}
+  :norcalli/nvim-colorizer.lua {:mod :colorizer}
+  :lewis6991/gitsigns.nvim {:mod :gitsigns :requires [[:nvim-lua/plenary.nvim]]}
+  :nvim-telescope/telescope.nvim {:requires [[:nvim-lua/popup.nvim]
+                                             [:nvim-lua/plenary.nvim]]}
+  :nvim-telescope/telescope-project.nvim {:mod :telescope}
+  :kyazdani42/nvim-tree.lua {:mod :nvim-tree
+                             :requires [[:kyazdani42/nvim-web-devicons]]}
+
+  :tpope/vim-surround {}
+  :akinsho/bufferline.nvim {:mod :bufferline}
+  :b3nj5m1n/kommentary {:mod :kommentary}
+  :nvim-lualine/lualine.nvim {:mod :lualine
+                              :requires [[:kyazdani42/nvim-web-devicons]]}
+
+  :marko-cerovac/material.nvim {:mod :material}
   )
+;; }}}

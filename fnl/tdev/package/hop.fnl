@@ -1,7 +1,7 @@
-(module tdev.package.hop)
+(module tdev.package.hop
+  {autoload {utils tdev.utils}})
 
 (let [(ok? hop) (pcall #(require :hop))]
   (when ok?
-    (vim.api.nvim_set_keymap "n" "<leader>s" ":HopChar1<CR>"
-                              {:noremap true :silent true})
+    (utils.map :<leader>s "HopChar1")
     (hop.setup {:keys "etovxqpdygfblzhckisuran" :case_insensitive false})))
