@@ -8,5 +8,5 @@
   (let [map-opts {:noremap true :silent true}
         to (.. ":" to "<cr>")]
     (if (a.get opts :local?)
-      (nvim.buf_set_keymap 0 :n from to map-opts)
+      (nvim.buf_set_keymap (or (. opts :buffer) 0) :n from to map-opts)
       (nvim.set_keymap :n from to map-opts))))

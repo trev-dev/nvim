@@ -122,19 +122,53 @@
   :mattn/emmet-vim {:config
                     (lambda [] (set vim.g.user_emmet_leader_key "<C-k>"))}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
-  :lewis6991/gitsigns.nvim {:mod :gitsigns :requires [[:nvim-lua/plenary.nvim]]}
+  :lewis6991/gitsigns.nvim {:mod :gitsigns
+                            :requires [[:nvim-lua/plenary.nvim]]}
   :nvim-telescope/telescope.nvim {:requires [[:nvim-lua/popup.nvim]
                                              [:nvim-lua/plenary.nvim]]}
   :nvim-telescope/telescope-project.nvim {:mod :telescope}
-  :kyazdani42/nvim-tree.lua {:mod :nvim-tree
-                             :requires [[:kyazdani42/nvim-web-devicons]]}
-
+  :nvim-tree/nvim-tree.lua {:mod :nvim-tree
+                             :requires [[:nvim-tree/nvim-web-devicons]]}
   :tpope/vim-surround {}
   :akinsho/bufferline.nvim {:mod :bufferline}
   :b3nj5m1n/kommentary {:mod :kommentary}
   :nvim-lualine/lualine.nvim {:mod :lualine
-                              :requires [[:kyazdani42/nvim-web-devicons]]}
+                              :requires [[:nvim-tree/nvim-web-devicons]]}
+  :folke/todo-comments.nvim {:mod :todo-comments
+                             :requires [[:nvim-lua/plenary.nvim]]}
+  :nvim-treesitter/nvim-treesitter {:mod :treesitter :run ":TSUpdate"}
+  :nvim-orgmode/orgmode {:mod :orgmode}
+  :lukas-reineke/indent-blankline.nvim {:mod :indent-blankline}
+  :mickael-menu/zk-nvim {:mod :zk}
+  :jakewvincent/mkdnflow.nvim {:mod :mkdnflow}
+  :petertriho/nvim-scrollbar {:mod :nvim-scrollbar
+                              :requires [[:kevinhwang91/nvim-hlslens]]}
 
-  :marko-cerovac/material.nvim {:mod :material}
-  )
+  :ray-x/lsp_signature.nvim {}
+  :neovim/nvim-lspconfig {:mod :lspconfig}
+  :williamboman/mason.nvim {:mod :mason}
+
+  :hrsh7th/vim-vsnip {}
+  :hrsh7th/vim-vsnip-integ {}
+  :hrsh7th/cmp-nvim-lsp {}
+  :hrsh7th/cmp-buffer {}
+  :hrsh7th/cmp-path {}
+  :hrsh7th/cmp-cmdline {}
+  :hrsh7th/cmp-vsnip {}
+  :PaterJason/cmp-conjure {}
+  :hrsh7th/nvim-cmp {:mod :cmp}
+  :rafamadriz/friendly-snippets {}
+
+  :prettier/vim-prettier {:run "yarn install"}
+  :folke/which-key.nvim {:mod :which-key}
+
+  :romainl/vim-cool {}
+  :dhruvasagar/vim-table-mode {}
+  :trev-dev/vim-shopify {}
+  :ledger/vim-ledger {}
+  :pangloss/vim-javascript {:mod :vim-javascript}
+  :alaviss/nim.nvim {}
+
+  :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
+  :marko-cerovac/material.nvim {:mod :material})
 ;; }}}
