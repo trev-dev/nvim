@@ -74,7 +74,6 @@
                      :yamlls {}}]
       (each [lang conf (pairs languages)]
         ((. (. lspcfg lang) :setup)
-         (a.merge {:on_attach (make-attach-handler
-                                lspsig? lspsig)
+         (a.merge {:on_attach (make-attach-handler lspsig? lspsig)
                    :capabilities capabilities}
                   conf))))))
