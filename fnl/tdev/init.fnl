@@ -5,10 +5,10 @@
 
 ;; {{{ General Neovim Settings
 
-(let [o nvim.o
-      wo nvim.wo
-      bo nvim.bo
-      g  nvim.g]
+(let [o  vim.o
+      wo vim.wo
+      bo vim.bo
+      g  vim.g]
 
   ;; Global
   (set o.mouse "a")
@@ -37,8 +37,8 @@
 
 ;; {{{ General Keybinds
 
-(set nvim.g.mapleader " ")
-(set nvim.g.maplocalleader ",")
+(set vim.g.mapleader " ")
+(set vim.g.maplocalleader ",")
 
 (var all-chars "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣")
 (var trailing-chars "trail:~")
@@ -62,8 +62,8 @@
 
 (let [create_augroup vim.api.nvim_create_augroup
       autocmd vim.api.nvim_create_autocmd
-      wo nvim.wo
-      bo nvim.bo
+      wo vim.wo
+      bo vim.bo
       lo vim.opt_local]
 
   (let [relative_toggle (create_augroup "RelativeNumToggle" {:clear true})]
@@ -111,13 +111,14 @@
   :Olical/aniseed {}
   :Olical/conjure {}
   :Olical/nvim-local-fennel {}
+  :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   :godlygeek/tabular {}
   :jiangmiao/auto-pairs {}
   :markonm/traces.vim {}
   :phaazon/hop.nvim {:mod :hop :branch "v1"}
   :akinsho/toggleterm.nvim {:mod :toggleterm}
   :mattn/emmet-vim {:config
-                    (lambda [] (set vim.g.user_emmet_leader_key "<C-k>"))}
+                    (fn [] (set vim.g.user_emmet_leader_key "<C-k>"))}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
   :lewis6991/gitsigns.nvim {:mod :gitsigns
                             :requires [[:nvim-lua/plenary.nvim]]}
@@ -166,6 +167,5 @@
   :pangloss/vim-javascript {:mod :vim-javascript}
   :alaviss/nim.nvim {}
 
-  :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   :marko-cerovac/material.nvim {:mod :material})
 ;; }}}
