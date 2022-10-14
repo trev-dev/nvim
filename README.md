@@ -1,4 +1,6 @@
-# trevDev's Neovim Configuration
+# trevDev's Mirrored Neovim Configuration
+
+*NOTE*:  This is a mirror of my upstream repository.  I suggest you check out [Sourcehut](https://sr.ht/~trevdev/nvim/).
 
 Here be a Neovim configuration!  I am an Emacs exile who was searching for a faster, more ergonomic and focused IDE experience.  I still enjoy Lisp.  If that's your bag, you may enjoy this config as it is written in Fennel and all of it's clojure-esque glory.
 
