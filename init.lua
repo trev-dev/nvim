@@ -17,11 +17,10 @@ end
 -- Packer is our plugin manager.
 ensure("wbthomason", "packer.nvim")
 
-require('vim-settings')
-require('autocommands')
-require('vim-bindings')
+-- Aniseed compiles our Fennel code to Lua and loads it automatically.
+ensure("Olical", "aniseed")
 
--- Packer init & package configurations.
-require('packages')
-
-require('theme')
+-- Enable Aniseed's automatic compilation and loading of Fennel source code.
+-- Aniseed looks for this when it's loaded then loads the rest of your
+-- configuration if it's set.
+vim.g["aniseed#env"] = {module = "tdev.init"}
