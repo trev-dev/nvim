@@ -166,7 +166,7 @@
   :dhruvasagar/vim-table-mode {}
   :trev-dev/vim-shopify {}
   :ledger/vim-ledger {}
-  :pangloss/vim-javascript {:mod :vim-javascript}
+  :pangloss/vim-javascript {}
   :alaviss/nim.nvim {}
 
   :marko-cerovac/material.nvim {:mod :material})
