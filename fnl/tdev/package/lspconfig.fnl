@@ -2,6 +2,24 @@
   {autoload {utils tdev.utils
              a aniseed.core}})
 
+(local signs {:Error "»" :Warn "»" :Hint "›" :Info "›"})
+
+(each [t i (pairs signs)]
+  (let [hl (.. "DiagnosticSign" t)]
+    (vim.fn.sign_define hl {:text i :texthl hl :numhl hl})))
+
+(vim.diagnostic.config {:virtual_text false
+                        :signs {:active signs}
+                        :update_in_insert true
+                        :underline true
+                        :severity_sort true
+                        :float {:focusable false
+                                :style "minimal"
+                                :border "rounded"
+                                :source "always"
+                                :header ""
+                                :prefic ""}})
+
 (fn make-attach-handler [use-lsp-sigs lsp-sigs]
   (fn [client bufnr]
     (let [opts {:local? true :buffer bufnr}]
