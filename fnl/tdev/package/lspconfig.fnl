@@ -3,7 +3,7 @@
              a aniseed.core}})
 
 (fn make-attach-handler [use-lsp-sigs lsp-sigs]
-  (lambda [client bufnr]
+  (fn [client bufnr]
     (let [opts {:local? true :buffer bufnr}]
       (utils.map :<leader>e "lua vim.lsp.buf.definition()" opts)
       (utils.map :<leader>c "lua vim.lsp.buf.declaration()" opts)
