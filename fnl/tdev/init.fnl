@@ -1,7 +1,7 @@
 ;; vim: foldmethod=marker
 (module tdev.init
-  {autoload {nvim aniseed.nvim
-             packages tdev.packages}})
+  {autoload {packages tdev.packages
+             utils tdev.utils}})
 
 ;; {{{ General Neovim Settings
 
@@ -50,16 +50,13 @@
                              trailing-chars
                              all-chars)))))
 
-(let [map vim.api.nvim_set_keymap
-      opts {:noremap true}]
-  (map "n" "<leader>l" ":ls<CR>" opts)
-  (map "n" "<leader>a" ":blast<CR>" opts)
-  (map "n" "<leader>]" ":bn!<CR>" opts)
-  (map "n" "<leader>[" ":bp!<CR>" opts)
-  (map "n" "<leader>bd" ":bd<CR>" opts)
-  (map "n" "<leader>w" ":lua _TOGGLE_WHITESPACE()<CR>" opts)
-  (map "n" "<leader>r" "<cmd>set wrap!<CR>" opts))
-;; }}}
+(utils.map "<leader>l" "ls")
+(utils.map "<leader>a" "blast")
+(utils.map "<leader>]" "bn!")
+(utils.map "<leader>[" "bp!")
+(utils.map "<leader>bd" "bd")
+(utils.map "<leader>w" "lua _TOGGLE_WHITESPACE()")
+(utils.map "<leader>r" "set wrap!")
 
 ;; {{{ Autocommands
 
