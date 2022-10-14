@@ -77,13 +77,7 @@
     (autocmd ["BufLeave" "FocusLost" "InsertEnter"]
              {:group relative_toggle
               :pattern "*"
-              :callback (lambda [] (set wo.relativenumber false))}))
-
-  ;; Preserve manual folding
-  (autocmd ["BufWinLeave"]
-           {:pattern "*" :command "silent! mkview"})
-  (autocmd ["BufWinLeave"]
-           {:pattern "*" :command "silent! loadview"})
+              :callback (fn [] (set wo.relativenumber false))}))
 
   ;; Filetype specific indentation
   (autocmd ["FileType"]
