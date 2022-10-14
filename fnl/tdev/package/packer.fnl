@@ -1,5 +1,5 @@
 (module tdev.package.packer
-  {autoloads {utils tdev.utils}})
+  {autoload {utils tdev.utils}})
 
 (utils.map :<leader>pc "PackerCompile")
 (utils.map :<leader>ps "PackerSync")
