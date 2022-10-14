@@ -39,6 +39,8 @@
                           (if cnl?
                             (cnl.update_capabilities caps)
                             caps)))
+    (set capabilities.textDocument.completion.completionItem.snippetSupport
+         true)
     (let [configs (require :lspconfig.configs)
           languages {:jedi_language_server {}
                      :bashls {}
