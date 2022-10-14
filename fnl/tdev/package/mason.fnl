@@ -2,4 +2,4 @@
 
 (let [(ok? mason) (pcall #(require :mason))]
   (when ok?
-    (mason.setup)))
+    (mason.setup {:ui {:border "rounded"}})))
