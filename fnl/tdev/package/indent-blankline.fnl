@@ -1,6 +1,6 @@
 (module tdev.package.indent-blankline)
 
-(let [(ok? indent-blankline) (pcall #(require :indent-blankline))]
+(let [(ok? indent-blankline) (pcall #(require :indent_blankline))]
   (when ok?
     (indent-blankline.setup
       {:show_current_context true
