@@ -61,36 +61,36 @@
 
 ;; << Autocommands
 
-(let [create_augroup vim.api.nvim_create_augroup
+(let [autogrp vim.api.nvim_create_augroup
       autocmd vim.api.nvim_create_autocmd
       wo vim.wo
       bo vim.bo
       lo vim.opt_local]
 
-  (let [relative_toggle (create_augroup "RelativeNumToggle" {:clear true})]
-    (autocmd ["BufEnter" "FocusGained" "InsertLeave"]
+  (let [relative_toggle (autogrp "RelativeNumToggle" {:clear true})]
+    (autocmd [:BufEnter :FocusGained :InsertLeave]
              {:group relative_toggle
               :pattern "*"
-              :callback (lambda []
+              :callback (fn []
                           (when wo.number
                             (set wo.relativenumber true)))})
-    (autocmd ["BufLeave" "FocusLost" "InsertEnter"]
+    (autocmd [:BufLeave :FocusLost :InsertEnter]
              {:group relative_toggle
               :pattern "*"
               :callback (fn [] (set wo.relativenumber false))}))
 
   ;; Filetype specific indentation
-  (autocmd ["FileType"]
-           {:group (create_augroup "PythonIndentContext" {:clear true})
+  (autocmd [:FileType]
+           {:group (autogrp "PythonIndentContext" {:clear true})
             :pattern "python"
-            :callback (lambda []
+            :callback (fn []
                         (set bo.tabstop 4)
                         (set bo.shiftwidth 4)
                         (set bo.softtabstop 4)
                         (set bo.expandtab true))})
 
   ;; Fancy conceals for document files
-  (autocmd ["BufEnter"]
+  (autocmd [:BufEnter]
            {:pattern ["*.md" "*.markdown" "*.org"]
             :callback (lambda []
                         (set lo.conceallevel 2)
