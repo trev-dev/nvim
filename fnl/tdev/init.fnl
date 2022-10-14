@@ -1,10 +1,9 @@
-;; vim: foldmethod=marker
+;; vim: fdm=marker:fmr=<<,>>
 (module tdev.init
   {autoload {packages tdev.packages
              utils tdev.utils}})
 
-;; {{{ General Neovim Settings
-
+;; << General Neovim Settings
 (let [o  vim.o
       wo vim.wo
       bo vim.bo
@@ -33,9 +32,9 @@
 
   (set g.html_indent_script1 "zero")
   (set g.html_indent_style1 "zero"))
-;; }}}
+;; >>
 
-;; {{{ General Keybinds
+;; << General Keybinds
 
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
@@ -58,7 +57,9 @@
 (utils.map "<leader>w" "lua _TOGGLE_WHITESPACE()")
 (utils.map "<leader>r" "set wrap!")
 
-;; {{{ Autocommands
+;; >>
+
+;; << Autocommands
 
 (let [create_augroup vim.api.nvim_create_augroup
       autocmd vim.api.nvim_create_autocmd
@@ -100,11 +101,12 @@
             :callback (lambda []
                         (set lo.conceallevel 2)
                         (set lo.concealcursor "nc"))})
-  ;; TODO Maybe add packer autocommand
-  )
-;; }}}
 
-;; {{{ Package configurations
+  ;; TODO: Maybe add packer autocommand
+  )
+;; >>
+
+;; << Package configurations
 
 (packages.use
   :wbthomason/packer.nvim {}
@@ -168,4 +170,4 @@
   :alaviss/nim.nvim {}
 
   :marko-cerovac/material.nvim {:mod :material})
-;; }}}
+;; >>
