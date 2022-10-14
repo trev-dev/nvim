@@ -103,11 +103,17 @@
 ;; << Package configurations
 
 (packages.use
+  ;; Hard dependencies
   :wbthomason/packer.nvim {:mod :packer}
   :Olical/aniseed {}
   :Olical/conjure {}
-  :Olical/nvim-local-fennel {}
+
+  ;; Theming
   :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
+  :marko-cerovac/material.nvim {:mod :material}
+
+  ;; Utilities
+  :Olical/nvim-local-fennel {}
   :godlygeek/tabular {}
   :jiangmiao/auto-pairs {}
   :markonm/traces.vim {}
@@ -137,11 +143,14 @@
   :jakewvincent/mkdnflow.nvim {:mod :mkdnflow}
   :petertriho/nvim-scrollbar {:mod :nvim-scrollbar
                               :requires [[:kevinhwang91/nvim-hlslens]]}
+  :folke/which-key.nvim {:mod :which-key}
 
+  ;; LSP
   :ray-x/lsp_signature.nvim {}
   :neovim/nvim-lspconfig {:mod :lspconfig}
   :williamboman/mason.nvim {:mod :mason}
 
+  ;; Completions
   :hrsh7th/vim-vsnip {}
   :hrsh7th/vim-vsnip-integ {}
   :hrsh7th/cmp-nvim-lsp {}
@@ -153,15 +162,12 @@
   :hrsh7th/nvim-cmp {:mod :cmp}
   :rafamadriz/friendly-snippets {}
 
+  ;; Syntax
   :prettier/vim-prettier {:run "yarn install"}
-  :folke/which-key.nvim {:mod :which-key}
-
   :romainl/vim-cool {}
   :dhruvasagar/vim-table-mode {}
   :trev-dev/vim-shopify {}
   :ledger/vim-ledger {}
   :pangloss/vim-javascript {}
-  :alaviss/nim.nvim {}
-
-  :marko-cerovac/material.nvim {:mod :material})
+  :alaviss/nim.nvim {})
 ;; >>
