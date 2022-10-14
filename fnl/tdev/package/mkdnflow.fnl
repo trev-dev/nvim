@@ -5,4 +5,5 @@
   (when ok?
     (mkdnflow.setup
       {:filetypes {:md true :markdown true :org true}
-       :mappings {:MkdnNewListItem ["i" "<CR>"]}})))
+       :mappings {:MkdnNewListItem ["i" "<CR>"]}
+       :links {:conceal true :style "markdown"}})))
