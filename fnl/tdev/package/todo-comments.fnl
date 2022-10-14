@@ -3,4 +3,6 @@
 
 (let [(ok? todo-comments) (pcall #(require :todo-comments))]
   (when ok?
-    (todo-comments.setup)))
+    (todo-comments.setup)
+    (utils.map :<leader>ft "TodoTelescope")
+    (utils.map :<leader>qt "TodoQuickFix")))
