@@ -103,7 +103,7 @@
 ;; << Package configurations
 
 (packages.use
-  :wbthomason/packer.nvim {}
+  :wbthomason/packer.nvim {:mod :packer}
   :Olical/aniseed {}
   :Olical/conjure {}
   :Olical/nvim-local-fennel {}
