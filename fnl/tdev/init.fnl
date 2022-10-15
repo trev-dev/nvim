@@ -125,6 +125,7 @@
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
   :lewis6991/gitsigns.nvim {:mod :gitsigns
                             :requires [[:nvim-lua/plenary.nvim]]}
+  :ahmedkhalf/project.nvim {:mod :project-nvim}
   :nvim-telescope/telescope.nvim {:requires [[:nvim-lua/popup.nvim]
                                              [:nvim-lua/plenary.nvim]]}
   :nvim-telescope/telescope-project.nvim {:mod :telescope}
