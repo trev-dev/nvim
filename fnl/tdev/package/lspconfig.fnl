@@ -69,6 +69,7 @@
                      :html {}
                      :cssls {}
                      :solargraph {}
+                     :nimls {}
                      :theme_check {:cmd ["theme-check-language-server"]}
                      :rnix {}
                      :yamlls {}}]

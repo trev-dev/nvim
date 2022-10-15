@@ -166,10 +166,10 @@
 
   ;; Syntax
   :prettier/vim-prettier {:run "yarn install"}
+  :zah/nim.vim {}
   :romainl/vim-cool {}
   :dhruvasagar/vim-table-mode {}
   :trev-dev/vim-shopify {}
   :ledger/vim-ledger {}
-  :pangloss/vim-javascript {}
-  :alaviss/nim.nvim {})
+  :pangloss/vim-javascript {})
 ;; >>

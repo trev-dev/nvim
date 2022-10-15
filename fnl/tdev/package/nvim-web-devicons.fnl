@@ -6,4 +6,8 @@
     (nvim-web-devicons.setup {:override {:fnl {:icon ""
                                                :color "#FFF3D7"
                                                :cterm_color "230"
-                                               :name "Fennel"}}})))
+                                               :name "Fennel"}
+                                         :nim {:icon ""
+                                               :color "#F3D400"
+                                               :cterm_color "220"
+                                               :name "Nim"}}})))
