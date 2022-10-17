@@ -139,7 +139,6 @@
   :marko-cerovac/material.nvim {:mod :material}
 
   ;; Utilities
-  :lewis6991/impatient.nvim {} ; Keep impatient up to date
   :Olical/nvim-local-fennel {}
   :godlygeek/tabular {}
   :jiangmiao/auto-pairs {}
