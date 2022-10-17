@@ -89,9 +89,9 @@
                         (set bo.softtabstop 4)
                         (set bo.expandtab true))})
 
-  ;; Fancy conceals for document files
   (autocmd [:BufEnter]
-           {:pattern ["*.md" "*.markdown" "*.org"]
+           {:group (autogrp "FancyDocConceal" {:clear true})
+            :pattern ["*.md" "*.markdown" "*.org"]
             :callback (lambda []
                         (set lo.conceallevel 2)
                         (set lo.concealcursor "nc"))})
