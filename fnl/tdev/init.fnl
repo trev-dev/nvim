@@ -79,7 +79,7 @@
               :pattern "*"
               :callback (fn [] (set wo.relativenumber false))}))
 
-  ;; Filetype specific indentation
+  ;; Filetype specific
   (autocmd [:FileType]
            {:group (autogrp "PythonIndentContext" {:clear true})
             :pattern "python"
@@ -96,8 +96,34 @@
                         (set lo.conceallevel 2)
                         (set lo.concealcursor "nc"))})
 
-  ;; TODO: Maybe add packer autocommand
-  )
+  (let [(ok? tt) (pcall #(require :toggleterm.terminal))]
+    (when ok?
+      (fn make-nim-term [opt]
+        (tt.Terminal:new {:cmd (.. "nim "
+                                   opt " "
+                                   (vim.api.nvim_buf_get_name 0))
+                          :hidden true
+                          :close_on_exit false}))
+      (global _NIM_RUN (fn []
+                         (let [term (make-nim-term "r")]
+                           (term:toggle))))
+      (global _NIM_COMPILE (fn []
+                             (let [term (make-nim-term "c")]
+                               (term:toggle))))
+      (global _NIM_PRETTY (fn []
+                            (vim.cmd
+                              (.. "!nimpretty "
+                                  (vim.api.nvim_buf_get_name 0)))))
+      (fn setup-nim-context []
+        (utils.map :<localleader>cr "lua _NIM_RUN()" {:local? true})
+        (utils.map :<localleader>cb "lua _NIM_COMPILE()" {:local? true})
+        (utils.map :<localleader>bf "lua _NIM_PRETTY()" {:local? true}))
+
+      (autocmd [:FileType]
+               {:group (autogrp "NimContext" {:clear true})
+                :pattern "nim"
+                :callback setup-nim-context}))))
+
 ;; >>
 
 ;; << Package configurations
