@@ -20,6 +20,6 @@
                     :winblend 0
                     :highlights {:border "Normal" :background "Normal"}}})
     (let [term (. (require :toggleterm.terminal) :Terminal)
-          lazygit (term:new {:cmd "lazygit" :hidden true})]
+          lazygit (term:new {:cmd "lazygit" :hidden true :dir "git_dir"})]
       (global _LAZYGIT_TOGGLE (fn [] (lazygit:toggle)))
       (utils.map :gs "lua _LAZYGIT_TOGGLE()"))))
