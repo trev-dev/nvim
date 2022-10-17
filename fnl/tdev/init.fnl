@@ -191,7 +191,6 @@
   :rafamadriz/friendly-snippets {}
 
   ;; Syntax
-  :prettier/vim-prettier {:run "yarn install"}
   :zah/nim.vim {}
   :romainl/vim-cool {}
   :dhruvasagar/vim-table-mode {}
