@@ -104,20 +104,20 @@
                                    (vim.api.nvim_buf_get_name 0))
                           :hidden true
                           :close_on_exit false}))
-      (global _NIM_RUN (fn []
-                         (let [term (make-nim-term "r")]
-                           (term:toggle))))
-      (global _NIM_COMPILE (fn []
-                             (let [term (make-nim-term "c")]
-                               (term:toggle))))
-      (global _NIM_PRETTY (fn []
-                            (vim.cmd
-                              (.. "!nimpretty "
-                                  (vim.api.nvim_buf_get_name 0)))))
+      (fn nim-run-buffer []
+        (let [term (make-nim-term "r")]
+          (term:toggle)))
+      (fn nim-compile-buffer []
+        (let [term (make-nim-term "c")]
+          (term:toggle)))
+      (fn nim-format-buffer []
+        (vim.cmd
+          (.. "!nimpretty "
+              (vim.api.nvim_buf_get_name 0))))
       (fn setup-nim-context []
-        (utils.map :<localleader>cr "lua _NIM_RUN()" {:local? true})
-        (utils.map :<localleader>cb "lua _NIM_COMPILE()" {:local? true})
-        (utils.map :<localleader>bf "lua _NIM_PRETTY()" {:local? true}))
+        (utils.map :<localleader>cr nim-run-buffer {:local? true})
+        (utils.map :<localleader>cb nim-compile-buffer {:local? true})
+        (utils.map :<localleader>bf nim-format-buffer {:local? true}))
 
       (autocmd [:FileType]
                {:group (autogrp "NimContext" {:clear true})
