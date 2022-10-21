@@ -20,5 +20,7 @@
                     :winblend 0
                     :highlights {:border "Normal" :background "Normal"}}})
     (let [term (. (require :toggleterm.terminal) :Terminal)
-          lazygit (term:new {:cmd "lazygit" :hidden true :dir "git_dir"})]
-      (utils.map :gs (fn [] (lazygit:toggle))))))
+          lazygit (term:new {:cmd "lazygit" :hidden true :dir "git_dir"})
+          task-tui (term:new {:cmd "taskwarrior-tui" :hidden true})]
+      (utils.map :<leader>gg (fn [] (lazygit:toggle)))
+      (utils.map :<leader>gt (fn [] (task-tui:toggle))))))
