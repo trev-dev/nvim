@@ -171,6 +171,7 @@
   :petertriho/nvim-scrollbar {:mod :nvim-scrollbar
                               :requires [[:kevinhwang91/nvim-hlslens]]}
   :folke/which-key.nvim {:mod :which-key}
+  :jamessan/vim-gnupg {}
 
   ;; LSP
   :ray-x/lsp_signature.nvim {}
