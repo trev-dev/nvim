@@ -48,6 +48,36 @@
            :hint_enable false}
           bufnr)))))
 
+(local php-stubs {:stubs ["apache" "bcmath" "bz2" "calendar" "com_dotnet"
+                          "Core" "ctype" "curl" "date" "dba" "dom" "enchant"
+                          "exif" "fileinfo" "filter" "fpm" "ftp" "gd" "hash"
+                          "iconv" "imap" "interbase" "intl" "json" "ldap"
+                          "libxml" "mbstring" "mcrypt" "meta" "mssql" "mysqli"
+                          "oci8" "odbc" "openssl" "pcntl" "pcre" "PDO"
+                          "pdo_ibm" "pdo_mysql" "pdo_pgsql" "pdo_sqlite"
+                          "pgsql" "Phar" "posix" "pspell" "readline" "recode"
+                          "Reflection" "regex" "session" "shmop" "SimpleXML"
+                          "snmp" "soap" "sockets" "sodium" "SPL" "sqlite3"
+                          "standard" "superglobals" "sybase" "sysvmsg"
+                          "sysvsem" "sysvshm" "tidy" "tokenizer" "wddx" "xml"
+                          "xmlreader" "xmlrpc" "xmlwriter" "Zend OPcache" "zip"
+                          "zlib" "wordpress-stubs"]
+                  :environment {:includePaths (.. (os.getenv "HOME")
+                                                  "/.config/composer"
+                                                  "/vendor/php-stubs/")}})
+
+(fn get-intelephense-key []
+  (let [keyfile (io.open (.. (os.getenv "HOME")
+                              "/Documents/intelephense.txt"))]
+    (when keyfile (keyfile:read))))
+
+(local intelephense-config
+  {:init_options {:globalStoragePath (.. (os.getenv "HOME")
+                                         "/.local/share/intelephense")
+                  :licenceKey (get-intelephense-key)}
+   :settings {:intelephense (a.merge php-stubs
+                                     {:files {:maxSize 2_500_000}})}})
+
 (let [(lspcfg? lspcfg) (pcall #(require :lspconfig))
       (lspsig? lspsig) (pcall #(require :lsp_signature))
       (cnl? cnl) (pcall #(require :cmp_nvim_lsp))]
@@ -61,7 +91,7 @@
     (let [configs (require :lspconfig.configs)
           languages {:jedi_language_server {}
                      :bashls {}
-                     :intelephense {}
+                     :intelephense intelephense-config
                      :tsserver {}
                      :vuels {}
                      :svelte {}
