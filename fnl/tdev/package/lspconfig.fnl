@@ -13,12 +13,11 @@
                         :update_in_insert true
                         :underline true
                         :severity_sort true
-                        :float {:focusable false
-                                :style "minimal"
+                        :float {:style "minimal"
                                 :border "rounded"
                                 :source "always"
                                 :header ""
-                                :prefic ""}})
+                                :prefix ""}})
 
 (fn make-attach-handler [use-lsp-sigs lsp-sigs]
   (fn [client bufnr]
