@@ -8,7 +8,7 @@
       (parsers.get_parser_configs))
     (let [cnfgs (require :nvim-treesitter.configs)]
       (cnfgs.setup
-        {:ensure_installed ["bash" "css" "commonlisp" "fennel" "html"
+        {:ensure_installed ["bash" "css" "commonlisp" "clojure" "fennel" "html"
                             "javascript" "json" "lua" "org" "markdown" "nix"
                             "php" "python" "scheme" "toml" "typescript" "vim"
                             "yaml"]
