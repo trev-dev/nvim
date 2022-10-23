@@ -29,7 +29,7 @@
       (utils.map :<leader>i "lua vim.lsp.buf.implementation()" opts)
       (utils.map :<leader>a "lua vim.lsp.buf.code_action()" opts)
       (utils.map :<leader>r "lua vim.lsp.buf.references()" opts)
-      (utils.map :<leader>F "lua vim.lsp.buf.format({async = true})" opts)
+      (utils.map :<leader>F "lua vim.lsp.buf.formatting({async = true})" opts)
       (utils.map :K "lua vim.lsp.buf.hover()" opts)
       (utils.map :<C-i> "lua vim.lsp.buf.signature_help()" opts)
       (utils.map :<C-p> "lua vim.diagnostic.goto_prev()" opts)
@@ -84,7 +84,7 @@
   (when lspcfg?
     (local capabilities (let [caps (vim.lsp.protocol.make_client_capabilities)]
                           (if cnl?
-                            (cnl.update_capabilities caps)
+                            (cnl.default_capabilities caps)
                             caps)))
     (set capabilities.textDocument.completion.completionItem.snippetSupport
          true)
