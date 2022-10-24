@@ -5,7 +5,7 @@ local g = vim.g
 
 -- Global
 o.termguicolors = true
-o.listchars = 'trail:~'
+o.listchars = 'tab:>·,trail:~'
 o.list = true
 o.expandtab = true
 o.shiftwidth = 2

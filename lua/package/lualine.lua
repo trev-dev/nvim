@@ -1,7 +1,9 @@
+local ok, lualine = pcall(require, "lualine")
+if not ok then return end
+
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
-local lualine = require('lualine')
 
 -- Color table for highlights
 -- stylua: ignore
@@ -218,9 +220,4 @@ ins_right {
   padding = { left = 1 },
 }
 
--- Now don't forget to initialize lualine
-return {
-  setup = function()
-    lualine.setup(config)
-  end
-}
+lualine.setup(config)

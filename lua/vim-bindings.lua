@@ -1,34 +1,29 @@
-local map = vim.api.nvim_set_keymap
+local bind = require("utils").bind
 
-local defaults = { noremap = true }
+local toggle_whitespace = function()
+  local listchars = vim.o.listchars
+  local all_chars = "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
+  local trailing_chars = "tab:>·,trail:~"
 
-local all_chars = 'eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣'
-local trailing_chars = 'trail:~'
-
-_SHOW_ALL_WHITESPACE = false
-
-function _TOGGLE_WHITESPACE()
-  if (_SHOW_ALL_WHITESPACE)
-  then
-    vim.o.listchars = trailing_chars
-    _SHOW_ALL_WHITESPACE = false
+  if (listchars == all_chars) then
+    vim.opt_local.listchars = trailing_chars
   else
-    vim.o.listchars = all_chars
-    _SHOW_ALL_WHITESPACE = true
+    vim.opt_local.listchars = all_chars
   end
 end
 
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 
 -- Buffers
-map('n', '<leader>l', ':ls<CR>', defaults)
-map('n', '<leader>a', ':blast<CR>', defaults)
-map('n', '<leader>]', ':bn!<CR>', defaults)
-map('n', '<leader>[', ':bp!<CR>', defaults)
-map('n', '<leader>bd', ':bd<CR>', defaults)
+bind("<leader>l", "ls")
+bind("<leader>a", "blast")
+bind("<leader>]", "bn!")
+bind("<leader>[", "bp!")
+bind("<leader>bd", "bd")
 
 -- Toggle Whitespace Chars
-map('n', '<leader>w', ':lua _TOGGLE_WHITESPACE()<CR>', defaults)
+bind("<leader>ws", toggle_whitespace)
 
 -- Toggle Word Wrap
-map('n', '<leader>r', '<cmd>set wrap!<CR>', defaults)
+bind("<leader>r", "set wrap")
