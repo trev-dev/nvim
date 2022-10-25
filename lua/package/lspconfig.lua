@@ -85,37 +85,45 @@ configs.shopifyls = {
   }
 }
 
-local lua_setup = {
-  Lua = {
-    runtime = {
-      version = "LuaJIT"
-    }
-  },
-  diagnostics = {
-    globals = {"vim"}
-  },
-  workspace = {
-    library = vim.api.nvim_get_runtime_file("", true)
-  },
-  telemetry = {
-    enable = false
-  },
-  on_attach = on_attach
-}
-
 local servers = {
-  "jedi_language_server", "bashls", "intelephense", "tsserver", "vuels",
-  "svelte", "html", "cssls", "shopifyls", "solargraph", "rnix", "sumneko_lua",
-  "yamlls", "nimls"
+  {"bashls", {}},
+  {"cssls", {}},
+  {"html", {}},
+  {"intelephense", {}},
+  {"jedi_language_server", {}},
+  {"nimls", {}},
+  {"rnix", {}},
+  {"shopifyls", {}},
+  {"solargraph", {}},
+  {"sumneko_lua", {
+    Lua = {
+      runtime = {
+        version = "LuaJIT"
+      }
+    },
+    diagnostics = {
+      globals = {"vim"}
+    },
+    workspace = {
+      library = vim.api.nvim_get_runtime_file("", true)
+    },
+    telemetry = {
+      enable = false
+    },
+    on_attach = on_attach
+  }},
+  {"svelte", {}},
+  {"tsserver", {}},
+  {"vuels", {}},
+  {"yamlls", {}},
 }
 
-for _, srv in pairs(servers) do
-  lspcfg[srv].setup{
-    on_attach = on_attach,
-  }
+local merge = require("utils").merge
+for _, server in pairs(servers) do
+  local name = server[1]
+  local conf = merge({ on_attach = on_attach }, server[2])
+  lspcfg[name].setup(conf)
 end
-
-lspcfg["sumneko_lua"].setup(lua_setup)
 
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
