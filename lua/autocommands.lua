@@ -88,3 +88,13 @@ if ok then
   })
 end
 
+local highlight_yanked = function()
+  vim.highlight.on_yank({ higroup = "Visual", timeout = 350 })
+end
+
+autocmd({"TextYankPost"}, {
+  group = autogrp("HighlightYank", {}),
+  pattern = "*",
+  callback = highlight_yanked
+})
+
