@@ -23,7 +23,11 @@ packages.use({
   {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
   {"akinsho/toggleterm.nvim", mod = "toggleterm"},
   {"nvim-telescope/telescope.nvim", mod = "telescope",
-  requires = {{"nvim-lua/popup.nvim"}, {"nvim-lua/plenary.nvim"}}},
+  requires = {
+    {"nvim-lua/popup.nvim"},
+    {"nvim-lua/plenary.nvim"},
+    {"nvim-telescope/telescope-ui-select.nvim"}}
+  },
   {"mattn/emmet-vim", mod = "emmet"},
   {"norcalli/nvim-colorizer.lua", mod = "nvim-colorizer"},
   {"lewis6991/gitsigns.nvim", mod = "gitsigns",
@@ -43,6 +47,8 @@ packages.use({
   {"petertriho/nvim-scrollbar", mod = "nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens", mod = "nvim-hlslns"},
   {"folke/which-key.nvim", mod = "which-key"},
+  {"Shatur/neovim-session-manager", mod = "session-manager",
+  requires = "nvim-lua/plenary.nvim"},
 
   -- LSP & Completion
   "ray-x/lsp_signature.nvim",
