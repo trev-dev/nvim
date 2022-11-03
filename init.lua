@@ -19,7 +19,6 @@ packages.use({
   "jiangmiao/auto-pairs",
   "markonm/traces.vim",
   "tpope/vim-surround",
-  "romainl/vim-cool",
   "dhruvasagar/vim-table-mode",
   {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
   {"akinsho/toggleterm.nvim", mod = "toggleterm"},
