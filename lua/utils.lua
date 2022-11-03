@@ -1,5 +1,3 @@
-local gmap = vim.api.nvim_set_keymap
-local lmap = vim.api.nvim_buf_set_keymap
 local exec = vim.api.nvim_command
 local fmt = string.format
 local fn = vim.fn
@@ -32,6 +30,8 @@ local safe_require = function (m)
   return ok
 end
 
+local gmap = vim.api.nvim_set_keymap
+local lmap = vim.api.nvim_buf_set_keymap
 local create_keybind = function(lhs, cmd, bopts, mopts)
   mopts = mopts or {}
   bopts = bopts or {}
