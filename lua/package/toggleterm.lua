@@ -25,12 +25,15 @@ toggleterm.setup({
 })
 
 local Terminal = require("toggleterm.terminal").Terminal
-local lazygit = Terminal:new({
-  cmd = "lazygit", hidden = true, dir = "git_dir"}
-)
-local taskwarrior_tui = Terminal:new({ cmd = "taskwarrior-tui", hidden = true })
 
-local toggle_lazygit = function() lazygit:toggle() end
+local toggle_lazygit = function() 
+  local lazygit = Terminal:new({
+    cmd = "lazygit", hidden = true, dir = vim.fn.getcwd()
+  })
+
+  lazygit:toggle()
+end
+
 local toggle_tui = function() taskwarrior_tui:toggle() end
 
 local bind = require("utils").bind
