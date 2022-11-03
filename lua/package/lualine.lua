@@ -8,7 +8,7 @@ if not ok then return end
 -- Color table for highlights
 -- stylua: ignore
 local colors = {
-  bg       = "#1c1c1c",
+  bg       = "#1d2026",
   fg       = "#bbc2cf",
   yellow   = "#ECBE7B",
   cyan     = "#008080",
@@ -152,16 +152,16 @@ ins_left {
 
 -- Insert mid section. You can make any number of sections in neovim :)
 -- for lualine it"s any number greater then 2
-ins_left {
+--[[ ins_left {
   function()
     return "%="
   end,
-}
+} ]]
 
 ins_left {
   -- Lsp server name .
   function()
-    local msg = "No Active Lsp"
+    local msg = "None"
     local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
     local clients = vim.lsp.get_active_clients()
     if next(clients) == nil then
