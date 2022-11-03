@@ -13,6 +13,7 @@ packages.use({
   "wbthomason/packer.nvim",
 
   -- Utilities
+  {"kyazdani42/nvim-web-devicons", mod = "nvim-web-devicons"},
   "godlygeek/tabular",
   "jamessan/vim-gnupg",
   "jiangmiao/auto-pairs",
