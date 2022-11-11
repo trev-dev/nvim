@@ -18,6 +18,7 @@ require("nvim-treesitter.configs").setup({
     "php",
     "python",
     "scheme",
+    "svelte",
     "toml",
     "typescript",
     "vim",
