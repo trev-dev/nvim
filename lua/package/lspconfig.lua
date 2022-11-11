@@ -90,6 +90,7 @@ local servers = {
   {"html", {}},
   {"intelephense", {}},
   {"jedi_language_server", {}},
+  {"hls", {}},
   {"nimls", {}},
   {"rnix", {}},
   {"shopifyls", {}},
