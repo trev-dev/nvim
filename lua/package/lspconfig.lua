@@ -36,41 +36,40 @@ local config = {
 }
 
 local bind = require("utils").bind
--- Bindings on Attach
-on_attach = function(client, buff)
-  bind('<leader>e', 'lua vim.lsp.buf.definition()',
+local on_attach = function(_, buff)
+  bind("<leader>e", "lua vim.lsp.buf.definition()",
        { local_bind = true, buffer = buff })
-  bind('<leader>c', 'lua vim.lsp.buf.declaration()',
+  bind("<leader>c", "lua vim.lsp.buf.declaration()",
        { local_bind = true, buffer = buff })
-  bind('<leader>r', 'lua vim.lsp.buf.references()',
+  bind("<leader>r", "lua vim.lsp.buf.references()",
        { local_bind = true, buffer = buff })
-  bind('<leader>t', 'lua vim.lsp.buf.type_definition()',
+  bind("<leader>t", "lua vim.lsp.buf.type_definition()",
        { local_bind = true, buffer = buff })
-  bind('<leader>i', 'lua vim.lsp.buf.implementation()',
+  bind("<leader>i", "lua vim.lsp.buf.implementation()",
        { local_bind = true, buffer = buff })
-  bind('<leader>a', 'lua vim.lsp.buf.code_action()',
+  bind("<leader>a", "lua vim.lsp.buf.code_action()",
        { local_bind = true, buffer = buff })
-  bind('<leader>r', 'lua vim.lsp.buf.references()',
+  bind("<leader>r", "lua vim.lsp.buf.references()",
        { local_bind = true, buffer = buff })
-  bind('<leader>F', 'lua vim.lsp.buf.format({async = true})',
+  bind("<leader>F", "lua vim.lsp.buf.format({async = true})",
        { local_bind = true, buffer = buff })
-  bind('K', 'lua vim.lsp.buf.hover()',
+  bind("K", "lua vim.lsp.buf.hover()",
        { local_bind = true, buffer = buff })
-  bind('<C-i>', 'lua vim.lsp.buf.signature_help()',
+  bind("<C-i>", "lua vim.lsp.buf.signature_help()",
        { local_bind = true, buffer = buff })
-  bind('<C-p>', 'lua vim.diagnostic.goto_prev()',
+  bind("<C-p>", "lua vim.diagnostic.goto_prev()",
        { local_bind = true, buffer = buff })
-  bind('<C-n>', 'lua vim.diagnostic.goto_next()',
+  bind("<C-n>", "lua vim.diagnostic.goto_next()",
        { local_bind = true, buffer = buff })
-  bind('<C-h>', 'lua vim.diagnostic.open_float()',
+  bind("<C-h>", "lua vim.diagnostic.open_float()",
        { local_bind = true, buffer = buff })
-  bind('<space>wa', 'lua vim.lsp.buf.add_workspace_folder()',
+  bind("<space>wa", "lua vim.lsp.buf.add_workspace_folder()",
        { local_bind = true, buffer = buff })
-  bind('<space>wr', 'lua vim.lsp.buf.remove_workspace_folder()',
+  bind("<space>wr", "lua vim.lsp.buf.remove_workspace_folder()",
        { local_bind = true, buffer = buff })
-  bind('<space>wl', 'lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))',
+  bind("<space>wl", "lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))",
        { local_bind = true, buffer = buff })
-  bind('<space>rn', 'lua vim.lsp.buf.rename()',
+  bind("<space>rn", "lua vim.lsp.buf.rename()",
        { local_bind = true, buffer = buff })
 end
 
