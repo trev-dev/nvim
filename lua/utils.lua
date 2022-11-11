@@ -32,24 +32,26 @@ end
 
 local gmap = vim.api.nvim_set_keymap
 local lmap = vim.api.nvim_buf_set_keymap
+
 local create_keybind = function(lhs, cmd, bopts, mopts)
   mopts = mopts or {}
   bopts = bopts or {}
 
   mopts = merge_tables({ noremap = true, silent = true }, mopts)
+  bopts = merge_tables({ mode = "n" }, bopts)
   local rhs = ""
 
   if (type(cmd) == "string" and bopts.plain == nil) then
     rhs = ":" .. cmd .. "<CR>"
   elseif(type(cmd) == "function") then
-    mopts["callback"] = cmd
+    mopts.callback = cmd
   end
 
-  if (bopts["local_bind"] == true) then
-    local buff = bopts["buffer"] or 0
-    lmap(buff, "n", lhs, rhs, mopts)
+  if (bopts.local_bind == true) then
+    local buff = bopts.buffer or 0
+    lmap(buff, bopts.mode, lhs, rhs, mopts)
   else
-    gmap("n", lhs, rhs, mopts)
+    gmap(bopts.mode, lhs, rhs, mopts)
   end
 end
 
