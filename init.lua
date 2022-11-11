@@ -14,7 +14,7 @@ packages.use({
 
   -- Utilities
   {"kyazdani42/nvim-web-devicons", mod = "nvim-web-devicons"},
-  "godlygeek/tabular",
+  {"Vonr/align.nvim", mod = "align"},
   "jamessan/vim-gnupg",
   "jiangmiao/auto-pairs",
   "markonm/traces.vim",
