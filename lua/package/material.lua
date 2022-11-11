@@ -2,6 +2,9 @@ local ok, material = pcall(require, "material")
 if not ok then return end
 
 material.setup({
+  styles = {
+    comments = { italic = true }
+  },
   plugins = {
     -- Available plugins:
     -- "dap",
@@ -20,7 +23,10 @@ material.setup({
     -- "trouble",
     "which-key",
   },
-  disable = { background = true }
+  disable = { background = true },
+  custom_colors = function(colors)
+    colors.syntax.comments = "#F07178"
+  end
 })
 
 vim.g.material_style = 'darker'
