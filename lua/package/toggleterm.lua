@@ -3,7 +3,7 @@ if not ok then return end
 
 toggleterm.setup({
   size = 20,
-  open_mapping = [[<c-\>]],
+  open_mapping = "<c-;>",
   hide_numbers = true,
   shade_filetypes = {},
   shade_terminals = true,
@@ -26,13 +26,17 @@ toggleterm.setup({
 
 local Terminal = require("toggleterm.terminal").Terminal
 
-local toggle_lazygit = function() 
-  local lazygit = Terminal:new({
-    cmd = "lazygit", hidden = true, dir = vim.fn.getcwd()
-  })
-
+local lazygit = Terminal:new({
+  cmd = "lazygit", hidden = true
+})
+local toggle_lazygit = function()
+  lazygit.dir = vim.fn.getcwd()
   lazygit:toggle()
 end
+
+local taskwarrior_tui = Terminal:new(
+  { cmd = "taskwarrior-tui", hidden = true }
+)
 
 local toggle_tui = function() taskwarrior_tui:toggle() end
 
