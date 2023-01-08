@@ -20,7 +20,7 @@
                                 :prefix ""}})
 
 (fn make-attach-handler [use-lsp-sigs lsp-sigs]
-  (fn [client bufnr]
+  (fn [_ bufnr]
     (let [opts {:local? true :buffer bufnr}]
       (utils.map :<localleader>e "lua vim.lsp.buf.definition()" opts)
       (utils.map :<localleader>c "lua vim.lsp.buf.declaration()" opts)
