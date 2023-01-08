@@ -184,6 +184,8 @@
                               :requires [[:kevinhwang91/nvim-hlslens]]}
   :folke/which-key.nvim {:mod :which-key}
   :jamessan/vim-gnupg {}
+  :Shatur/neovim-session-manager {:mod :session-manager
+                                  :requires :nvim-lua/plenary.nvim}
 
   ;; LSP
   :ray-x/lsp_signature.nvim {}
