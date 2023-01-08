@@ -76,6 +76,19 @@
              {:group relative_toggle
               :pattern "*"
               :callback (fn [] (set wo.relativenumber false))}))
+  (autocmd [:BufWrite]
+           {:pattern "/home/trev/.config/nvim/*"
+            :callback (fn []
+                        ((. (require "packer") :compile))
+                        (print "Packer Compiled"))})
+
+  (fn highlight-yanked []
+    (vim.highlight.on_yank {:higroup :Visual
+                            :timeout 350}))
+  (autocmd [:TextYankPost]
+           {:group (autogrp "HighlightYank" {})
+            :pattern "*"
+            :callback highlight-yanked})
 
   ;; Filetype specific
   (autocmd [:FileType]
