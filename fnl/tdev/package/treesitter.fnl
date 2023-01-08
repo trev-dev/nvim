@@ -18,7 +18,8 @@
         {:ensure_installed ["bash" "css" "commonlisp" "clojure" "fennel" "html"
                             "javascript" "json" "lua" "org" "markdown" "nix"
                             "php" "python" "scheme" "toml" "typescript" "vim"
-                            "yaml"]
+                            "yaml" "gitcommit" "git_rebase" "gitignore"
+                            "gitattributes"]
          :sync_install false
          :highlight {:enable true
                      :disable disable_on_huge_file
