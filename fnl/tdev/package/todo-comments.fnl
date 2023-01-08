@@ -3,6 +3,9 @@
 
 (let [(ok? todo-comments) (pcall #(require :todo-comments))]
   (when ok?
-    (todo-comments.setup)
+    (todo-comments.setup
+      {:keywords {:TODO {:icon " " :color :info}
+                  :DONE {:icon " " :color :comment}}
+       :colors {:comment [ "Comment" ]}})
     (utils.map :<leader>ft "TodoTelescope")
     (utils.map :<leader>qt "TodoQuickFix")))
