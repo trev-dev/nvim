@@ -206,6 +206,7 @@
 
   ;; Syntax
   :zah/nim.vim {}
+  :guns/vim-sexp {}
   :romainl/vim-cool {}
   :dhruvasagar/vim-table-mode {}
   :ledger/vim-ledger {}
