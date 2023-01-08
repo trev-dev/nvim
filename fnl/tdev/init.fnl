@@ -39,22 +39,20 @@
 (set vim.g.mapleader " ")
 (set vim.g.maplocalleader ",")
 
-(var all-chars "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣")
-(var trailing-chars "trail:~")
-
-(global _TOGGLE_WHITESPACE
-  (fn []
-    (let [listchars vim.o.listchars]
-      (set vim.o.listchars (if (= listchars all-chars)
-                             trailing-chars
-                             all-chars)))))
+(fn toggle-whitespace []
+  (let [listchars vim.o.listchars
+        all-chars "eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣"
+        trailing-chars "tab:>·,trail:~"]
+    (set vim.o.listchars (if (= listchars all-chars)
+                           trailing-chars
+                           all-chars))))
 
 (utils.map "<leader>l" "ls")
 (utils.map "<leader>a" "blast")
 (utils.map "<leader>]" "bn!")
 (utils.map "<leader>[" "bp!")
 (utils.map "<leader>bd" "bd")
-(utils.map "<leader>w" "lua _TOGGLE_WHITESPACE()")
+(utils.map "<leader>w" toggle-whitespace)
 (utils.map "<leader>r" "set wrap!")
 
 ;; >>
