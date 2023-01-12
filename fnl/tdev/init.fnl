@@ -29,6 +29,7 @@
   (set wo.linebreak true)
   (set wo.number true)
   (set wo.relativenumber true)
+  (set vim.opt.signcolumn "yes")
 
   (set g.html_indent_script1 "zero")
   (set g.html_indent_style1 "zero"))
