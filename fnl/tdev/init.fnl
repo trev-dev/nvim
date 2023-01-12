@@ -55,6 +55,9 @@
 (utils.map "<leader>w" toggle-whitespace)
 (utils.map "<leader>r" "set wrap!")
 
+(utils.map "<C-u>" "<C-u>zz" {:plain? true})
+(utils.map "<C-d>" "<C-d>zz" {:plain? true})
+
 ;; >>
 
 ;; << Autocommands

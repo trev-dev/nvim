@@ -9,6 +9,8 @@
                    base-map-opts)
         cmd (if (a.function? rhs)
               ""
+              (a.get opts :plain?)
+              rhs
               (.. ":" rhs "<cr>"))]
     (if (a.get opts :local?)
       (nvim.buf_set_keymap (or (. opts :buffer) 0) :n lhs cmd map-opts)
