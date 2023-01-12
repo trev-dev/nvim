@@ -179,7 +179,6 @@
   :folke/todo-comments.nvim {:mod :todo-comments
                              :requires [[:nvim-lua/plenary.nvim]]}
   :nvim-treesitter/nvim-treesitter {:mod :treesitter :run ":TSUpdate"}
-  :nvim-orgmode/orgmode {:mod :orgmode}
   :lukas-reineke/indent-blankline.nvim {:mod :indent-blankline}
   :mickael-menu/zk-nvim {:mod :zk}
   :jakewvincent/mkdnflow.nvim {:mod :mkdnflow}

@@ -7,16 +7,14 @@
     (or (= lang "help")
         (and fs stats (> stats.size max)))))
 
-(let [(ok? treesitter) (pcall #(require :nvim-treesitter))
-      (org? orgmode) (pcall #(require :orgmode))]
+(let [(ok? treesitter) (pcall #(require :nvim-treesitter))]
   (when ok?
-    (when org? (orgmode.setup_ts_grammar))
     (let [parsers (require :nvim-treesitter.parsers)]
       (parsers.get_parser_configs))
     (let [cnfgs (require :nvim-treesitter.configs)]
       (cnfgs.setup
         {:ensure_installed ["bash" "css" "commonlisp" "clojure" "fennel" "html"
-                            "javascript" "json" "lua" "org" "markdown" "nix"
+                            "javascript" "json" "lua" "markdown" "nix"
                             "php" "python" "scheme" "toml" "typescript" "vim"
                             "yaml" "gitcommit" "git_rebase" "gitignore"
                             "gitattributes"]
