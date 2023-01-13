@@ -7,10 +7,12 @@
     (local cmap cmp.mapping)
     (cmp.setup
       {:snippet {:expand (fn [args]
-                           ((. vim.fn "vsnip#anonymous") args.body))}
+                           (let [(ok? ls) (pcall #(require :luasnip))]
+                             (when ok?
+                               (ls.lsp_expand args.body))))}
        :mapping {:<C-b> (cmap (cmap.scroll_docs -4 [:i :c]))
                  :<C-f> (cmap (cmap.scroll_docs 4 [:i :c]))
-                 :<C-Space> (cmap (cmap.complete [:i :c]))
+                 :<C-f> (cmap (cmap.complete [:i :c]))
                  :<C-y> cmp.config.disable
                  :<C-e> (cmap {:i (cmap.abort)
                                :c (cmap.abort)})
@@ -28,7 +30,7 @@
        :sources (cmp.config.sources
                   [{:name "conjure" :max_item_count 10}
                    {:name "nvim_lsp" :max_item_count 10}
-                   {:name "vsnip" :max_item_count 10}
+                   {:name "luasnip" :max_item_count 10}
                    {:name "path" :max_item_count 10}]
                   [{:name "buffer"}])})
     (cmp.setup.filetype "gitcommit"

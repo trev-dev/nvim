@@ -196,15 +196,13 @@
   :williamboman/mason.nvim {:mod :mason}
 
   ;; Completions
-  :hrsh7th/vim-vsnip {}
-  :hrsh7th/vim-vsnip-integ {}
   :hrsh7th/cmp-nvim-lsp {}
   :hrsh7th/cmp-buffer {}
   :hrsh7th/cmp-path {}
   :hrsh7th/cmp-cmdline {}
-  :hrsh7th/cmp-vsnip {}
   :PaterJason/cmp-conjure {}
   :hrsh7th/nvim-cmp {:mod :cmp}
+  :L3MON4D3/LuaSnip {}
   :rafamadriz/friendly-snippets {}
 
   ;; Syntax
