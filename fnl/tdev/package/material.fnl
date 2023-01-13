@@ -4,7 +4,8 @@
   (when ok?
     (fn custom_color_overrides [colors]
       "Override colors in the material theme."
-      (set colors.syntax.comments "#F07178"))
+      ;; (set colors.syntax.comments "#F07178")
+      )
     (material.setup {:plugins [:gitsigns :hop :indent-blankline :nvim-cmp
                                :nvim-tree :telescope :which-key]
                      :disable {:background true}
