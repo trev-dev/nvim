@@ -21,25 +21,54 @@
 
 (fn make-attach-handler [use-lsp-sigs lsp-sigs]
   (fn [_ bufnr]
-    (let [opts {:local? true :buffer bufnr}]
-      (utils.map :<localleader>e "lua vim.lsp.buf.definition()" opts)
-      (utils.map :<localleader>c "lua vim.lsp.buf.declaration()" opts)
-      (utils.map :<localleader>r "lua vim.lsp.buf.references()" opts)
-      (utils.map :<localleader>t "lua vim.lsp.buf.type_definition()" opts)
-      (utils.map :<localleader>i "lua vim.lsp.buf.implementation()" opts)
-      (utils.map :<localleader>a "lua vim.lsp.buf.code_action()" opts)
-      (utils.map :<localleader>r "lua vim.lsp.buf.references()" opts)
-      (utils.map :<localleader>F "lua vim.lsp.buf.formatting({async = true})" opts)
-      (utils.map :K "lua vim.lsp.buf.hover()" opts)
-      (utils.map :<C-i> "lua vim.lsp.buf.signature_help()" opts)
-      (utils.map :<C-p> "lua vim.diagnostic.goto_prev()" opts)
-      (utils.map :<C-n> "lua vim.diagnostic.goto_next()" opts)
-      (utils.map :<C-h> "lua vim.diagnostic.open_float()" opts)
-      (utils.map :<space>wa "lua vim.lsp.buf.add_workspace_folder()" opts)
-      (utils.map :<space>wr "lua vim.lsp.buf.remove_workspace_folder()" opts)
-      (utils.map :<space>wl (.. "lua print(vim.inspect"
-                                "(vim.lsp.buf.list_workspace_folders()))") opts)
-      (utils.map :<space>rn "lua vim.lsp.buf.rename()" opts)
+    (let [opts {:local? true :buffer bufnr}
+          buf vim.lsp.buf
+          diag vim.lsp.diagnostic
+          map utils.map
+          (which-key? wk) (pcall #(require "which-key"))]
+      (fn inspect-workspace-folders [] (print (vim.inspect
+                                                (buf.list_workspace_folders))))
+      (map :<localleader>e (fn [] (buf.definition)) opts)
+      (map :<localleader>c (fn [] (buf.declaration)) opts)
+      (map :<localleader>r (fn [] (buf.references)) opts)
+      (map :<localleader>t (fn [] (buf.type_definition)) opts)
+      (map :<localleader>i (fn [] (buf.implementation)) opts)
+      (map :<localleader>a (fn [] (buf.code_action)) opts)
+      (map :<localleader>F (fn [] (buf.format {:async true})) opts)
+      (map :<localleader>R (fn [] (buf.rename)) opts)
+      (map :<localleader>wa (fn [] (buf.add_workspace_folder)) opts)
+      (map :<localleader>wr (fn [] (buf.remove_workspace_folder)) opts)
+      (map :<localleader>wl (fn [] (inspect-workspace-folders)) opts)
+      (map :<localleader>ws "LspStart" opts)
+      (map :<localleader>wr "LspRestart" opts)
+      (map :<localleader>wS "LspStop" opts)
+
+      (map :K (fn [] (buf.hover)) opts)
+      (map :<C-i> (fn [] (buf.signature_help)) opts)
+      (map :<C-p> (fn [] (diag.goto_prev)) opts)
+      (map :<C-n> (fn [] (diag.goto_next)) opts)
+      (map :<C-h> (fn [] (diag.open_float)) opts)
+
+      (when which-key?
+        (wk.register {:name "LSP"
+                      :e "Goto Definition"
+                      :c "Goto Declaration"
+                      :r "Goto References"
+                      :t "Goto Type Definition"
+                      :i "Goto Implementation"
+                      :a "Code Actions"
+                      :R "Rename Symbol"
+                      :F "Format Selection/Buffer"}
+                     {:prefix :<localleader>})
+        (wk.register {:w {:name "LSP Workspace"
+                          :a "Add Folder"
+                          :R "Remove Folder"
+                          :l "List Folders"
+                          :s "Start"
+                          :r "Restart"
+                          :S "Stop"}}
+                     {:prefix :<localleader>}))
+
       (when use-lsp-sigs
         (lsp-sigs.on_attach
           {:bind true
