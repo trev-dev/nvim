@@ -52,9 +52,20 @@
 (utils.map "<leader>a" "blast")
 (utils.map "<leader>]" "bn!")
 (utils.map "<leader>[" "bp!")
-(utils.map "<leader>bd" "bd")
 (utils.map "<leader>w" toggle-whitespace)
 (utils.map "<leader>r" "set wrap!")
+
+(let [(which-key? wk) (pcall #(require :which-key))]
+  (when which-key?
+    (wk.register {:name "General"
+                  :l "List Buffers"
+                  :a "Last Buffer"
+                  "]" "Next Buffer"
+                  "[" "Previous Buffer"
+                  :s "Hop"
+                  :w "Toggle Whitespace Markers"
+                  :r "Toggle Line Wrap"}
+                 {:prefix :<leader>})))
 
 (utils.map "<C-u>" "<C-u>zz" {:plain? true})
 (utils.map "<C-d>" "<C-d>zz" {:plain? true})
