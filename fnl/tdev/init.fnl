@@ -171,8 +171,7 @@
   :markonm/traces.vim {}
   :phaazon/hop.nvim {:mod :hop :branch "v1"}
   :akinsho/toggleterm.nvim {:mod :toggleterm}
-  :mattn/emmet-vim {:config
-                    (fn [] (set vim.g.user_emmet_leader_key "<C-k>"))}
+  :mattn/emmet-vim {:mod :emmet}
   :norcalli/nvim-colorizer.lua {:mod :colorizer}
   :lewis6991/gitsigns.nvim {:mod :gitsigns
                             :requires [[:nvim-lua/plenary.nvim]]}
