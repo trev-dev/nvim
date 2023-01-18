@@ -65,7 +65,6 @@ packages.use({
   "rafamadriz/friendly-snippets",
 
   -- Additional Syntax Support
-  "trev-dev/vim-shopify",
   "ledger/vim-ledger",
   {"kkoomen/vim-doge", run = ":call doge#install()"},
   "pangloss/vim-javascript",
