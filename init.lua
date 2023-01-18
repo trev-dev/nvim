@@ -1,26 +1,75 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
-local fmt = string.format
+local utils = require("utils")
 
--- Work out where our plugins will be stored.
-local pack_path = fn.stdpath("data") .. "/site/pack"
+utils.ensure("wbthomason", "packer.nvim")
 
-function ensure (user, repo)
-  -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
-  local install_path = fmt("%s/packer/start/%s", pack_path, repo, repo)
-  if fn.empty(fn.glob(install_path)) > 0 then
-    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path))
-    execute(fmt("packadd %s", repo))
-  end
-end
+utils.safe_require('vim-settings')
+utils.safe_require('autocommands')
+utils.safe_require('vim-bindings')
 
--- Packer is our plugin manager.
-ensure("wbthomason", "packer.nvim")
+-- Packer init & package configurations.
+local packages = require("packages")
 
--- Aniseed compiles our Fennel code to Lua and loads it automatically.
-ensure("Olical", "aniseed")
+packages.use({
+  "wbthomason/packer.nvim",
 
--- Enable Aniseed's automatic compilation and loading of Fennel source code.
--- Aniseed looks for this when it's loaded then loads the rest of your
--- configuration if it's set.
-vim.g["aniseed#env"] = {module = "tdev.init"}
+  -- Utilities
+  {"kyazdani42/nvim-web-devicons", mod = "nvim-web-devicons"},
+  {"Vonr/align.nvim", mod = "align"},
+  "jamessan/vim-gnupg",
+  "jiangmiao/auto-pairs",
+  "markonm/traces.vim",
+  "tpope/vim-surround",
+  "dhruvasagar/vim-table-mode",
+  {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
+  {"akinsho/toggleterm.nvim", mod = "toggleterm"},
+  {"nvim-telescope/telescope.nvim", mod = "telescope",
+  requires = {
+    {"nvim-lua/popup.nvim"},
+    {"nvim-lua/plenary.nvim"},
+    {"nvim-telescope/telescope-ui-select.nvim"}}
+  },
+  {"mattn/emmet-vim", mod = "emmet"},
+  {"norcalli/nvim-colorizer.lua", mod = "nvim-colorizer"},
+  {"lewis6991/gitsigns.nvim", mod = "gitsigns",
+  requires = { "nvim-lua/plenary.nvim" }},
+  {"kyazdani42/nvim-tree.lua", mod = "nvim-tree",
+  requires = { "kyazdani42/nvim-web-devicons" }},
+  {"akinsho/bufferline.nvim", mod = "bufferline"},
+  "b3nj5m1n/kommentary",
+  {"nvim-lualine/lualine.nvim", mod = "lualine",
+  requires = { "kyazdani42/nvim-web-devicons", opt = true }},
+  {"folke/todo-comments.nvim", mod = "todo-comments",
+  requires = "nvim-lua/plenary.nvim"},
+  {"nvim-treesitter/nvim-treesitter", mod = "treesitter"},
+  {"lukas-reineke/indent-blankline.nvim", mod = "indent-blankline"},
+  {"mickael-menu/zk-nvim", mod = "zk"},
+  {"jakewvincent/mkdnflow.nvim", mod = "mkdnflow"},
+  {"petertriho/nvim-scrollbar", mod = "nvim-scrollbar"},
+  {"kevinhwang91/nvim-hlslens", mod = "nvim-hlslns"},
+  {"folke/which-key.nvim", mod = "which-key"},
+  {"Shatur/neovim-session-manager", mod = "session-manager",
+  requires = "nvim-lua/plenary.nvim"},
+
+  -- LSP & Completion
+  "ray-x/lsp_signature.nvim",
+  {"neovim/nvim-lspconfig", mod = "lspconfig"},
+  {"williamboman/mason.nvim", mod = "mason"},
+  {"hrsh7th/nvim-cmp", mod = "nvim-cmp"},
+  "hrsh7th/cmp-nvim-lsp",
+  "hrsh7th/cmp-buffer",
+  "hrsh7th/cmp-path",
+  "hrsh7th/cmp-cmdline",
+  "hrsh7th/cmp-vsnip",
+  "hrsh7th/vim-vsnip",
+  "hrsh7th/vim-vsnip-integ",
+  "rafamadriz/friendly-snippets",
+
+  -- Additional Syntax Support
+  "ledger/vim-ledger",
+  {"kkoomen/vim-doge", run = ":call doge#install()"},
+  "pangloss/vim-javascript",
+  "zah/nim.vim",
+
+  -- Theme
+  {"marko-cerovac/material.nvim", mod = "material"},
+})
