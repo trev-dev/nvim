@@ -41,7 +41,9 @@ local create_keybind = function(lhs, cmd, bopts, mopts)
   bopts = merge_tables({ mode = "n" }, bopts)
   local rhs = ""
 
-  if (type(cmd) == "string" and bopts.plain == nil) then
+  if (type(cmd) == "string" and bopts.plain) then
+    rhs = cmd
+  elseif (type(cmd) == "string") then
     rhs = ":" .. cmd .. "<CR>"
   elseif(type(cmd) == "function") then
     mopts.callback = cmd
