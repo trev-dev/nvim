@@ -20,6 +20,7 @@ packages.use({
   "markonm/traces.vim",
   "tpope/vim-surround",
   "tpope/vim-fugitive",
+  "tpope/vim-rhubarb",
   "tpope/vim-sleuth",
   "dhruvasagar/vim-table-mode",
   {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
