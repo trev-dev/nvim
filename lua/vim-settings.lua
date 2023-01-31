@@ -22,7 +22,7 @@ opt.signcolumn = "yes"
 
 -- Window
 wo.breakindent = true
-wo.colorcolumn = '80'
+wo.colorcolumn = '100'
 wo.linebreak = true
 wo.number = true
 wo.relativenumber = true
