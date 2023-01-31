@@ -113,6 +113,7 @@ local servers = {
     on_attach = on_attach
   }},
   {"svelte", {}},
+  {"jdtls", {}},
   {"tsserver", {}},
   {"vuels", {}},
   {"yamlls", {}},

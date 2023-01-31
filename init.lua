@@ -72,6 +72,8 @@ packages.use({
   {"kkoomen/vim-doge", run = ":call doge#install()"},
   "pangloss/vim-javascript",
   "zah/nim.vim",
+  "mfussenegger/nvim-dap",
+  "mfussenegger/nvim-jdtls",
 
   -- Theme
   {"marko-cerovac/material.nvim", mod = "material"},
