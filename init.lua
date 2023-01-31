@@ -54,9 +54,10 @@ packages.use({
   requires = "nvim-lua/plenary.nvim"},
 
   -- LSP & Completion
-  "ray-x/lsp_signature.nvim",
+  {"williamboman/mason.nvim", mod = "mason",
+  requires = "williamboman/mason-lspconfig"},
   {"neovim/nvim-lspconfig", mod = "lspconfig"},
-  {"williamboman/mason.nvim", mod = "mason"},
+  "ray-x/lsp_signature.nvim",
   {"hrsh7th/nvim-cmp", mod = "nvim-cmp"},
   "hrsh7th/cmp-nvim-lsp",
   "hrsh7th/cmp-buffer",
