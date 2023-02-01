@@ -68,6 +68,8 @@ local config = {
     '-data', workspace
   },
 
+  on_attach = on_attach,
+
   -- 💀
   -- This is the default if not provided, you can remove it. Or adjust as needed.
   -- One dedicated LSP server & client will be started per unique root_dir
@@ -78,6 +80,33 @@ local config = {
   -- for a list of options
   settings = {
     java = {
+      signatureHelp = { enabled = true };
+      contentProvider = { preferred = 'fernflower' };
+      completion = {
+        favoriteStaticMembers = {
+          "org.hamcrest.MatcherAssert.assertThat",
+          "org.hamcrest.Matchers.*",
+          "org.hamcrest.CoreMatchers.*",
+          "org.junit.jupiter.api.Assertions.*",
+          "java.util.Objects.requireNonNull",
+          "java.util.Objects.requireNonNullElse",
+          "org.mockito.Mockito.*"
+        }
+      };
+      sources = {
+        organizeImports = {
+          starThreshold = 9999;
+          staticStarThreshold = 9999;
+        };
+      };
+      codeGeneration = {
+        toString = {
+          template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}"
+        }
+      };
+      configuration = {
+        runtimes = { }
+      };
     }
   },
 
