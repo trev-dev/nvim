@@ -1,4 +1,4 @@
-local bind = require("utils").bind
+local bind = vim.keymap.set
 
 local toggle_whitespace = function()
   local listchars = vim.o.listchars
@@ -16,14 +16,10 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 
 -- Buffers
-bind("<leader>l", "ls")
-bind("<leader>a", "blast")
-bind("<leader>]", "bn!")
-bind("<leader>[", "bp!")
-bind("<leader>bd", "bd")
+bind("n", "<leader>l", "ls")
+bind("n", "<leader>a", ":blast<cr>")
+bind("n", "<leader>]", ":bn!<cr>")
+bind("n", "<leader>[", ":bp!<cr>")
 
 -- Toggle Whitespace Chars
-bind("<leader>ws", toggle_whitespace)
-
--- Toggle Word Wrap
-bind("<leader>r", "set wrap")
+bind("n", "<leader>ws", toggle_whitespace, { desc = "Toggle white space markers" })

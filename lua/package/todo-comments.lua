@@ -11,6 +11,4 @@ tdc.setup({
   }
 })
 
-local bind = require("utils").bind
-
-bind("<leader>ft", "TodoTelescope")
+vim.keymap.set("n", "<leader>ft", ":TodoTelescope<cr>", { desc = "todos" })

@@ -3,7 +3,7 @@ local autocmd = vim.api.nvim_create_autocmd
 local bo = vim.bo
 local wo = vim.wo
 local setlocal = vim.opt_local
-local bind = require("utils").bind
+local bind = vim.keymap.set
 
 local relative_toggle = autogrp("RelativeNumToggle", { clear = true })
 autocmd({"BufEnter", "FocusGained", "InsertLeave"}, {
@@ -76,9 +76,9 @@ if ok then
   end
 
   local setup_nim_context = function()
-    bind("<localleader>cr", nim_run_buffer)
-    bind("<localleader>cb", nim_compile_buffer)
-    bind("<localleader>bf", nim_format_buffer)
+    bind("n", "<localleader>cr", nim_run_buffer, { desc = "Nim run" })
+    bind("n", "<localleader>cb", nim_compile_buffer, { desc = "Nim compile buffer" })
+    bind("n", "<localleader>bf", nim_format_buffer, { desc = "Nim format buffer" })
   end
 
   autocmd({"FileType"}, {

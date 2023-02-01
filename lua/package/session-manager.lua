@@ -5,8 +5,8 @@ sm.setup({
   autoload_mode = require("session_manager.config").AutoloadMode.CurrentDir
 })
 
-local bind = require("utils").bind
-bind("<leader>pp", "SessionManager load_session")
-bind("<leader>pl", "SessionManager load_last_session")
-bind("<leader>ps", "SessionManager save_current_session")
-bind("<leader>pD", "SessionManager delete_session")
+local bind = vim.keymap.set
+bind("n", "<leader>pp", ":SessionManager load_session<cr>")
+bind("n", "<leader>pl", ":SessionManager load_last_session<cr>")
+bind("n", "<leader>ps", ":SessionManager save_current_session<cr>")
+bind("n", "<leader>pD", ":SessionManager delete_session<cr>")

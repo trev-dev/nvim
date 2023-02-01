@@ -3,6 +3,5 @@ if not ok then return end
 
 nvt.setup()
 
-local bind = require("utils").bind
-bind('<C-k>b', 'NvimTreeToggle')
+vim.keymap.set("n", "<C-k>b", ":NvimTreeToggle<cr>")
 

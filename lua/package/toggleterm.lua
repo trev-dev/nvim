@@ -40,6 +40,6 @@ local taskwarrior_tui = Terminal:new(
 
 local toggle_tui = function() taskwarrior_tui:toggle() end
 
-local bind = require("utils").bind
-bind("<leader>gg", toggle_lazygit)
-bind("<leader>gt", toggle_tui)
+local bind = vim.keymap.set
+bind("n", "<leader>gg", toggle_lazygit, { desc = "lazygit" })
+bind("n", "<leader>gt", toggle_tui, { desc = "taskwarrior-tui" })

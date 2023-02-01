@@ -5,36 +5,38 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_root = home .. "/.cache/jdtls/"
 local workspace = workspace_root .. project_name
 
-local bind = require("utils").bind
 local on_attach = function(_, buff)
-  local list_buffs = function()
-    print(vim.lsp.buf.list_workspace_folders())
-  end
-  local format_buff = function()
-    vim.lsp.buf.format {async = true}
-  end
-  local bufopts = { buffer = buff }
-  bind("gD", vim.lsp.buf.declaration, bufopts)
-  bind("gd", vim.lsp.buf.definition, bufopts)
-  bind("K", vim.lsp.buf.hover, bufopts)
-  bind("gI", vim.lsp.buf.implementation, bufopts)
-  bind("<C-h>", vim.lsp.buf.signature_help, bufopts)
-  bind("H", vim.diagnostic.open_float, bufopts)
-  bind("<space>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-  bind("<space>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-  bind("<space>wl", list_buffs, bufopts)
-  bind("<space>D", vim.lsp.buf.type_definition, bufopts)
-  bind("<space>rn", vim.lsp.buf.rename, bufopts)
-  bind("<space>ca", vim.lsp.buf.code_action, bufopts)
-  bind("gr", vim.lsp.buf.references, bufopts)
-  bind("<space>f", format_buff, bufopts)
+  local bind = vim.keymap.set
+  local list_buffs = function() print(vim.lsp.buf.list_workspace_folders()) end
+  local format_buff = function() vim.lsp.buf.format {async = true} end
+  local with_desc = function(desc) return { buffer = buff, desc = desc } end
 
-  bind("<A-o>", jdtls.organize_imports, bufopts)
-  bind("crv", jdtls.extract_variable, bufopts)
-  bind("crv", jdtls.extract_variable, { buffer = buff, mode = "v" })
-  bind("crc", jdtls.extract_constant, bufopts)
-  bind("crc", jdtls.extract_constant, { buffer = buff, mode = "v" })
-  bind("crm", jdtls.extract_method, { buffer = buff, mode = "v" })
+  bind("n", "gD", vim.lsp.buf.declaration, with_desc("Goto declaration"))
+  bind("n", "gd", vim.lsp.buf.definition, with_desc("Goto definition"))
+  bind("n", "K", vim.lsp.buf.hover, with_desc("View hover info"))
+  bind("n", "gI", vim.lsp.buf.implementation, with_desc("Show implementation"))
+  bind("n", "<C-h>", vim.lsp.buf.signature_help, with_desc("Signature help"))
+  bind("n", "H", vim.diagnostic.open_float, with_desc("Open diagnostic"))
+  bind("n", "<space>wa", vim.lsp.buf.add_workspace_folder, with_desc("Add workspace folder"))
+  bind("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, with_desc("Remove workspace folder"))
+  bind("n", "<space>wl", list_buffs, with_desc("List workspace buffers"))
+  bind("n", "<space>D", vim.lsp.buf.type_definition, with_desc("Goto definition"))
+  bind("n", "<space>rn", vim.lsp.buf.rename, with_desc("Rename symbol"))
+  bind("n", "<space>ca", vim.lsp.buf.code_action, with_desc("Code action"))
+  bind("n", "gr", vim.lsp.buf.references, with_desc("Show references"))
+  bind("n", "<space>f", format_buff, with_desc("Format buffer"))
+
+  local wkp, wk = pcall(require, "which-key")
+  if wkp then
+    wk.register {r = {name = "Refactor"}, prefix = "c"}
+  end
+
+  bind("n", "<A-o>", jdtls.organize_imports, with_desc("Organize imports"))
+  bind("n", "crv", jdtls.extract_variable, with_desc("Extract variable"))
+  bind("n", "crv", jdtls.extract_variable, with_desc("Extract variable"))
+  bind("n", "crc", jdtls.extract_constant, with_desc("Extract constant"))
+  bind("n", "crc", jdtls.extract_constant, with_desc("Extract constant"))
+  bind("n", "crm", jdtls.extract_method, with_desc("Extract method"))
 end
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.

@@ -35,29 +35,26 @@ local config = {
   },
 }
 
-local bind = require("utils").bind
 local on_attach = function(_, buff)
-  local list_buffs = function()
-    print(vim.lsp.buf.list_workspace_folders())
-  end
-  local format_buff = function()
-    vim.lsp.buf.format {async = true}
-  end
-  local bufopts = { buffer = buff }
-  bind('gD', vim.lsp.buf.declaration, bufopts)
-  bind('gd', vim.lsp.buf.definition, bufopts)
-  bind('K', vim.lsp.buf.hover, bufopts)
-  bind('gI', vim.lsp.buf.implementation, bufopts)
-  bind('<C-h>', vim.lsp.buf.signature_help, bufopts)
-  bind("H", vim.diagnostic.open_float, bufopts)
-  bind('<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-  bind('<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-  bind('<space>wl', list_buffs, bufopts)
-  bind('<space>D', vim.lsp.buf.type_definition, bufopts)
-  bind('<space>rn', vim.lsp.buf.rename, bufopts)
-  bind('<space>ca', vim.lsp.buf.code_action, bufopts)
-  bind('gr', vim.lsp.buf.references, bufopts)
-  bind('<space>f', format_buff, bufopts)
+  local bind = vim.keymap.set
+  local list_buffs = function() print(vim.lsp.buf.list_workspace_folders()) end
+  local format_buff = function() vim.lsp.buf.format {async = true} end
+  local with_desc = function(desc) return { buffer = buff, desc = desc } end
+
+  bind("n", "gD", vim.lsp.buf.declaration, with_desc("Goto declaration"))
+  bind("n", "gd", vim.lsp.buf.definition, with_desc("Goto definition"))
+  bind("n", "K", vim.lsp.buf.hover, with_desc("View hover info"))
+  bind("n", "gI", vim.lsp.buf.implementation, with_desc("Show implementation"))
+  bind("n", "<C-h>", vim.lsp.buf.signature_help, with_desc("Signature help"))
+  bind("n", "H", vim.diagnostic.open_float, with_desc("Open diagnostic"))
+  bind("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, with_desc("Add workspace folder"))
+  bind("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, with_desc("Remove workspace folder"))
+  bind("n", "<leader>wl", list_buffs, with_desc("List workspace buffers"))
+  bind("n", "<leader>D", vim.lsp.buf.type_definition, with_desc("Goto definition"))
+  bind("n", "<leader>rn", vim.lsp.buf.rename, with_desc("Rename symbol"))
+  bind("n", "<leader>ca", vim.lsp.buf.code_action, with_desc("Code action"))
+  bind("n", "gr", vim.lsp.buf.references, with_desc("Show references"))
+  bind("n", "<leader>F", format_buff, with_desc("Format buffer"))
 end
 
 local configs = require("lspconfig.configs")
