@@ -30,9 +30,6 @@ local safe_require = function (m)
   return ok
 end
 
-local gmap = vim.api.nvim_set_keymap
-local lmap = vim.api.nvim_buf_set_keymap
-
 local create_keybind = function(lhs, cmd, bopts, mopts)
   mopts = mopts or {}
   bopts = bopts or {}
@@ -49,12 +46,7 @@ local create_keybind = function(lhs, cmd, bopts, mopts)
     mopts.callback = cmd
   end
 
-  if (bopts.local_bind == true) then
-    local buff = bopts.buffer or 0
-    lmap(buff, bopts.mode, lhs, rhs, mopts)
-  else
-    gmap(bopts.mode, lhs, rhs, mopts)
-  end
+  vim.keymap.set(bopts.mode, lhs, rhs, mopts)
 end
 
 local count_table_length = function(t)
