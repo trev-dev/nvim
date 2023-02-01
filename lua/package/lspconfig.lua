@@ -115,6 +115,7 @@ local servers = {
   {"svelte", {}},
   {"jdtls", {}},
   {"tsserver", {}},
+  {"eslint", {}},
   {"vuels", {}},
   {"yamlls", {}},
 }
