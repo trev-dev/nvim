@@ -158,6 +158,7 @@ ins_left {
   end,
 } ]]
 
+--[[
 ins_left {
   -- Lsp server name .
   function()
@@ -178,6 +179,7 @@ ins_left {
   icon = " LSP:",
   color = { fg = "#ffffff", gui = "bold" },
 }
+]]
 
 -- Add components to right sections
 ins_right {
