@@ -70,7 +70,6 @@ packages.use({
 
   -- Additional Syntax Support
   "ledger/vim-ledger",
-  {"kkoomen/vim-doge", run = ":call doge#install()"},
   "pangloss/vim-javascript",
   "zah/nim.vim",
   "mfussenegger/nvim-dap",
