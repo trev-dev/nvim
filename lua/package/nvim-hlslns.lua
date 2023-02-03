@@ -14,4 +14,4 @@ bind("n", '#', "#<Cmd>lua require('hlslens').start()<CR>")
 bind("n", 'g*', "g*<Cmd>lua require('hlslens').start()<CR>")
 bind("n", 'g#', "g#<Cmd>lua require('hlslens').start()<CR>")
 
-bind("n", "<Leader>l", "noh")
+bind("n", "<Leader>l", ":noh<cr>")
