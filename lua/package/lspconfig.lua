@@ -75,6 +75,7 @@ local servers = {
   {"intelephense", {}},
   {"jedi_language_server", {}},
   {"hls", {}},
+  {"jsonls", {}},
   {"nimls", {}},
   {"rnix", {}},
   {"shopifyls", {}},
