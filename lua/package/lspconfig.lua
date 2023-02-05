@@ -15,6 +15,8 @@ end
 
 local signs = { Error = "»", Warn = "»", Hint = "›", Info = "›" }
 
+require("lspconfig.ui.windows").default_options.border = "single"
+
 local config = {
   -- disable virtual text
   virtual_text = false,
@@ -26,27 +28,28 @@ local config = {
   underline = true,
   severity_sort = true,
   float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
     source = "always",
     header = "",
     prefix = "",
   },
 }
 
+local with_desc = function(desc) return { buffer = buff, desc = desc } end
+
+local bind = vim.keymap.set
+bind("n", "H", vim.diagnostic.open_float, with_desc("Open diagnostic"))
+bind("n", "[d", vim.diagnostic.goto_prev, with_desc("Previous diagnostic"))
+bind("n", "]d", vim.diagnostic.goto_next, with_desc("Next diagnostic"))
+
 local on_attach = function(_, buff)
-  local bind = vim.keymap.set
   local list_buffs = function() print(vim.lsp.buf.list_workspace_folders()) end
   local format_buff = function() vim.lsp.buf.format {async = true} end
-  local with_desc = function(desc) return { buffer = buff, desc = desc } end
 
   bind("n", "gD", vim.lsp.buf.declaration, with_desc("Goto declaration"))
   bind("n", "gd", vim.lsp.buf.definition, with_desc("Goto definition"))
   bind("n", "K", vim.lsp.buf.hover, with_desc("View hover info"))
   bind("n", "gI", vim.lsp.buf.implementation, with_desc("Show implementation"))
   bind("n", "<C-h>", vim.lsp.buf.signature_help, with_desc("Signature help"))
-  bind("n", "H", vim.diagnostic.open_float, with_desc("Open diagnostic"))
   bind("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, with_desc("Add workspace folder"))
   bind("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, with_desc("Remove workspace folder"))
   bind("n", "<leader>wl", list_buffs, with_desc("List workspace buffers"))
