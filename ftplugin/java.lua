@@ -6,13 +6,21 @@ local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_root = home .. "/.cache/jdtls/"
 local workspace = workspace_root .. project_name
 
+local safe_codelens_refresh = function()
+  local _, _ = pcall(vim.lsp.codelens.refresh)
+end
+
 local on_attach = function(_, buff)
   local bind = vim.keymap.set
   local list_buffs = function() print(vim.lsp.buf.list_workspace_folders()) end
   local format_buff = function() vim.lsp.buf.format {async = true} end
   local with_desc = function(desc) return { buffer = buff, desc = desc } end
 
+  safe_codelens_refresh()
+
+  require("jdtls.dap").setup_dap_main_class_configs()
   jdtls.setup_dap { hotcodereplace = "auto" }
+  require('jdtls.setup').add_commands()
 
   bind("n", "gD", vim.lsp.buf.declaration, with_desc("Goto declaration"))
   bind("n", "gd", vim.lsp.buf.definition, with_desc("Goto definition"))
@@ -157,6 +165,12 @@ local config = {
     bundles = bundles
   },
 }
+
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	pattern = { "*.java" },
+	callback = safe_codelens_refresh
+})
+
 -- This starts a new client & server,
 -- or attaches to an existing client & server depending on the `root_dir`.
 require('jdtls').start_or_attach(config)

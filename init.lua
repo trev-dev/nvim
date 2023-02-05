@@ -63,13 +63,14 @@ packages.use({
   "hrsh7th/cmp-vsnip",
   "hrsh7th/vim-vsnip",
   "hrsh7th/vim-vsnip-integ",
+  "rcarriga/cmp-dap",
   "rafamadriz/friendly-snippets",
 
   -- Additional Syntax Support
   "ledger/vim-ledger",
   "pangloss/vim-javascript",
   "zah/nim.vim",
-  "mfussenegger/nvim-dap",
+  {"rcarriga/nvim-dap-ui", tag = "v2.6.0", requires = "mfussenegger/nvim-dap", mod = "nvim-dap"},
   "mfussenegger/nvim-jdtls",
 
   -- Theme
