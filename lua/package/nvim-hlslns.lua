@@ -3,17 +3,15 @@ if not ok then return end
 
 hlsl.setup()
 
-local bind = require("utils").bind
+local bind = vim.keymap.set
 
-bind('n',
-     "execute('normal! ' . v:count1 . 'n')<CR>" ..
-     "<Cmd>lua require('hlslens').start()")
-bind('N',
-     "execute('normal! ' . v:count1 . 'N')<CR>" ..
-     "<Cmd>lua require('hlslens').start()")
-bind('*', "*<Cmd>lua require('hlslens').start()<CR>", { plain = true })
-bind('#', "#<Cmd>lua require('hlslens').start()<CR>", { plain = true })
-bind('g*', "g*<Cmd>lua require('hlslens').start()<CR>", { plain = true })
-bind('g#', "g#<Cmd>lua require('hlslens').start()<CR>", { plain = true })
+bind("n", 'n',
+  "<cmd>execute('normal! ' . v:count1 . 'n')<CR><Cmd>lua require('hlslens').start()<cr>")
+bind("n", 'N',
+  "<cmd>execute('normal! ' . v:count1 . 'N')<CR><Cmd>lua require('hlslens').start()<cr>")
+bind("n", '*', "*<Cmd>lua require('hlslens').start()<CR>")
+bind("n", '#', "#<Cmd>lua require('hlslens').start()<CR>")
+bind("n", 'g*', "g*<Cmd>lua require('hlslens').start()<CR>")
+bind("n", 'g#', "g#<Cmd>lua require('hlslens').start()<CR>")
 
-bind("<Leader>l", "noh")
+bind("n", "<Leader>l", ":noh<cr>")

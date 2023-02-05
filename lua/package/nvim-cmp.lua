@@ -36,6 +36,10 @@ cmp.setup({
       end
     end, { "i", "s", "c" })
   },
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+      or require("cmp_dap").is_dap_buffer()
+  end,
   sources = cmp.config.sources({
     { name = "nvim_lsp", max_item_count = 5 },
     { name = "vsnip", max_item_count = 5 },
@@ -52,6 +56,12 @@ cmp.setup.filetype("gitcommit", {
   }, {
     { name = "buffer" },
   })
+})
+
+require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+  sources = {
+    { name = "dap" },
+  },
 })
 
 cmp.setup.cmdline("/", {

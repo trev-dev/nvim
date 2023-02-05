@@ -1,4 +1,5 @@
 local o = vim.o
+local opt = vim.opt
 local wo = vim.wo
 local bo = vim.bo
 local g = vim.g
@@ -16,10 +17,12 @@ o.redrawtime = 2000
 o.clipboard = 'unnamedplus'
 o.mouse = 'a'
 o.guifont = "Source Code Pro:h11"
+opt.updatetime = 300
+opt.signcolumn = "yes"
 
 -- Window
 wo.breakindent = true
-wo.colorcolumn = '80'
+wo.colorcolumn = '100'
 wo.linebreak = true
 wo.number = true
 wo.relativenumber = true

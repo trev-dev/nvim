@@ -15,6 +15,8 @@ end
 
 local signs = { Error = "»", Warn = "»", Hint = "›", Info = "›" }
 
+require("lspconfig.ui.windows").default_options.border = "single"
+
 local config = {
   -- disable virtual text
   virtual_text = false,
@@ -26,51 +28,36 @@ local config = {
   underline = true,
   severity_sort = true,
   float = {
-    focusable = false,
-    style = "minimal",
-    border = "rounded",
     source = "always",
     header = "",
     prefix = "",
   },
 }
 
-local bind = require("utils").bind
+local with_desc = function(desc) return { buffer = buff, desc = desc } end
+
+local bind = vim.keymap.set
+bind("n", "H", vim.diagnostic.open_float, with_desc("Open diagnostic"))
+bind("n", "[d", vim.diagnostic.goto_prev, with_desc("Previous diagnostic"))
+bind("n", "]d", vim.diagnostic.goto_next, with_desc("Next diagnostic"))
+
 local on_attach = function(_, buff)
-  bind("<leader>e", "lua vim.lsp.buf.definition()",
-       { local_bind = true, buffer = buff })
-  bind("<leader>c", "lua vim.lsp.buf.declaration()",
-       { local_bind = true, buffer = buff })
-  bind("<leader>r", "lua vim.lsp.buf.references()",
-       { local_bind = true, buffer = buff })
-  bind("<leader>t", "lua vim.lsp.buf.type_definition()",
-       { local_bind = true, buffer = buff })
-  bind("<leader>i", "lua vim.lsp.buf.implementation()",
-       { local_bind = true, buffer = buff })
-  bind("<leader>a", "lua vim.lsp.buf.code_action()",
-       { local_bind = true, buffer = buff })
-  bind("<leader>r", "lua vim.lsp.buf.references()",
-       { local_bind = true, buffer = buff })
-  bind("<leader>F", "lua vim.lsp.buf.format({async = true})",
-       { local_bind = true, buffer = buff })
-  bind("K", "lua vim.lsp.buf.hover()",
-       { local_bind = true, buffer = buff })
-  bind("<C-i>", "lua vim.lsp.buf.signature_help()",
-       { local_bind = true, buffer = buff })
-  bind("<C-p>", "lua vim.diagnostic.goto_prev()",
-       { local_bind = true, buffer = buff })
-  bind("<C-n>", "lua vim.diagnostic.goto_next()",
-       { local_bind = true, buffer = buff })
-  bind("<C-h>", "lua vim.diagnostic.open_float()",
-       { local_bind = true, buffer = buff })
-  bind("<space>wa", "lua vim.lsp.buf.add_workspace_folder()",
-       { local_bind = true, buffer = buff })
-  bind("<space>wr", "lua vim.lsp.buf.remove_workspace_folder()",
-       { local_bind = true, buffer = buff })
-  bind("<space>wl", "lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))",
-       { local_bind = true, buffer = buff })
-  bind("<space>rn", "lua vim.lsp.buf.rename()",
-       { local_bind = true, buffer = buff })
+  local list_buffs = function() print(vim.lsp.buf.list_workspace_folders()) end
+  local format_buff = function() vim.lsp.buf.format {async = true} end
+
+  bind("n", "gD", vim.lsp.buf.declaration, with_desc("Goto declaration"))
+  bind("n", "gd", vim.lsp.buf.definition, with_desc("Goto definition"))
+  bind("n", "K", vim.lsp.buf.hover, with_desc("View hover info"))
+  bind("n", "gI", vim.lsp.buf.implementation, with_desc("Show implementation"))
+  bind("n", "<C-h>", vim.lsp.buf.signature_help, with_desc("Signature help"))
+  bind("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, with_desc("Add workspace folder"))
+  bind("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, with_desc("Remove workspace folder"))
+  bind("n", "<leader>wl", list_buffs, with_desc("List workspace buffers"))
+  bind("n", "<leader>D", vim.lsp.buf.type_definition, with_desc("Goto definition"))
+  bind("n", "<leader>rn", vim.lsp.buf.rename, with_desc("Rename symbol"))
+  bind("n", "<leader>ca", vim.lsp.buf.code_action, with_desc("Code action"))
+  bind("n", "gr", vim.lsp.buf.references, with_desc("Show references"))
+  bind("n", "<leader>F", format_buff, with_desc("Format buffer"))
 end
 
 local configs = require("lspconfig.configs")
@@ -91,6 +78,7 @@ local servers = {
   {"intelephense", {}},
   {"jedi_language_server", {}},
   {"hls", {}},
+  {"jsonls", {}},
   {"nimls", {}},
   {"rnix", {}},
   {"shopifyls", {}},
@@ -114,6 +102,7 @@ local servers = {
   }},
   {"svelte", {}},
   {"tsserver", {}},
+  {"eslint", {}},
   {"vuels", {}},
   {"yamlls", {}},
 }

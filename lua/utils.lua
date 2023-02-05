@@ -30,31 +30,6 @@ local safe_require = function (m)
   return ok
 end
 
-local gmap = vim.api.nvim_set_keymap
-local lmap = vim.api.nvim_buf_set_keymap
-
-local create_keybind = function(lhs, cmd, bopts, mopts)
-  mopts = mopts or {}
-  bopts = bopts or {}
-
-  mopts = merge_tables({ noremap = true, silent = true }, mopts)
-  bopts = merge_tables({ mode = "n" }, bopts)
-  local rhs = ""
-
-  if (type(cmd) == "string" and bopts.plain == nil) then
-    rhs = ":" .. cmd .. "<CR>"
-  elseif(type(cmd) == "function") then
-    mopts.callback = cmd
-  end
-
-  if (bopts.local_bind == true) then
-    local buff = bopts.buffer or 0
-    lmap(buff, bopts.mode, lhs, rhs, mopts)
-  else
-    gmap(bopts.mode, lhs, rhs, mopts)
-  end
-end
-
 local count_table_length = function(t)
   local c = 0
   for _ in pairs(t) do c = c + 1 end
@@ -68,7 +43,6 @@ end
 return {
   ensure = ensure_installed,
   safe_require = safe_require,
-  bind = create_keybind,
   merge = merge_tables,
   tlen = count_table_length,
   tval = table_value,
