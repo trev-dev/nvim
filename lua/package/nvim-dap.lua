@@ -1,8 +1,8 @@
 local dap_status_ok, dap = pcall(require, "dap")
 local dapui_status_ok, dapui = pcall(require, "dapui")
-if not dap_status_ok and dapui_status_ok then return end
+if not dap_status_ok and not dapui_status_ok then return end
 
-require("dapui").setup {
+dapui.setup {
   icons = { expanded = "▾", collapsed = "▸", current_frame = "▸" },
   mappings = {
     -- Use a table to apply multiple mappings
