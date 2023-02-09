@@ -32,6 +32,7 @@ packages.use({
       {"nvim-telescope/telescope-ui-select.nvim"}
     }
   },
+  {"rmagatti/auto-session", config = function () require'auto-session'.setup() end},
   {"mattn/emmet-vim", mod = "emmet"},
   {"norcalli/nvim-colorizer.lua", mod = "nvim-colorizer"},
   {"lewis6991/gitsigns.nvim", mod = "gitsigns", requires = { "nvim-lua/plenary.nvim" }},
@@ -48,7 +49,6 @@ packages.use({
   {"petertriho/nvim-scrollbar", mod = "nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens", mod = "nvim-hlslns"},
   {"folke/which-key.nvim", mod = "which-key"},
-  {"Shatur/neovim-session-manager", mod = "session-manager", requires = "nvim-lua/plenary.nvim"},
 
   -- LSP & Completion
   {"williamboman/mason.nvim", mod = "mason",

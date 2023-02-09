@@ -33,6 +33,9 @@ local conditions = {
     local gitdir = vim.fn.finddir(".git", filepath .. ";")
     return gitdir and #gitdir > 0 and #gitdir < #filepath
   end,
+  in_session = function()
+    return vim.v.this_session ~= ""
+  end
 }
 
 -- Config
@@ -123,16 +126,50 @@ ins_left {
   padding = { right = 1 },
 }
 
+local with_auto_sessions, auto_sessions = pcall(require, 'auto-session-library')
+
+if with_auto_sessions then
+  ins_left {
+    auto_sessions.current_session_name,
+    color = { fg = colors.blue },
+    padding = { left = 1, right = 0 },
+    cond = conditions.in_session
+  }
+
+  ins_left {
+    function()
+      return '::'
+    end,
+    color = { fg = colors.fg },
+    padding = { left = 0, right = 0 },
+    cond = function()
+      return (conditions.buffer_not_empty() and conditions.in_session())
+    end
+  }
+
+  ins_left {
+    "filename",
+    cond = function()
+      return (conditions.buffer_not_empty() and conditions.in_session())
+    end,
+    color = { fg = colors.magenta, gui = "bold" },
+    padding = { left = 0, right = 1 },
+  }
+end
+
+ins_left {
+  "filename",
+  cond = function()
+    return (conditions.buffer_not_empty() and not conditions.in_session())
+  end,
+  color = { fg = colors.magenta, gui = "bold" },
+  padding = { left = 1, right = 1 },
+}
+
 ins_left {
   -- filesize component
   "filesize",
   cond = conditions.buffer_not_empty,
-}
-
-ins_left {
-  "filename",
-  cond = conditions.buffer_not_empty,
-  color = { fg = colors.magenta, gui = "bold" },
 }
 
 ins_left { "location" }
