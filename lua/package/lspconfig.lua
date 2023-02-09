@@ -35,6 +35,11 @@ local config = {
   },
 }
 
+local withcmp, cmp = pcall (require, 'cmp_nvim_lsp')
+if withcmp then
+  config['capabilities'] = cmp.default_capabilities()
+end
+
 local with_desc = function(desc) return { buffer = buff, desc = desc } end
 
 local bind = vim.keymap.set
