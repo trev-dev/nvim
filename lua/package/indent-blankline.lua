@@ -8,14 +8,15 @@ indentbl.setup({
   show_trailing_blankline_indent = true,
   char_blankline = "┆",
   context_char_blankline = "┆",
-  indent_blankline_filetype_exclude = {
-    "lspinfo",
-    "packer",
-    "checkhealth",
-    "help",
-    "txt",
-    "md",
-    "org",
-    "norg",
-  }
 })
+
+vim.g.indent_blankline_filetype_exclude = {
+  "lspinfo",
+  "packer",
+  "checkhealth",
+  "help",
+  "txt",
+  "md",
+  "org",
+  "norg",
+}
