@@ -58,6 +58,15 @@ cmp.setup.filetype("gitcommit", {
   })
 })
 
+cmp.setup.filetype("norg", {
+  sources = cmp.config.sources({
+    { name = "neorg" },
+  }, {
+    { name = "buffer" },
+  })
+})
+
+
 require("cmp").setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
   sources = {
     { name = "dap" },
