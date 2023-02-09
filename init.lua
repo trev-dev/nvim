@@ -70,7 +70,7 @@ packages.use({
   "ledger/vim-ledger",
   "pangloss/vim-javascript",
   "zah/nim.vim",
-  {"rcarriga/nvim-dap-ui", tag = "v2.6.0", requires = "mfussenegger/nvim-dap", mod = "nvim-dap"},
+  {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap", mod = "nvim-dap"},
   "mfussenegger/nvim-jdtls",
 
   -- Theme
