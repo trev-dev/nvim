@@ -22,6 +22,7 @@ packages.use({
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "tpope/vim-sleuth",
+  {"kristijanhusak/vim-dadbod-ui", requires = "tpope/vim-dadbod", mod = "dadbod"},
   "dhruvasagar/vim-table-mode",
   {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
   {"akinsho/toggleterm.nvim", mod = "toggleterm"},
