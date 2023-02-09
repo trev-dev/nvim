@@ -49,6 +49,7 @@ packages.use({
   {"petertriho/nvim-scrollbar", mod = "nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens", mod = "nvim-hlslns"},
   {"folke/which-key.nvim", mod = "which-key"},
+  {"nvim-neorg/neorg", run = ":Neorg sync-parsers", mod = "neorg"},
 
   -- LSP & Completion
   {"williamboman/mason.nvim", mod = "mason",
