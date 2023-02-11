@@ -2,6 +2,7 @@ local jdtls = require "jdtls"
 local home = os.getenv "HOME"
 local mason_home = home .. "/.local/share/nvim/mason"
 local jdtls_path = mason_home .. "/packages/jdtls"
+local lombok_jar = os.getenv "LOMBOK_JAR"
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 local workspace_root = home .. "/.cache/jdtls/"
 local workspace = workspace_root .. project_name
@@ -68,9 +69,7 @@ local config = {
   cmd = {
 
     -- 💀
-    'java', -- or '/path/to/java17_or_newer/bin/java'
-            -- depends on if `java` is in your $PATH env variable and if it points to the right version.
-
+    'java',
     '-Declipse.application=org.eclipse.jdt.ls.core.id1',
     '-Dosgi.bundles.defaultStartLevel=4',
     '-Declipse.product=org.eclipse.jdt.ls.core.product',
@@ -80,6 +79,7 @@ local config = {
     '--add-modules=ALL-SYSTEM',
     '--add-opens', 'java.base/java.util=ALL-UNNAMED',
     '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
+    '-javaagent:'..lombok_jar,
 
     -- 💀
     '-jar', vim.fn.glob(jdtls_path .. "/plugins/org.eclipse.equinox.launcher_*.jar"),
