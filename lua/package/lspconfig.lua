@@ -89,7 +89,7 @@ local servers = {
   {"rnix", {}},
   {"shopifyls", {}},
   {"solargraph", {}},
-  {"sumneko_lua", {
+  {"lua_ls", {
     Lua = {
       runtime = {
         version = "LuaJIT"
