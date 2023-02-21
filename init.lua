@@ -22,6 +22,7 @@ packages.use({
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "tpope/vim-sleuth",
+  {"kristijanhusak/vim-dadbod-ui", requires = "tpope/vim-dadbod", mod = "dadbod"},
   "dhruvasagar/vim-table-mode",
   {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
   {"akinsho/toggleterm.nvim", mod = "toggleterm"},
@@ -32,6 +33,7 @@ packages.use({
       {"nvim-telescope/telescope-ui-select.nvim"}
     }
   },
+  {"rmagatti/auto-session", config = function () require'auto-session'.setup() end},
   {"mattn/emmet-vim", mod = "emmet"},
   {"norcalli/nvim-colorizer.lua", mod = "nvim-colorizer"},
   {"lewis6991/gitsigns.nvim", mod = "gitsigns", requires = { "nvim-lua/plenary.nvim" }},
@@ -48,7 +50,7 @@ packages.use({
   {"petertriho/nvim-scrollbar", mod = "nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens", mod = "nvim-hlslns"},
   {"folke/which-key.nvim", mod = "which-key"},
-  {"Shatur/neovim-session-manager", mod = "session-manager", requires = "nvim-lua/plenary.nvim"},
+  {"nvim-neorg/neorg", requires = "nvim-neorg/neorg-telescope", mod = "neorg"},
 
   -- LSP & Completion
   {"williamboman/mason.nvim", mod = "mason",
@@ -70,7 +72,7 @@ packages.use({
   "ledger/vim-ledger",
   "pangloss/vim-javascript",
   "zah/nim.vim",
-  {"rcarriga/nvim-dap-ui", tag = "v2.6.0", requires = "mfussenegger/nvim-dap", mod = "nvim-dap"},
+  {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap", mod = "nvim-dap"},
   "mfussenegger/nvim-jdtls",
 
   -- Theme

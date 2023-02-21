@@ -6,7 +6,7 @@ if ok then
   lspsig.setup({
     bind = true,
     handler_opts = {
-      border = "rounded"
+      border = "single"
     },
     doc_lines = 0,
     hint_enable = false
@@ -28,11 +28,17 @@ local config = {
   underline = true,
   severity_sort = true,
   float = {
+    border = "single",
     source = "always",
     header = "",
     prefix = "",
   },
 }
+
+local withcmp, cmp = pcall (require, 'cmp_nvim_lsp')
+if withcmp then
+  config['capabilities'] = cmp.default_capabilities()
+end
 
 local with_desc = function(desc) return { buffer = buff, desc = desc } end
 
@@ -83,7 +89,7 @@ local servers = {
   {"rnix", {}},
   {"shopifyls", {}},
   {"solargraph", {}},
-  {"sumneko_lua", {
+  {"lua_ls", {
     Lua = {
       runtime = {
         version = "LuaJIT"
@@ -122,7 +128,7 @@ end
 vim.diagnostic.config(config)
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, { border = "rounded", }
+  vim.lsp.handlers.hover, { border = "single", }
 )
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
