@@ -5,7 +5,11 @@ neorg.setup {
   load = {
     ['core.defaults'] = {},
     ['core.export'] = {},
-    ['core.norg.concealer'] = {},
+    ['core.norg.concealer'] = {
+      config = {
+        icon_preset = 'diamond'
+      }
+    },
     ['core.norg.completion'] = {
       config = {
         engine = 'nvim-cmp'
@@ -15,6 +19,7 @@ neorg.setup {
     ['core.neorgcmd'] = {},
     ['core.highlights'] = {},
     ['core.integrations.treesitter'] = {},
+    ['core.integrations.telescope'] = {},
     ['core.norg.dirman'] = {
       config = {
         workspaces = {
