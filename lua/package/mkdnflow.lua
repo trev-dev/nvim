@@ -3,9 +3,6 @@ if not ok then return end
 
 mdf.setup({
   filetypes = {md = true, markdown = true, org = true},
-  links = {
-    conceal = true
-  },
   mappings = {
     MkdnNewListItem = {'i', '<CR>'},
     MkdnYankAnchorLink = {'n', 'yl'},
