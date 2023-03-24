@@ -22,6 +22,7 @@ packages.use({
   "tpope/vim-fugitive",
   "tpope/vim-rhubarb",
   "tpope/vim-sleuth",
+  "tpope/vim-obsession",
   {"kristijanhusak/vim-dadbod-ui", requires = "tpope/vim-dadbod", mod = "dadbod"},
   "dhruvasagar/vim-table-mode",
   {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
@@ -33,7 +34,6 @@ packages.use({
       {"nvim-telescope/telescope-ui-select.nvim"}
     }
   },
-  {"rmagatti/auto-session", config = function () require'auto-session'.setup() end},
   {"mattn/emmet-vim", mod = "emmet"},
   {"norcalli/nvim-colorizer.lua", mod = "nvim-colorizer"},
   {"lewis6991/gitsigns.nvim", mod = "gitsigns", requires = { "nvim-lua/plenary.nvim" }},
@@ -45,16 +45,13 @@ packages.use({
   {"folke/todo-comments.nvim", mod = "todo-comments", requires = "nvim-lua/plenary.nvim"},
   {"nvim-treesitter/nvim-treesitter", mod = "treesitter"},
   {"lukas-reineke/indent-blankline.nvim", mod = "indent-blankline"},
-  {"mickael-menu/zk-nvim", mod = "zk"},
-  {"jakewvincent/mkdnflow.nvim", mod = "mkdnflow"},
   {"petertriho/nvim-scrollbar", mod = "nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens", mod = "nvim-hlslns"},
   {"folke/which-key.nvim", mod = "which-key"},
-  {"nvim-neorg/neorg", requires = "nvim-neorg/neorg-telescope", mod = "neorg"},
 
   -- LSP & Completion
   {"williamboman/mason.nvim", mod = "mason",
-  requires = "williamboman/mason-lspconfig"},
+    requires = "williamboman/mason-lspconfig"},
   {"neovim/nvim-lspconfig", mod = "lspconfig"},
   "ray-x/lsp_signature.nvim",
   {"hrsh7th/nvim-cmp", mod = "nvim-cmp"},
