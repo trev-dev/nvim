@@ -1,7 +1,6 @@
 local utils = require('utils')
 
 utils.safe_require('settings')
-utils.safe_require('autocommands')
 utils.safe_require('bindings')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -30,3 +29,5 @@ function collectConfigs()
 end
 
 for _, mod in pairs(collectConfigs()) do utils.safe_require(mod) end
+
+utils.safe_require('autocommands')
