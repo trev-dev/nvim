@@ -18,11 +18,11 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 
-function toConfigModule(path)
+local toConfigModule = function(path)
   return "plugins.config." .. vim.fn.matchstr(path, "\\v[a-z-]+\\ze\\.lua")
 end
 
-function collectConfigs()
+local collectConfigs = function()
   local config_path = os.getenv("HOME") .. "/.config/nvim/lua/plugins/config/*.lua"
   local configs = vim.split(vim.fn.glob(config_path), "\n")
   return utils.map(configs, toConfigModule)
