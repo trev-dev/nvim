@@ -18,8 +18,6 @@ local signs = { Error = "»", Warn = "»", Hint = "›", Info = "›" }
 require("lspconfig.ui.windows").default_options.border = "single"
 
 local config = {
-  -- disable virtual text
-  virtual_text = false,
   -- show signs
   signs = {
     active = signs,
