@@ -14,5 +14,5 @@ nvt.setup {
   }
 }
 
-vim.keymap.set("n", "<C-k>b", ":NvimTreeToggle<cr>")
+vim.keymap.set("n", "<leader>n", ":NvimTreeToggle<cr>")
 
