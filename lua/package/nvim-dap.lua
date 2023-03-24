@@ -6,7 +6,7 @@ dapui.setup {
   layouts = {
     {
       elements = {
-      -- Elements can be strings or table with id and size keys.
+        -- Elements can be strings or table with id and size keys.
         { id = "scopes", size = 0.25 },
         "breakpoints",
         -- "stacks",
@@ -30,6 +30,20 @@ dapui.setup {
     border = "single", -- Border style. Can be "single", "double" or "rounded"
     mappings = {
       close = { "q", "<Esc>" },
+    }
+  },
+  icons = { expanded = '▾', collapsed = '▸', current_frame = '*' },
+  controls = {
+    icons = {
+      pause = '⏸',
+      play = '▶',
+      step_into = '⏎',
+      step_over = '⏭',
+      step_out = '⏮',
+      step_back = '',
+      run_last = '▶▶',
+      terminate = '⏹',
+      disconnect = 'ﮤ'
     }
   }
 }
