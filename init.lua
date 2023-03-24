@@ -1,77 +1,32 @@
-local utils = require("utils")
+local utils = require('utils')
 
-utils.ensure("wbthomason", "packer.nvim")
-
-utils.safe_require('vim-settings')
+utils.safe_require('settings')
 utils.safe_require('autocommands')
-utils.safe_require('vim-bindings')
+utils.safe_require('bindings')
 
--- Packer init & package configurations.
-local packages = require("packages")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
 
-packages.use({
-  "wbthomason/packer.nvim",
+require("lazy").setup("plugins")
 
-  -- Utilities
-  {"kyazdani42/nvim-web-devicons", mod = "nvim-web-devicons"},
-  {"Vonr/align.nvim", mod = "align"},
-  "jamessan/vim-gnupg",
-  "jiangmiao/auto-pairs",
-  "markonm/traces.vim",
-  "tpope/vim-surround",
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
-  "tpope/vim-sleuth",
-  "tpope/vim-obsession",
-  {"kristijanhusak/vim-dadbod-ui", requires = "tpope/vim-dadbod", mod = "dadbod"},
-  "dhruvasagar/vim-table-mode",
-  {"phaazon/hop.nvim", mod = "hop", branch = "v1" },
-  {"akinsho/toggleterm.nvim", mod = "toggleterm"},
-  {"nvim-telescope/telescope.nvim", mod = "telescope",
-    requires = {
-      {"nvim-lua/popup.nvim"},
-      {"nvim-lua/plenary.nvim"},
-      {"nvim-telescope/telescope-ui-select.nvim"}
-    }
-  },
-  {"mattn/emmet-vim", mod = "emmet"},
-  {"norcalli/nvim-colorizer.lua", mod = "nvim-colorizer"},
-  {"lewis6991/gitsigns.nvim", mod = "gitsigns", requires = { "nvim-lua/plenary.nvim" }},
-  {"kyazdani42/nvim-tree.lua", mod = "nvim-tree", requires = { "kyazdani42/nvim-web-devicons" }},
-  {"akinsho/bufferline.nvim", mod = "bufferline"},
-  "b3nj5m1n/kommentary",
-  {"nvim-lualine/lualine.nvim", mod = "lualine",
-    requires = { "kyazdani42/nvim-web-devicons", opt = true }},
-  {"folke/todo-comments.nvim", mod = "todo-comments", requires = "nvim-lua/plenary.nvim"},
-  {"nvim-treesitter/nvim-treesitter", mod = "treesitter"},
-  {"lukas-reineke/indent-blankline.nvim", mod = "indent-blankline"},
-  {"petertriho/nvim-scrollbar", mod = "nvim-scrollbar"},
-  {"kevinhwang91/nvim-hlslens", mod = "nvim-hlslns"},
-  {"folke/which-key.nvim", mod = "which-key"},
+function toConfigModule(path)
+  return "plugins.config." .. vim.fn.matchstr(path, "\\v[a-z-]+\\ze\\.lua")
+end
 
-  -- LSP & Completion
-  {"williamboman/mason.nvim", mod = "mason",
-    requires = "williamboman/mason-lspconfig"},
-  {"neovim/nvim-lspconfig", mod = "lspconfig"},
-  "ray-x/lsp_signature.nvim",
-  {"hrsh7th/nvim-cmp", mod = "nvim-cmp"},
-  "hrsh7th/cmp-nvim-lsp",
-  "hrsh7th/cmp-buffer",
-  "hrsh7th/cmp-path",
-  "hrsh7th/cmp-cmdline",
-  "hrsh7th/cmp-vsnip",
-  "hrsh7th/vim-vsnip",
-  "hrsh7th/vim-vsnip-integ",
-  "rcarriga/cmp-dap",
-  "rafamadriz/friendly-snippets",
+function collectConfigs()
+  local config_path = os.getenv("HOME") .. "/.config/nvim/lua/plugins/config/*.lua"
+  local configs = vim.split(vim.fn.glob(config_path), "\n")
+  return utils.map(configs, toConfigModule)
+end
 
-  -- Additional Syntax Support
-  "ledger/vim-ledger",
-  "pangloss/vim-javascript",
-  "zah/nim.vim",
-  {"rcarriga/nvim-dap-ui", requires = "mfussenegger/nvim-dap", mod = "nvim-dap"},
-  "mfussenegger/nvim-jdtls",
-
-  -- Theme
-  {"marko-cerovac/material.nvim", mod = "material"},
-})
+for _, mod in pairs(collectConfigs()) do utils.safe_require(mod) end

@@ -10,15 +10,10 @@ local merge_tables = function (tbl_a, tbl_b)
   return new_table
 end
 
-local ensure_installed = function(user, repo)
-  local pack_path = fn.stdpath("data") .. "/site/pack"
-  local install_path = fmt("%s/packer/start/%s", pack_path, repo, repo)
-  if fn.empty(fn.glob(install_path)) > 0 then
-    exec(
-      fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path)
-    )
-    exec(fmt("packadd %s", repo))
-  end
+local map_table = function(tbl, fn)
+  local new_table = {}
+  for k, v in pairs(tbl) do new_table[k] = fn(v) end
+  return new_table
 end
 
 local safe_require = function (m)
@@ -41,9 +36,9 @@ local table_value = function(tbl, i)
 end
 
 return {
-  ensure = ensure_installed,
   safe_require = safe_require,
   merge = merge_tables,
+  map = map_table,
   tlen = count_table_length,
   tval = table_value,
 }

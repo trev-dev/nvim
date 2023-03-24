@@ -1,6 +1,3 @@
-local ok, lualine = pcall(require, "lualine")
-if not ok then return end
-
 -- Eviline config for lualine
 -- Author: shadmansaleh
 -- Credit: glepnir
@@ -126,41 +123,10 @@ ins_left {
   padding = { right = 1 },
 }
 
-local with_auto_sessions, auto_sessions = pcall(require, 'auto-session-library')
-
-if with_auto_sessions then
-  ins_left {
-    auto_sessions.current_session_name,
-    color = { fg = colors.blue },
-    padding = { left = 1, right = 0 },
-    cond = conditions.in_session
-  }
-
-  ins_left {
-    function()
-      return '::'
-    end,
-    color = { fg = colors.fg },
-    padding = { left = 0, right = 0 },
-    cond = function()
-      return (conditions.buffer_not_empty() and conditions.in_session())
-    end
-  }
-
-  ins_left {
-    "filename",
-    cond = function()
-      return (conditions.buffer_not_empty() and conditions.in_session())
-    end,
-    color = { fg = colors.magenta, gui = "bold" },
-    padding = { left = 0, right = 1 },
-  }
-end
-
 ins_left {
   "filename",
   cond = function()
-    return (conditions.buffer_not_empty() and not conditions.in_session())
+    return conditions.buffer_not_empty()
   end,
   color = { fg = colors.magenta, gui = "bold" },
   padding = { left = 1, right = 1 },
@@ -256,4 +222,4 @@ ins_right {
   padding = { left = 1 },
 }
 
-lualine.setup(config)
+require("lualine").setup(config)

@@ -1,17 +1,13 @@
-local ok, lspcfg = pcall(require, "lspconfig")
-if not ok then return end
+local lspcfg = require("lspconfig")
 
-local ok, lspsig = pcall(require, "lsp_signature")
-if ok then
-  lspsig.setup({
-    bind = true,
-    handler_opts = {
-      border = "single"
-    },
-    doc_lines = 0,
-    hint_enable = false
-  })
-end
+require("lsp_signature").setup {
+  bind = true,
+  handler_opts = {
+    border = "single"
+  },
+  doc_lines = 0,
+  hint_enable = false
+}
 
 local signs = { Error = "»", Warn = "»", Hint = "›", Info = "›" }
 

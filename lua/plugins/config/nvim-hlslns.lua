@@ -1,7 +1,4 @@
-local ok, hlsl = pcall(require, "hlslens")
-if not ok then return end
-
-hlsl.setup()
+require("hlslens").setup()
 
 local bind = vim.keymap.set
 

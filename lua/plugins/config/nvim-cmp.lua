@@ -1,6 +1,4 @@
-local ok, cmp = pcall(require, "cmp")
-if not ok then return end
-
+local cmp = require("cmp")
 vim.o.completeopt = "menu,menuone,noselect"
 vim.o.wildmenu = false
 

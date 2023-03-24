@@ -1,7 +1,4 @@
-local ok, nvt = pcall(require, "nvim-tree")
-if not ok then return end
-
-nvt.setup {
+require("nvim-tree").setup {
   view = {
     width = 50
   },

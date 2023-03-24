@@ -1,6 +1,5 @@
-local dap_status_ok, dap = pcall(require, "dap")
-local dapui_status_ok, dapui = pcall(require, "dapui")
-if not dap_status_ok and not dapui_status_ok then return end
+local dapui = require("dapui")
+local dap = require ("dap")
 
 dapui.setup {
   layouts = {

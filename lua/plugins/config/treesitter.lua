@@ -1,6 +1,3 @@
-local ok = pcall(require, "nvim-treesitter")
-if not ok then return end
-
 local disable = function(lang, buf)
   if lang == "help" then return true end
   local max_filesize = 100 * 1024 -- 200 KB
