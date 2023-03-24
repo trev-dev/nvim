@@ -25,12 +25,13 @@ require("nvim-treesitter.configs").setup({
     "toml",
     "typescript",
     "vim",
+    "vue",
     "yaml",
   },
   sync_install = false,
+  indent = { enable = true, disable = { 'python' } },
   highlight = {
     enable = true,
-    additional_vim_regex_highlighting = {"org"},
     disable = disable
   }
 })
