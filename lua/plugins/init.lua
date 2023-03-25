@@ -1,4 +1,5 @@
 return {
+  -- Editor
   "kyazdani42/nvim-web-devicons",
   "jamessan/vim-gnupg",
   "jiangmiao/auto-pairs",
@@ -32,6 +33,7 @@ return {
   {"petertriho/nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens"},
   {"folke/which-key.nvim"},
+  "lervag/wiki.vim",
 
   -- LSP & Completion
   {"williamboman/mason.nvim", dependencies = "williamboman/mason-lspconfig"},
