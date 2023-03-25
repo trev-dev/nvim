@@ -33,7 +33,8 @@ return {
   {"petertriho/nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens"},
   {"folke/which-key.nvim"},
-  "lervag/wiki.vim",
+  {"lervag/wiki.vim", init = require('plugins.config.wiki').init},
+  {"jakewvincent/mkdnflow.nvim"},
 
   -- LSP & Completion
   {"williamboman/mason.nvim", dependencies = "williamboman/mason-lspconfig"},
