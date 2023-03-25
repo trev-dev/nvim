@@ -167,8 +167,8 @@ local config = {
 }
 
 vim.api.nvim_create_autocmd({ "BufWritePost" }, {
-	pattern = { "*.java" },
-	callback = safe_codelens_refresh
+  pattern = { "*.java" },
+  callback = safe_codelens_refresh
 })
 
 -- This starts a new client & server,
