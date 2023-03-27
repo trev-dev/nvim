@@ -1,41 +1,59 @@
 local g = vim.g
 
--- This plugin won't load properly without an init
-local init_func = function()
-  g.wiki_root = "/home/trev/Wiki/"
-  g.wiki_filetypes = {"md"}
-  g.wiki_link_extension = ".md"
-  g.wiki_link_target_type = "md"
+local function splitOnCommas(str)
+  return vim.fn.split(str, '[ , ]\\+')
 end
 
-vim.cmd [[
-func s:frontMatterTagParser(str)
-  return a:str
-    \ ->substitute('"\|''', '', 'g')
-    \ ->matchstr('^tags:\s*\[\zs.*\ze]')
-    \ ->split('[ , ]\+')
-endfunc
+local function stripQuotes(str)
+  return vim.fn.substitute(str, '\"\\|\'', '', 'g')
+end
 
-let g:wiki_tag_parsers = [{ 'match': { x -> x =~# '^tags: \+[' },
-                         \  'parse': { x -> s:frontMatterTagParser(x) }}]
+local function extractTags(str)
+  return vim.fn.matchstr(str, '^tags:\\s*\\[\\zs.*\\ze]')
+end
 
-func s:formatJournalTitle(isodate, path)
-  let l:time = strptime("%Y-%m-%d", a:isodate)
-  return strftime("%b %d", l:time) . ": " . wiki#toc#get_page_title(a:path)
-endfunc
+local function FrontMatterTagParser(str)
+  return splitOnCommas(stripQuotes(extractTags(str)))
+end
 
-func s:formatJournalLink(path)
-  return wiki#paths#relative(wiki#get_root() . a:path, expand('#:p:h'))
-endfunc
+local function FrontMatterTagMatch(str)
+  return not not vim.regex('^tags: \\+\\['):match_str(str)
+end
 
-let g:wiki_journal_index = {
-      \ 'link_text_parser': {_basename, date, path -> s:formatJournalTitle(date, path)},
-      \ 'link_url_parser': {_basename, _date, path -> s:formatJournalLink(path)} }
-]]
+local function FormatJournalTitle(isodate, path)
+  local time = vim.fn.strptime('%Y-%m-%d', isodate)
+  return vim.fn.strftime('%b %d', time) .. ': ' .. vim.fn['wiki#toc#get_page_title'](path)
+end
 
-vim.keymap.set("n", "<leader>fwp", ":WikiPages<CR>")
-vim.keymap.set("n", "<leader>fwt", ":WikiTags<CR>")
+local function FormatJournalLink(path)
+  return vim.fn['wiki#paths#relative'](
+    vim.fn['wiki#get_root']() .. path, vim.fn.expand('%:p:h')
+  )
+end
 
+vim.keymap.set('n', '<leader>fwp', ':WikiPages<CR>')
+vim.keymap.set('n', '<leader>fwt', ':WikiTags<CR>')
+
+-- This plugin won't load properly without an init
 return {
-  init = init_func
+  init = function()
+    g.wiki_root = '/home/trev/Wiki/'
+    g.wiki_filetypes = {'md'}
+    g.wiki_link_extension = '.md'
+    g.wiki_link_target_type = 'md'
+    g.wiki_tag_parsers = {
+      {
+        match = FrontMatterTagMatch,
+        parse = FrontMatterTagParser
+      }
+    }
+    g.wiki_journal_index = {
+      link_text_parser = function(_, date, path)
+        return FormatJournalTitle(date, path)
+      end,
+      link_url_parser = function(_, _, path)
+        return FormatJournalLink(path)
+      end
+    }
+  end
 }
