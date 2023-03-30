@@ -28,13 +28,14 @@ return {
   "b3nj5m1n/kommentary",
   {"nvim-lualine/lualine.nvim", dependencies = { "kyazdani42/nvim-web-devicons", opt = true }},
   {"folke/todo-comments.nvim", dependencies = "nvim-lua/plenary.nvim"},
+  {"nvim-treesitter/playground"},
   {"nvim-treesitter/nvim-treesitter"},
   {"lukas-reineke/indent-blankline.nvim"},
   {"petertriho/nvim-scrollbar"},
   {"kevinhwang91/nvim-hlslens"},
   {"folke/which-key.nvim"},
   {"lervag/wiki.vim", init = require('plugins.config.wiki').init},
-  {"jakewvincent/mkdnflow.nvim"},
+  {"SidOfc/mkdx"},
 
   -- LSP & Completion
   {"williamboman/mason.nvim", dependencies = "williamboman/mason-lspconfig"},
@@ -58,6 +59,6 @@ return {
   "mfussenegger/nvim-jdtls",
 
   -- Theme
-  {"marko-cerovac/material.nvim"},
+  {"navarasu/onedark.nvim"},
 }
 
