@@ -44,8 +44,6 @@
                                          {:group :Visual
                                           :timeout 350}))}))
 
-(vim.api.nvim_create_autocmd [:TextYankPost]
-                             {:group (vim.api.nvim_create_augroup )})
 (vim.keymap.set :n :<leader>l ":noh<CR>" {:desc "clear search highlights"})
 
 ;;; Plugins
