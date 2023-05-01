@@ -36,6 +36,16 @@
   (set g.loaded_netrw 1)
   (set g.loaded_netrwPlugin 1))
 
+(let [au vim.api.nvim_create_autocmd
+      augrp vim.api.nvim_create_augroup]
+  (au [:TextYankPost] {:group (augrp :HighlightYank {:clear true})
+                       :pattern "*"
+                       :callback (λ [] (vim.highlight.on_yank
+                                         {:group :Visual
+                                          :timeout 350}))}))
+
+(vim.api.nvim_create_autocmd [:TextYankPost]
+                             {:group (vim.api.nvim_create_augroup )})
 (vim.keymap.set :n :<leader>l ":noh<CR>" {:desc "clear search highlights"})
 
 ;;; Plugins
