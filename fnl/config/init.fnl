@@ -73,12 +73,14 @@
   :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   :nvim-treesitter/nvim-treesitter {:mod :nvim-treesitter}
   :tpope/vim-commentary {}
+  :tpope/vim-fugitive {}
   :tpope/vim-obsession {}
   :tpope/vim-repeat {}
   :tpope/vim-surround {}
   :wbthomason/packer.nvim {}
   :windwp/nvim-autopairs {:mod :nvim-autopairs}
   :folke/which-key.nvim {}
+  :jamessan/vim-gnupg {}
   :FooSoft/vim-argwrap {:mod :vim-argwrap}
 
   ;; LSP
