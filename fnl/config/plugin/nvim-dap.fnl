@@ -35,6 +35,7 @@
   (wk.register {:d {:name :Debug} :prefix :<leader>}))
 
 (let [map vim.keymap.set]
+  (map :n :<F3> dap.disconnect)
   (map :n :<F5> dap.continue)
   (map :n :<F10> dap.step_over)
   (map :n :<F11> dap.step_into)
