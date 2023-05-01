@@ -1,33 +1,35 @@
-local utils = require('utils')
+-- Welcome to your magic kit!
+-- This is the first file Neovim will load.
+-- We'll ensure we have a plugin manager and Aniseed.
+-- This will allow us to load more Fennel based code and download more plugins.
 
-utils.safe_require('settings')
-utils.safe_require('bindings')
+-- Make some modules easier to access.
+local execute = vim.api.nvim_command
+local fn = vim.fn
+local fmt = string.format
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-  vim.fn.system({
-    "git",
-    "clone",
-    "--filter=blob:none",
-    "https://github.com/folke/lazy.nvim.git",
-    "--branch=stable", -- latest stable release
-    lazypath,
-  })
-end
-vim.opt.rtp:prepend(lazypath)
+-- Work out where our plugins will be stored.
+local pack_path = fn.stdpath("data") .. "/site/pack"
 
-require("lazy").setup("plugins")
-
-local toConfigModule = function(path)
-  return "plugins.config." .. vim.fn.matchstr(path, "\\v[a-z-]+\\ze\\.lua")
+function ensure (user, repo)
+  -- Ensures a given github.com/USER/REPO is cloned in the pack/packer/start directory.
+  local install_path = fmt("%s/packer/start/%s", pack_path, repo, repo)
+  if fn.empty(fn.glob(install_path)) > 0 then
+    execute(fmt("!git clone https://github.com/%s/%s %s", user, repo, install_path))
+    execute(fmt("packadd %s", repo))
+  end
 end
 
-local collectConfigs = function()
-  local config_path = os.getenv("HOME") .. "/.config/nvim/lua/plugins/config/*.lua"
-  local configs = vim.split(vim.fn.glob(config_path), "\n")
-  return utils.map(configs, toConfigModule)
-end
+-- Packer is our plugin manager.
+ensure("wbthomason", "packer.nvim")
 
-for _, mod in pairs(collectConfigs()) do utils.safe_require(mod) end
+-- Aniseed compiles our Fennel code to Lua and loads it automatically.
+ensure("Olical", "aniseed")
 
-utils.safe_require('autocommands')
+-- Enable Aniseed's automatic compilation and loading of Fennel source code.
+-- Aniseed looks for this when it's loaded then loads the rest of your
+-- configuration if it's set.
+vim.g["aniseed#env"] = { module = "config.init" }
+
+-- Now head to fnl/magic/init.fnl to continue your journey.
+-- Try pressing gf on the file path to [g]o to the [f]ile.
