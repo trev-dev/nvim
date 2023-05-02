@@ -45,6 +45,9 @@
         buf vim.lsp.buf
         opts {:buffer event.buf}]
     (tset (. vim.bo event.buf) :omnifunc "v:lua.vim.lsp.omnifunc")
+    (map :n :H vim.diagnostic.open_float)
+    (map :n "[d" vim.diagnostic.goto_prev)
+    (map :n "]d" vim.diagnostic.goto_next)
     (map :n :gD buf.declaration opts)
     (map :n :gd buf.definition opts)
     (map :n :K buf.hover opts)
