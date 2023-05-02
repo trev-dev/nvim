@@ -14,8 +14,6 @@
 
 (λ on-attach [_ buff]
   (let [bind vim.keymap.set]
-    (λ list-buffs [] (print (vim.lsp.buf.list_workspace_folders)))
-    (λ format-buff [] (vim.lsp.buf.format {:async true}))
     (λ with-desc [desc] {:buffer buff : desc})
 
     (safe-codelens-refresh)
