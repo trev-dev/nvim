@@ -111,6 +111,7 @@
 ;;; Autoloads
 ;; Mostly filetype specific settings
 (let [filetypes [:java
+                 :markdown
                  :python]]
   (each [_ ft (ipairs filetypes)]
     (util.safe-require (.. "config.filetype." ft))))
