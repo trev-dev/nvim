@@ -3,7 +3,7 @@
 Written by an Emacs refugee who wanted more out of his IDE.  Intended to be used
 with Arch Linux.
 
-*NOTE*:  This is a mirror of my upstream repository.  I suggest you check out [Sourcehut](https://sr.ht/~trevdev/nvim/).
+*NOTE*:  This is a mirror of my upstream repository.  I suggest you check out [Sourcehut](https://git.sr.ht/~trevdev/nvim).
 
 ## Features
 
