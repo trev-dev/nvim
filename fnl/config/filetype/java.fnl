@@ -30,8 +30,8 @@
     (bind :n :crc jdtls.extract_constant (with-desc "Extract constant"))
     (bind :n :crc jdtls.extract_constant (with-desc "Extract constant"))
     (bind :n :crm jdtls.extract_method (with-desc "Extract method"))
-    (bind :n :<leader>df jdtls.test_class (with-desc "Debug test class"))
-    (bind :n :<leader>dn jdtls.test_nearest_method
+    (bind :n :<localleader>df jdtls.test_class (with-desc "Debug test class"))
+    (bind :n :<localleader>dn jdtls.test_nearest_method
           (with-desc "Debug nearest test method"))))
 
 (local java-debug-jar
