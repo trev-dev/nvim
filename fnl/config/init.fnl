@@ -70,6 +70,8 @@
   :nvim-tree/nvim-tree.lua {:mod :nvim-tree}
   :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   :nvim-treesitter/nvim-treesitter {:mod :nvim-treesitter}
+  :nvim-neorg/neorg {:mod :neorg
+                     :requires [[:nvim-lua/plenary.nvim]]}
   :tpope/vim-commentary {}
   :tpope/vim-fugitive {}
   :tpope/vim-obsession {}
