@@ -55,9 +55,9 @@
     (map :n :<localleader>wl (λ [] (vim.inspect (buf.list_workspace_folders))) opts)
     (map :n :<localleader>D buf.type_definition opts)
     (map :n :<localleader>rn buf.rename opts)
-    (map {:n :v} :<localleader>ca buf.code_action opts)
+    (map [:n :v] :<localleader>ca buf.code_action opts)
     (map :n :gr buf.references opts)
-    (map :n :<localleader>f (λ [] (buf.format {:async true})) opts)))
+    (map :n :<localleader>F (λ [] (buf.format {:async true})) opts)))
 
 (let [au vim.api.nvim_create_autocmd
       group (vim.api.nvim_create_augroup "UserLspConfig" {})]
