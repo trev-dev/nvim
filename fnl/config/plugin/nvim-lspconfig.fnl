@@ -17,12 +17,7 @@
                        [:svelte {}]
                        [:tsserver {}]
                        [:eslint {}]
-                       [:volar {:filetypes [:typescript
-                                            :javascript
-                                            :javascriptreact
-                                            :typescriptreact
-                                            :vue
-                                            :json]}]
+                       [:volar {:filetypes [:vue]}]
                        [:yamlls {}]])
 
 (each [_ config (ipairs server-configs)]
