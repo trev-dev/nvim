@@ -5,4 +5,4 @@
                         :DONE {:icon " " :color "comment"}}
              :colors {:comment ["Comment"]}}))
 
-(vim.keymap.set :n "<leader>ft" ":TodoTelescope<CR>" {:desc "todos"})
+(vim.keymap.set :n :<leader>ft ":TodoTelescope<CR>" {:desc "todos"})

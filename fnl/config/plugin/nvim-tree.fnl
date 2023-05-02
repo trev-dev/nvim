@@ -5,4 +5,4 @@
              :renderer {:group_empty true
                         :highlight_git true}}))
 
-(vim.keymap.set :n "<leader>n" ":NvimTreeToggle<CR>")
+(vim.keymap.set :n :<leader>n ":NvimTreeToggle<CR>")
