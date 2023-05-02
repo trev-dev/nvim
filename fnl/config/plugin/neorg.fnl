@@ -5,14 +5,16 @@
                    :core.export {}
                    :core.highlights {}
                    :core.integrations.treesitter {}
+                   :core.journal {:config {:strategy "flat"}}
                    :core.mode {}
                    :core.neorgcmd {}
                    :core.completion {:config {:engine "nvim-cmp"}}
                    :core.concealer {:config {:icon_preset "diamond"}}
                    :core.dirman {:config
                                  {:workspaces
-                                  {:notes "~/Notes"}
-                                  :default_workspace "notes"}}}}))
+                                  {:personal "~/Notes/personal/"
+                                   :work "~/Notes/work/"}
+                                  :default_workspace "work"}}}}))
 
 (let [au vim.api.nvim_create_autocmd
       augrp vim.api.nvim_create_augroup
@@ -20,6 +22,7 @@
   (au [:FileType] {:group (augrp :NorgConceal {:clear true})
                    :pattern "norg"
                    :callback (λ []
+                               (set lo.colorcolumn "0")
                                (set lo.conceallevel 2)
                                (set lo.foldlevel 99))}))
 
