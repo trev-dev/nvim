@@ -103,5 +103,7 @@
       augrp vim.api.nvim_create_augroup]
   (au [:FileType] {:group (augrp :JDTLS {:clear true})
                    :pattern "java"
-                   :callback (λ [] (jdtls.start_or_attach config))}))
+                   :callback (λ []
+                               (jdtls.start_or_attach config)
+                               (set vim.opt_local.colorcolumn "100"))}))
 	
