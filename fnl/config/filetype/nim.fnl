@@ -1,0 +1,1 @@
+(module config.filetype.nim)
