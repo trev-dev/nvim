@@ -1,16 +1,7 @@
 (local dapui (require :dapui))
 (local dap (require :dap))
 
-(dapui.setup {:controls {:icons {:disconnect "ﮤ"
-                                 :pause "⏸"
-                                 :play "▶"
-                                 :run_last "▶▶"
-                                 :step_back ""
-                                 :step_into "⏎"
-                                 :step_out "⏮"
-                                 :step_over "⏭"
-                                 :terminate "⏹"}}
-              :floating {:border :single
+(dapui.setup {:floating {:border :single
                          :mappings {:close [:q :<Esc>]}
                          :max_height nil
                          :max_width nil}
