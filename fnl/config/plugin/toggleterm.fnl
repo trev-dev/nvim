@@ -2,7 +2,7 @@
 
 (let [tt (require :toggleterm)]
   (tt.setup {:close_on_exit true
-             :open_mapping :<C-\>
+             :open_mapping "<A-t>"
              :direction :float
              :float_opts {:border :curved
                           :highlights {:background :Normal
