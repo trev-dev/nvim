@@ -18,12 +18,14 @@
 
 (let [au vim.api.nvim_create_autocmd
       augrp vim.api.nvim_create_augroup
-      lo vim.opt_local]
+      lo vim.opt_local
+      bo vim.bo]
   (au [:FileType] {:group (augrp :NorgConceal {:clear true})
                    :pattern "norg"
                    :callback (λ []
                                (set lo.colorcolumn "0")
                                (set lo.conceallevel 2)
+                               (set bo.textwidth 80)
                                (set lo.foldlevel 99))}))
 
 (let [map vim.keymap.set]
