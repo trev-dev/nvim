@@ -28,6 +28,7 @@
   (set wo.linebreak true)
   (set wo.relativenumber true)
   (set wo.signcolumn "yes")
+  (set wo.wrap false)
 
   (set g.mapleader " ")
   (set g.maplocalleader ",")
