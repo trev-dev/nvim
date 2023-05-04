@@ -72,7 +72,8 @@
   :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   :nvim-treesitter/nvim-treesitter {:mod :nvim-treesitter}
   :nvim-neorg/neorg {:mod :neorg
-                     :requires [[:nvim-lua/plenary.nvim]]}
+                     :requires [[:nvim-lua/plenary.nvim]
+                                [:nvim-neorg/neorg-telescope]]}
   :tpope/vim-commentary {}
   :tpope/vim-fugitive {}
   :tpope/vim-obsession {}
