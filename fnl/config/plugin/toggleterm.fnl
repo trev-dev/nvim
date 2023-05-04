@@ -23,5 +23,5 @@
       taskwarrior-tui (Terminal:new {:cmd :taskwarrior-tui :hidden true})]
   (λ toggle-lazygit [] (set lazygit.dir (vim.fn.getcwd)) (lazygit:toggle))
   (λ toggle-tui [] (taskwarrior-tui:toggle))
-  (map :n :<leader>gg toggle-lazygit {:desc :lazygit})
-  (map :n :<leader>gt toggle-tui {:desc :taskwarrior-tui}))
+  (map :n :<leader>tg toggle-lazygit {:desc :lazygit})
+  (map :n :<leader>tt toggle-tui {:desc :taskwarrior-tui}))

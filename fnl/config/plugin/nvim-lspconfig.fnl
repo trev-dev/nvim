@@ -55,7 +55,8 @@
     (map :n :<C-k> buf.signature_help opts)
     (map :n :<localleader>wa buf.add_workspace_folder opts)
     (map :n :<localleader>wr buf.remove_workspace_folder opts)
-    (map :n :<localleader>wl (λ [] (vim.inspect (buf.list_workspace_folders))) opts)
+    (map :n :<localleader>wl (λ [] (vim.inspect
+                                     (buf.list_workspace_folders))) opts)
     (map :n :<localleader>D buf.type_definition opts)
     (map :n :<localleader>rn buf.rename opts)
     (map [:n :v] :<localleader>ca buf.code_action opts)
