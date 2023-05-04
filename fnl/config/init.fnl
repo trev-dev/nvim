@@ -84,6 +84,7 @@
   :folke/which-key.nvim {}
   :jamessan/vim-gnupg {}
   :FooSoft/vim-argwrap {:mod :vim-argwrap}
+  :eraserhd/parinfer-rust {:run "cargo build --release"}
 
   ;; LSP
   :williamboman/mason.nvim {:requires [[:williamboman/mason-lspconfig]]
