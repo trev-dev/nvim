@@ -48,4 +48,4 @@
                     :silent true}))))
 
 (let [map vim.keymap.set]
-  (map :n :<leader>o ":Neorg<CR>" {:desc "Neorg"}))
+  (map :n :<leader>n ":Neorg<CR>" {:desc "Neorg"}))
