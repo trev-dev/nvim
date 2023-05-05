@@ -68,7 +68,8 @@
                                   [[:nvim-lua/plenary.nvim]
                                    [:nvim-telescope/telescope-ui-select.nvim]]
                                   :mod :telescope}
-  :nvim-tree/nvim-tree.lua {:mod :nvim-tree}
+  :stevearc/oil.nvim {:mod :oil}
+  ; :nvim-tree/nvim-tree.lua {:mod :nvim-tree}
   :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   :nvim-treesitter/nvim-treesitter {:mod :nvim-treesitter}
   :nvim-neorg/neorg {:mod :neorg
