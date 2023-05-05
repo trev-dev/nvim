@@ -6,7 +6,9 @@
                          :max_height nil
                          :max_width nil}
               :icons {:collapsed "▸" :current_frame "*" :expanded "▾"}
-              :layouts [{:elements [{:id :scopes :size 0.25} :breakpoints]
+              :layouts [{:elements [:stacks
+                                    :breakpoints
+                                    :scopes]
                          :position :right
                          :size 40}
                         {:elements [:console :repl]
