@@ -7,6 +7,7 @@
                    :core.integrations.treesitter {}
                    :core.integrations.telescope {}
                    :core.journal {:config {:strategy "flat"}}
+                   :core.summary {}
                    :core.mode {}
                    :core.neorgcmd {}
                    :core.completion {:config {:engine "nvim-cmp"}}
