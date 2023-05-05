@@ -106,4 +106,4 @@
                    :callback (λ []
                                (jdtls.start_or_attach config)
                                (set vim.opt_local.colorcolumn "100"))}))
-	
+
