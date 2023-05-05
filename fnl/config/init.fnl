@@ -34,8 +34,8 @@
   (set g.maplocalleader ",")
   (set g.html_indent_script1 "zero")
   (set g.html_indent_style1 "zero")
-  (set g.loaded_netrw 1)
-  (set g.loaded_netrwPlugin 1))
+  (when (= (os.getenv "BROWSER") "wsl-open")
+    (set g.netrw_browsex_viewer "wsl-open")))
 
 (let [au vim.api.nvim_create_autocmd
       augrp vim.api.nvim_create_augroup]
