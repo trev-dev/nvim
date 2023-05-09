@@ -49,6 +49,22 @@
                                          {:group :Visual
                                           :timeout 350}))}))
 
+;; Custom Functions
+(set vim.g.MarcoMode false)
+(λ toggle-marco-mode [_args]
+  (if vim.g.MarcoMode
+    (do
+      (set vim.wo.number false)
+      (set vim.wo.relativenumber true)
+      (set vim.g.MarcoMode false))
+    (do
+      (set vim.wo.number true)
+      (set vim.wo.relativenumber false)
+      (set vim.g.MarcoMode true))))
+
+(vim.api.nvim_create_user_command :MarcoMode toggle-marco-mode
+                                  {:desc "Make line numbers Marco friendly"})
+
 (vim.keymap.set :n :<leader>l ":noh<CR>" {:desc "clear search highlights"})
 
 ;;; Plugins
