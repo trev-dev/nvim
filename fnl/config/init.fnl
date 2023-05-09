@@ -15,6 +15,7 @@
   (set o.list true)
   (set o.expandtab true)
   (set o.shiftwidth 2)
+  (set o.showbreak "󱞩")
   (set o.softtabstop 2)
   (set o.tabstop 2)
   (set o.lbr true)
@@ -24,7 +25,10 @@
 
   ;; Window
   (set wo.breakindent true)
+  (set wo.breakindentopt "sbr")
   (set wo.colorcolumn "80")
+  (set wo.cursorline true)
+  (set wo.cursorlineopt :number)
   (set wo.linebreak true)
   (set wo.relativenumber true)
   (set wo.signcolumn "yes")
