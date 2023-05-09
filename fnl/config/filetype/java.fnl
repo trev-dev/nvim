@@ -105,5 +105,5 @@
                    :pattern "java"
                    :callback (λ []
                                (jdtls.start_or_attach config)
-                               (set vim.opt_local.colorcolumn "100"))}))
+                               (set vim.opt_local.colorcolumn "120"))}))
 
