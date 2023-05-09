@@ -61,7 +61,9 @@
     (map :n :<localleader>rn buf.rename opts)
     (map [:n :v] :<localleader>ca buf.code_action opts)
     (map :n :gr buf.references opts)
-    (map :n :<localleader>F (λ [] (buf.format {:async true})) opts)))
+    (map :n :<localleader>F (λ [] (buf.format {:async true})) opts)
+    (map :n :<leader>fs ":Telescope lsp_document_symbols<CR>" opts)
+    (map :n :<leader>fws ":Telescope lsp_workspace_symbols<CR>" opts)))
 
 (let [au vim.api.nvim_create_autocmd
       group (vim.api.nvim_create_augroup "UserLspConfig" {})]
