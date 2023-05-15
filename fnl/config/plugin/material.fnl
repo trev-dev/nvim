@@ -1,6 +1,7 @@
 (module config.plugin.material)
 
-(let [m (require :material)]
+(let [m (require :material)
+      colors (require :material.colors)]
   (m.setup {:styles {:comments {:italic true}}
             :plugins [:dap
                       :gitsigns
@@ -14,6 +15,7 @@
             :disable {:background true}
             :lualine_style "stealth"
             :high_visibility {:darker true}
+            :custom_highlights {"@text.reference" {:fg colors.main.darkred}}
             :custom_colors (λ [colors]
                              (set colors.editor.accent "#89DDFF"))}))
 
