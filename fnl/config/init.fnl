@@ -15,6 +15,7 @@
   (set o.list true)
   (set o.expandtab true)
   (set o.shiftwidth 2)
+  (set o.showbreak "󱞩")
   (set o.softtabstop 2)
   (set o.tabstop 2)
   (set o.lbr true)
@@ -24,11 +25,14 @@
 
   ;; Window
   (set wo.breakindent true)
+  (set wo.breakindentopt "sbr")
   (set wo.colorcolumn "80")
+  (set wo.cursorline true)
+  (set wo.cursorlineopt :number)
   (set wo.linebreak true)
   (set wo.relativenumber true)
   (set wo.signcolumn "yes")
-  (set wo.wrap false)
+  (set wo.wrap true)
 
   (set g.mapleader " ")
   (set g.maplocalleader ",")
@@ -44,6 +48,22 @@
                        :callback (λ [] (vim.highlight.on_yank
                                          {:group :Visual
                                           :timeout 350}))}))
+
+;; Custom Functions
+(set vim.g.MarcoMode false)
+(λ toggle-marco-mode [_args]
+  (if vim.g.MarcoMode
+    (do
+      (set vim.wo.number false)
+      (set vim.wo.relativenumber true)
+      (set vim.g.MarcoMode false))
+    (do
+      (set vim.wo.number true)
+      (set vim.wo.relativenumber false)
+      (set vim.g.MarcoMode true))))
+
+(vim.api.nvim_create_user_command :MarcoMode toggle-marco-mode
+                                  {:desc "Make line numbers Marco friendly"})
 
 (vim.keymap.set :n :<leader>l ":noh<CR>" {:desc "clear search highlights"})
 
