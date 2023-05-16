@@ -71,8 +71,9 @@
 (plugin.use
   ;; Utils
   :Olical/aniseed {}
-  :Olical/conjure {}
+  :Olical/conjure {:mod :conjure}
   :Olical/nvim-local-fennel {}
+  :vlime/vlime {}
   :akinsho/toggleterm.nvim {:mod :toggleterm}
   :folke/todo-comments.nvim {:requires [[:nvim-lua/plenary.nvim]]
                              :mod :todo-comments}
