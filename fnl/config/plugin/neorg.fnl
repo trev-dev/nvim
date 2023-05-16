@@ -42,7 +42,7 @@
                                :core.integrations.telescope.insert_link]
                               [:<leader>fh
                                :core.integrations.telescope.search_headings]
-                              [:<leader>fo
+                              [:<leader>fn
                                :core.integrations.telescope.find_linkable]]}
                    {:noremap true
                     :silent true}))))
