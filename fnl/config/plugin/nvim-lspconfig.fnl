@@ -12,6 +12,7 @@
                        [:html {}]
                        [:jedi_language_server {}]
                        [:hls {}]
+                       [:rnix {}]
                        [:jsonls {}]
                        [:nimls {}]
                        [:svelte {}]

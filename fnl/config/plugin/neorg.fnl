@@ -14,9 +14,9 @@
                    :core.concealer {:config {:icon_preset "diamond"}}
                    :core.dirman {:config
                                  {:workspaces
-                                  {:personal "~/Notes/personal/"
-                                   :work "~/Notes/work/"}
-                                  :default_workspace "work"}}}}))
+                                  {:personal "~/Notes/personal"
+                                   :work "~/Notes/work"}
+                                  :default_workspace "personal"}}}}))
 
 (let [au vim.api.nvim_create_autocmd
       augrp vim.api.nvim_create_augroup
@@ -30,7 +30,7 @@
                                (set bo.textwidth 80)
                                (set lo.foldlevel 99))}))
 
-(let [nc (require :neorg.callbacks)]
+(let [nc (require :neorg.core.callbacks)]
   (nc.on_event :core.keybinds.events.enable_keybinds
                (λ [_ keybinds]
                  (keybinds.map_event_to_mode
