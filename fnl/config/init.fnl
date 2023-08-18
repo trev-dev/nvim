@@ -90,7 +90,6 @@
                                    [:nvim-telescope/telescope-ui-select.nvim]]
                                   :mod :telescope}
   :stevearc/oil.nvim {:mod :oil}
-  ; :nvim-tree/nvim-tree.lua {:mod :nvim-tree}
   :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   ; :mickael-menu/zk-nvim {:mod :zk}
   ; :jakewvincent/mkdnflow.nvim {:mod :mkdnflow}
@@ -100,15 +99,17 @@
                                 [:nvim-neorg/neorg-telescope]]}
   :tpope/vim-commentary {}
   :tpope/vim-fugitive {}
+  :tpope/vim-rhubarb {}
   :tpope/vim-obsession {}
   :tpope/vim-repeat {}
   :tpope/vim-surround {}
   :wbthomason/packer.nvim {}
   :windwp/nvim-autopairs {:mod :nvim-autopairs}
-  :folke/which-key.nvim {}
+  :folke/which-key.nvim {:mod :which-key}
   :jamessan/vim-gnupg {}
   :FooSoft/vim-argwrap {:mod :vim-argwrap}
   :eraserhd/parinfer-rust {:run "cargo build --release"}
+  :ledger/vim-ledger {}
 
   ;; LSP
   :williamboman/mason.nvim {:requires [[:williamboman/mason-lspconfig]]
@@ -127,6 +128,11 @@
   :L3MON4D3/LuaSnip {}
   :saadparwaiz1/cmp_luasnip {}
   :rafamadriz/friendly-snippets {}
+  :microsoft/vscode-js-debug {:opt true
+                              :run (.. "npm install --legacy-peer-deps "
+                                       "&& npx gulp vsDebugServerBundle "
+                                       "&& mv dist out")}
+  :mxsdev/nvim-dap-vscode-js {:requires [[:mfussenegger/nvim-dap]]}
   :rcarriga/nvim-dap-ui {:mod :nvim-dap
                          :requires [[:mfussenegger/nvim-dap]
                                     [:rcarriga/cmp-dap]]}
@@ -138,6 +144,8 @@
 ;;; Autoloads
 ;; Mostly filetype specific settings
 (let [filetypes [:java
+                 :javascript
+                 :xhtml
                  :markdown
                  :python]]
   (each [_ ft (ipairs filetypes)]

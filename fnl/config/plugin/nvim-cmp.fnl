@@ -24,9 +24,9 @@
                                           [:i :s :c])
                       :<C-y> cmp.config.disable
                       :<CR> (cmp.mapping.confirm {:select true})}
-            :sources (cmp.config.sources [{:max_item_count 5 :name :nvim_lsp}
-                                          {:max_item_count 5 :name :vsnip}
-                                          {:max_item_count 5 :name :path}]
+            :sources (cmp.config.sources [{:name :nvim_lsp}
+                                          {:name :vsnip}
+                                          {:name :path}]
                                          [{:name :buffer}])
             :enabled (λ [] (or (not= (vim.api.nvim_buf_get_option 0 :buftype)
                                      :prompt)

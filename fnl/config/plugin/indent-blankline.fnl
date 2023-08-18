@@ -13,6 +13,6 @@
                                               :checkhealth
                                               :help
                                               :txt
-                                              :md
+                                              :markdown
                                               :org
                                               :norg])

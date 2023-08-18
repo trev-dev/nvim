@@ -3,10 +3,12 @@
 (let [au vim.api.nvim_create_autocmd
       augrp vim.api.nvim_create_augroup
       bo vim.bo
-      lo vim.opt_local]
+      lo vim.opt_local
+      wo vim.wo]
   (au [:FileType] {:group (augrp :MarkdownCustom {:clear true})
                    :pattern "markdown"
                    :callback (λ []
+                               (set wo.wrap false)
                                (set bo.shiftwidth 2)
                                (set bo.softtabstop 2)
                                (set bo.tabstop 2)
