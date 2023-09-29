@@ -18,14 +18,14 @@
 (vim.fn.sign_define :DapBreakpoint
                     {:linehl ""
                      :numhl ""
-                     :text ""
+                     :text ""
                      :texthl :DiagnosticSignError})
 
 (λ log-point []
   (dap.set_breakpoint nil nil (vim.fn.input "Log point message: ")))
 
 (let [wk (require :which-key)]
-  (wk.register {:d {:name :Debug} :prefix :<leader>}))
+  (wk.register {:d {:name "[d]ebug"} :prefix :<leader>}))
 
 (let [map vim.keymap.set]
   (map :n :<F3> dap.disconnect)
