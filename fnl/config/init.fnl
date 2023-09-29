@@ -90,10 +90,9 @@
                                    [:nvim-telescope/telescope-ui-select.nvim]]
                                   :mod :telescope}
   :stevearc/oil.nvim {:mod :oil}
-  ; :nvim-tree/nvim-tree.lua {:mod :nvim-tree}
   :nvim-tree/nvim-web-devicons {:mod :nvim-web-devicons}
   ; :mickael-menu/zk-nvim {:mod :zk}
-  ; :jakewvincent/mkdnflow.nvim {:mod :mkdnflow}
+  :jakewvincent/mkdnflow.nvim {:mod :mkdnflow}
   :nvim-treesitter/nvim-treesitter {:mod :nvim-treesitter}
   :nvim-neorg/neorg {:mod :neorg
                      :requires [[:nvim-lua/plenary.nvim]
