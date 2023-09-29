@@ -17,7 +17,7 @@
             :high_visibility {:darker true}
             :custom_highlights {"@text.reference" {:fg colors.main.darkred}}
             :custom_colors (λ [colors]
-                             (set colors.editor.accent "#89DDFF"))}))
+                             (set colors.editor.accent colors.main.paleblue))}))
 
 (set vim.g.material_style "darker")
 (vim.cmd.colorscheme "material")
