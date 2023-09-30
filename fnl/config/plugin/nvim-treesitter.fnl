@@ -1,6 +1,6 @@
 (module config.plugin.nvim-treesitter)
 
-(fn disable [lang buf]
+(λ disable [lang buf]
   (if (= lang "help") true
       (let [max_filesize (* 100 1024)
             (fs stats) (pcall vim.loop.fs_stat (vim.api.nvim_buf_get_name buf))]

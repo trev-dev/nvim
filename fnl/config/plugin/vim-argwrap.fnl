@@ -1,3 +1,3 @@
 (module config.plugin.vim-argwrap)
 
-(vim.keymap.set :n :<leader>aw ":ArgWrap<CR>" {:silent true})
+(vim.keymap.set :n :<leader>a ":ArgWrap<CR>" {:silent true})

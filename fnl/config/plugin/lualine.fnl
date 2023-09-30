@@ -105,9 +105,7 @@
                  (if (= (next clients) nil) ""
                    (accumulate [names " "
                                 _ client (ipairs clients)]
-                     (.. names " " client.name)))
-                 )
-               )
+                     (.. names " " client.name)))))
            :color {:fg "#ffffff" :gui :bold}})
 
 (ins-right {1 "o:encoding"

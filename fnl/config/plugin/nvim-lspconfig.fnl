@@ -12,6 +12,7 @@
                        [:html {}]
                        [:jedi_language_server {}]
                        [:hls {}]
+                       [:rnix {}]
                        [:jsonls {}]
                        [:nimls {}]
                        [:svelte {}]
@@ -43,21 +44,35 @@
 (λ set-lsp-mappings [event]
   (let [map vim.keymap.set
         buf vim.lsp.buf
-        opts {:buffer event.buf}]
+        opts {:buffer event.buf}
+        wk (require :which-key)]
+    (λ with-desc [desc] {:buffer buff : desc})
     (tset (. vim.bo event.buf) :omnifunc "v:lua.vim.lsp.omnifunc")
-    (map :n "gD" buf.declaration opts)
-    (map :n "gd" buf.definition opts)
-    (map :n "K" buf.hover opts)
-    (map :n "gi" buf.implementation opts)
-    (map :n "<C-k>" buf.signature_help opts)
-    (map :n "<space>wa" buf.add_workspace_folder opts)
-    (map :n "<space>wr" buf.remove_workspace_folder opts)
-    (map :n "<space>wl" (λ [] (vim.inspect (buf.list_workspace_folders))) opts)
-    (map :n "<space>D" buf.type_definition opts)
-    (map :n "<space>rn" buf.rename opts)
-    (map {:n :v} "<space>ca" buf.code_action opts)
-    (map :n "gr" buf.references opts)
-    (map :n "<space>f" (λ [] (buf.format {:async true})) opts)))
+    (map :n :H vim.diagnostic.open_float)
+    (map :n "[d" vim.diagnostic.goto_prev {:desc "previous diagnostc"})
+    (map :n "]d" vim.diagnostic.goto_next {:desc "next diagnostc"})
+    (map :n :gD buf.declaration opts {:desc "goto [D]iagnostic"})
+    (map :n :gd buf.definition opts {:desc "goto [d]efinition"})
+    (map :n :K buf.hover opts)
+    (map :n :gi buf.implementation opts {:desc "goto [i]mplementation"})
+    (map :n :<C-k> buf.signature_help opts)
+
+    (wk.register {:w {:name "lsp [w]orkspace"} :prefix :<localleader>})
+    (map :n :<localleader>wa buf.add_workspace_folder (with-desc
+                                                        "[a]dd folder"))
+    (map :n :<localleader>wr buf.remove_workspace_folder (with-desc
+                                                           "[r]emove folder"))
+    (map :n :<localleader>wl (λ [] (vim.inspect (buf.list_workspace_folders)))
+         (with-desc "[l]ist folders"))
+    (map :n :<localleader>D buf.type_definition (with-desc
+                                                  "goto type [D]efinition"))
+    (map :n :<localleader>r buf.rename (with-desc "[r]ename symbol"))
+    (map [:n :v] :<localleader>c buf.code_action (with-desc "[c]ode action"))
+    (map :n :gr buf.references (with-desc "goto [r]eferences"))
+    (map :n :<localleader>F (λ [] (buf.format {:async true}))
+         (with-desc "[F]ormat buffer"))
+    (map :n :<leader>fs ":Telescope lsp_document_symbols<CR>" opts)
+    (map :n :<leader>fws ":Telescope lsp_workspace_symbols<CR>" opts)))
 
 (let [au vim.api.nvim_create_autocmd
       group (vim.api.nvim_create_augroup "UserLspConfig" {})]

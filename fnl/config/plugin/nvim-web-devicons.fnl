@@ -4,4 +4,8 @@
   (nwd.setup {:override {:nim {:icon ""
                                :color "#F3D400"
                                :cterm_color "220"
-                               :name "Nim"}}}))
+                               :name "Nim"}
+                         :fnl {:icon ""
+                               :color "#fff3d7"
+                               :cterm_color "230"
+                               :name "Fennel"}}}))

@@ -14,8 +14,6 @@
 
 (λ on-attach [_ buff]
   (let [bind vim.keymap.set]
-    (λ list-buffs [] (print (vim.lsp.buf.list_workspace_folders)))
-    (λ format-buff [] (vim.lsp.buf.format {:async true}))
     (λ with-desc [desc] {:buffer buff : desc})
 
     (safe-codelens-refresh)
@@ -32,8 +30,8 @@
     (bind :n :crc jdtls.extract_constant (with-desc "Extract constant"))
     (bind :n :crc jdtls.extract_constant (with-desc "Extract constant"))
     (bind :n :crm jdtls.extract_method (with-desc "Extract method"))
-    (bind :n :<leader>df jdtls.test_class (with-desc "Debug test class"))
-    (bind :n :<leader>dn jdtls.test_nearest_method
+    (bind :n :<localleader>df jdtls.test_class (with-desc "Debug test class"))
+    (bind :n :<localleader>dn jdtls.test_nearest_method
           (with-desc "Debug nearest test method"))))
 
 (local java-debug-jar
@@ -105,5 +103,7 @@
       augrp vim.api.nvim_create_augroup]
   (au [:FileType] {:group (augrp :JDTLS {:clear true})
                    :pattern "java"
-                   :callback (λ [] (jdtls.start_or_attach config))}))
-	
+                   :callback (λ []
+                               (jdtls.start_or_attach config)
+                               (set vim.opt_local.colorcolumn "120"))}))
+

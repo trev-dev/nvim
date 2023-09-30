@@ -1,21 +1,14 @@
 (local dapui (require :dapui))
 (local dap (require :dap))
 
-(dapui.setup {:controls {:icons {:disconnect "ﮤ"
-                                 :pause "⏸"
-                                 :play "▶"
-                                 :run_last "▶▶"
-                                 :step_back ""
-                                 :step_into "⏎"
-                                 :step_out "⏮"
-                                 :step_over "⏭"
-                                 :terminate "⏹"}}
-              :floating {:border :single
+(dapui.setup {:floating {:border :single
                          :mappings {:close [:q :<Esc>]}
                          :max_height nil
                          :max_width nil}
               :icons {:collapsed "▸" :current_frame "*" :expanded "▾"}
-              :layouts [{:elements [{:id :scopes :size 0.25} :breakpoints]
+              :layouts [{:elements [:stacks
+                                    :breakpoints
+                                    :scopes]
                          :position :right
                          :size 40}
                         {:elements [:console :repl]
@@ -25,24 +18,24 @@
 (vim.fn.sign_define :DapBreakpoint
                     {:linehl ""
                      :numhl ""
-                     :text ""
+                     :text ""
                      :texthl :DiagnosticSignError})
 
 (λ log-point []
   (dap.set_breakpoint nil nil (vim.fn.input "Log point message: ")))
 
 (let [wk (require :which-key)]
-  (wk.register {:d {:name :Debug} :prefix :<leader>}))
+  (wk.register {:d {:name "[d]ebug"} :prefix :<leader>}))
 
 (let [map vim.keymap.set]
   (map :n :<F3> dap.disconnect)
   (map :n :<F5> dap.continue)
+  (map :n :<F6> dap.pause)
+  (map :n :<F9> dap.toggle_breakpoint {:desc "toggle breakpoint"})
+  (map :n :<leader><F9> dap.set_breakpoint {:desc "set breakpoint"})
   (map :n :<F10> dap.step_over)
   (map :n :<F11> dap.step_into)
   (map :n :<F12> dap.step_out)
-  (map :n :<leader>db dap.toggle_breakpoint {:desc "toggle breakpoint"})
-  (map :n :<leader>dB dap.set_breakpoint {:desc "set breakpoint"})
-  (map :n :<leader>dp log-point {:desc "log point message"})
   (map :n :<leader>dr dap.repl.open {:desc "open repl"})
   (map :n :<leader>dl dap.run_last {:desc "run last"})
   (map :n :<leader>dc dap.clear_breakpoints {:desc "run last"})
